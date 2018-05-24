@@ -65,11 +65,11 @@ class core
             $api = api::getInstance();
             $api_method = mb_substr($_SERVER['REQUEST_URI'],4);
             $api_data = $this->getAPIData();
-            echo $api->{$api_data['method']}($api_method,$api_data['data']);
+            echo $api->{$api_data['method']}($api_method, $api_data['data']);
             exit;
 
         //Если запрос на контроллер
-        }else{
+        } else {
 
             //Инициализируем контроллер
             $view_data = $controller->init();
@@ -81,7 +81,7 @@ class core
                 'cache'       => false,
                 'auto_reload' => true
             );
-            $twig = new Twig_Environment($loader,$twig_settings);
+            $twig = new Twig_Environment($loader, $twig_settings);
             echo $twig->render($view_data['template'],$view_data['vars']);
 
         }

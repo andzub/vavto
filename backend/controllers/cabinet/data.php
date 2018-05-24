@@ -1,9 +1,9 @@
 <?php
+
 if (empty($_SESSION['client']['status'])) {
     header('location:' . $_SESSION['langlink'].'/cabinet/login/');
     exit;
 }
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 	
 
-//ЛК мен. сохр. заявки
+    //ЛК мен. сохр. заявки
 	if ($this->GET[0] == 'saveorder') {
 		$data = $api->put('/cabinet/saveorder/',$_POST);
 		echo json_encode($data);
@@ -48,3 +48,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $user = $api->get('/cabinet/',$_SESSION['client']);
 $_SESSION['client'] = $user;
 $vars['cars'] = $api->get('/cabinet/cars_client/',$_SESSION['client']['id']);
+
+$template = 'cabinet/data.html';

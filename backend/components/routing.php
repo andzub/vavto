@@ -20,7 +20,7 @@ class routing
         return self::$_instance;
     }
 
-    //Обработчик , принимает полный URL + разбитый на части без GET
+    //Обработчик, принимает полный URL + разбитый на части без GET
     public function init($url_parts)
     {
         global $config;
@@ -28,23 +28,58 @@ class routing
         //Убираем слеш вначале и в конце
         //$url = explode('/',$url);
         $url = $url_parts[0];
-        if ($url === 'car-marks') {//Раздел марок
+        // Раздел марок
+        if ($url === 'car-marks') {
             return array(
                 'controller' => 'backend/controllers/general/car-marks-list.php',
                 'template' => 'general/car-marks-list.html'
             );
-        } elseif ($url === 'new') {//Страница новости
-            return array( 'controller' => 'backend/controllers/news/new-page.php' );
+            // Страница новости
+        } elseif ($url === 'new') {
+            return array(
+                'controller' => 'backend/controllers/news/new-page.php'
+            );
+            // Стринца просмотра историй
+        } elseif ($url === 'history') {
+            return array(
+                'controller' => 'backend/controllers/cabinet/history.php',
+                'template' => 'cabinet/history.html'
+            );
+        } elseif ($url === 'cabinet') {
+            return array(
+                'controller' => 'backend/controllers/cabinet/index.php',
+                'template' => 'cabinet/index.html'
+            );
+        } elseif ($url === 'bonus') {
+            return array(
+                'controller' => 'backend/controllers/cabinet/bonus.php',
+                'template' => 'cabinet/bonus.html'
+            );
+        } elseif ($url === 'data') {
+            return array(
+                'controller' => 'backend/controllers/cabinet/data.php',
+                'template' => 'cabinet/data.html'
+            );
+        } elseif ($url === 'order') {
+            return array(
+                'controller' => 'backend/controllers/cabinet/order.php',
+                'template' => 'cabinet/order.html'
+            );
         }
+
 
         $count_parts=count ($url_parts);
         if ($count_parts === 1) {
-            $page = $db->getRow('SELECT a.*,al.title,al.text,al.short_desc,al.lang FROM `articles` a INNER JOIN articles_lang al ON (a.id=al.article_id AND al.lang=?s) WHERE a.`address`=?s AND a.type=1',$config['lang'],$url);
+            $page = $db->getRow('SELECT a.*,al.title,al.text,al.short_desc,al.lang 
+                                FROM `articles` a INNER JOIN articles_lang al ON (a.id=al.article_id AND al.lang=?s) 
+                                WHERE a.`address`=?s AND a.type=1',$config['lang'],$url);
             if ( $page ) {
                 $page['text'] = htmlspecialchars_decode($page['text']);
                 $text = explode('{form_application}',$page['text']);
                 $page['text'] = $text;
-                $page['similar'] = $db->getAll('SELECT  a.*,al.title,al.short_desc,al.lang FROM `articles` a INNER JOIN articles_lang al ON (a.id=al.article_id AND al.lang=?s) WHERE a.`id`!=?i AND a.type=1 ORDER BY rand() LIMIT 8',$config['lang'],$page['id']);
+                $page['similar'] = $db->getAll('SELECT  a.*,al.title,al.short_desc,al.lang 
+                                  FROM `articles` a INNER JOIN articles_lang al ON (a.id=al.article_id AND al.lang=?s) 
+                                  WHERE a.`id`!=?i AND a.type=1 ORDER BY rand() LIMIT 8',$config['lang'],$page['id']);
                 $this->data = $page;
                 return array(
                     'controller' => 'backend/controllers/general/info-material.php',

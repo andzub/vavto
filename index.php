@@ -1,11 +1,11 @@
 <?php
 
-
-ini_set('display_errors',0);
+ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-//var_dump($_POST);
 require_once('config.php');
+require_once('backend/core/core.php');
+$core->init();
 
 /*if( $config['protocol'] == 'https' ){
     if($_SERVER['SERVER_PORT'] != '443'){
@@ -13,8 +13,4 @@ require_once('config.php');
         exit;
     }
 }*/
-
-require_once('backend/core/core.php');
-
-$core->init();
 

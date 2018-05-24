@@ -1,21 +1,23 @@
 {% extends "./general/include/main.html" %}
 
-
 {% block head %}
     <link href="/frontend/public/css/cabinet/style.css" rel="stylesheet" />
 {% endblock %}
+
 {% block content %}
 <div class="container-fluid hesers">
-    <b>{%trans%}ДАННЫЕ КЛИЕНТА{%endtrans%}</b> |  <a href="{{langlink}}/cabinet/index/history/" >{%trans%}ИСТОРИЯ ОБРАЩЕНИЙ{%endtrans%}</a>  | <a href="{{langlink}}/cabinet/index/bonus/">{%trans%}БОНУСНАЯ ПРОГРАМА{%endtrans%}</a>
+    <b>{% trans %} ДАННЫЕ КЛИЕНТА {% endtrans %}</b> |
+    <a href="{{langlink}}/cabinet/history/" >{% trans %} ИСТОРИЯ ОБРАЩЕНИЙ{% endtrans %}</a> |
+    <a href="{{langlink}}/cabinet/bonus/">{% trans %}БОНУСНАЯ ПРОГРАМА{% endtrans %}</a>
 </div>
 
-    
 <div class="container bottom prev">
 
     <div class="row">
         <div class="silca col-md-120">
-            <a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/">← {%trans%}назад{%endtrans%}</a> |
-            <b>{%trans%}ДАННЫЕ КЛИЕНТА{%endtrans%}</b> | <a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/data/">{%trans%}редактировать{%endtrans%}  →</a>
+            <!--<a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/">← {% trans %} назад {% endtrans %}</a> |-->
+            <b>{% trans %} ДАННЫЕ КЛИЕНТА {% endtrans %}</b> |
+            <a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/data/">{% trans %} редактировать {% endtrans %}  →</a>
         </div>
         <div class="alert alert-danger col-md-120" role="alert" style="display: none;"></div>
         
@@ -33,11 +35,10 @@
                                 <div class="form-group clearfix" > 
                                     <div class="col-md-120" >
                                         <select   class="js-example-basic-single form-control " name="city" disabled>
-                                            
                                             {% if session.client.city_id %}
                                                 <option value="{{ session.client.city_id }}">{{ session.client.city }}</option>
                                             {% else %}
-                                                <option >{%trans%}Выберите город{%endtrans%}</option>
+                                                <option >{% trans %} Выберите город{% endtrans %}</option>
                                             {% endif %}
                                         </select>
                                     </div>
@@ -54,7 +55,6 @@
                                 </div>
                                 <div class="form-group clearfix"> 
                                     <div class="col-md-120">
-
                                         <input type="tel" class="form-control" name="phone" 
                                         placeholder="+7 (900) 123-45-67" required="" 
                                         pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$" 

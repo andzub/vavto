@@ -1,4 +1,5 @@
 <?php
+
 if (!isset($_SESSION['client']['id'])) {
     header('location:' . $_SESSION['langlink'].'/cabinet/login/');
     exit;

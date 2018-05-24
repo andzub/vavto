@@ -1,72 +1,64 @@
 {% extends "./general/include/main.html" %}
 
-
 {% block head %}
     <link href="/frontend/public/css/cabinet/style.css" rel="stylesheet" />
 {% endblock %}
+
 {% block content %}
-<div class="container-fluid hesers">
-    <a href="{{langlink}}/cabinet/">{%trans%}ДАННЫЕ КЛИЕНТА{%endtrans%}</a> |  <a href="{{langlink}}/cabinet/index/history/" >{%trans%}ИСТОРИЯ ОБРАЩЕНИЙ{%endtrans%}</a>  | <b>{%trans%}БОНУСНАЯ ПРОГРАМА{%endtrans%}</b>
-</div>
-
-
-<div class="container bottom">
-
-    <div class="row">
-        <div class="silca col-md-120">
-            <a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/">← {%trans%}назад{%endtrans%}</a> |
-            <b>{%trans%}БОНУСНАЯ ПРОГРАМА{%endtrans%}</b>
-        </div>
-        <div class="alert alert-danger col-md-120" role="alert" style="display: none;"></div>
-        
-            <div class="col-md-120 bonusu" >
-                <div class="row">
-
-                    <div class="col-md-120">
-                        
-                        <div class="thumbnail bonus"  >
-                        	<div id="bonus"  >
-                            <table class="accia_table table_bonus">
-                                <tr class="table_bonus_perv" >
-                                    <th><b>Дата</b></th><th><b>За что</b></th><th  ><b>Сумма</b></th>
-                                </tr>
-                                <tr>
-                                    <th>05.10.2017</th><th>За Написание отзыва</th><th  >17р</th>
-                                </tr>
-                                <tr>
-                                    <th>10.10.2017</th><th>За регистрацию</th><th
-                                     >100р</th>
-                                </tr>
-                                <tr>
-                                    <th class="table_bonus_last" >20.10.2017</th><th>За посещение сервиса</th><th
-                                      >500р</th>
-                                </tr>
-                            </table>
-                        	</div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-		<div class="silca col-md-120"> 
-			<p>Пока ещё Вы не посоветовали нас своим друзьям.</p>
-            <h4><b>ЗА КАЖДОГО ДРУГА ВЫ ПОЛУЧИТЕ 500 РКБЛЕЙ</b></h4>
-            <br>
-            <a class="btn btn-primary my_btn" >ПРИГЛАСИТЬ СЕЙЧАС</a>
-        </div>
+    <div class="container-fluid hesers">
+        <a href="{{langlink}}/cabinet/">{%trans%}ДАННЫЕ КЛИЕНТА{%endtrans%}</a> |  <a href="{{langlink}}/cabinet/history/" >{%trans%}ИСТОРИЯ ОБРАЩЕНИЙ{%endtrans%}</a>  | <b>{%trans%}БОНУСНАЯ ПРОГРАМА{%endtrans%}</b>
     </div>
 
-</div>
 
+    <div class="container bottom">
 
+        <div class="row">
+            <div class="silca col-md-120">
+                <a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/">← {%trans%}назад{%endtrans%}</a> |
+                <b>{%trans%}БОНУСНАЯ ПРОГРАМА{%endtrans%}</b>
+            </div>
+            <div class="alert alert-danger col-md-120" role="alert" style="display: none;"></div>
 
+                <div class="col-md-120 bonusu" >
+                    <div class="row">
 
+                        <div class="col-md-120">
 
+                            <div class="thumbnail bonus"  >
+                                <div id="bonus"  >
+                                <table class="accia_table table_bonus">
+                                    <tr class="table_bonus_perv" >
+                                        <th><b>Дата</b></th><th><b>За что</b></th><th  ><b>Сумма</b></th>
+                                    </tr>
+                                    <tr>
+                                        <th>05.10.2017</th><th>За Написание отзыва</th><th  >17р</th>
+                                    </tr>
+                                    <tr>
+                                        <th>10.10.2017</th><th>За регистрацию</th><th
+                                         >100р</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="table_bonus_last" >20.10.2017</th><th>За посещение сервиса</th><th
+                                          >500р</th>
+                                    </tr>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            <div class="silca col-md-120">
+                <p>Пока ещё Вы не посоветовали нас своим друзьям.</p>
+                <h4><b>ЗА КАЖДОГО ДРУГА ВЫ ПОЛУЧИТЕ 500 РКБЛЕЙ</b></h4>
+                <br>
+                <a class="btn btn-primary my_btn" >ПРИГЛАСИТЬ СЕЙЧАС</a>
+            </div>
+        </div>
+
+    </div>
 
 {% endblock %}
 
-
-
-{% block script %}
-{% endblock %}
+{% block script %}{% endblock %}

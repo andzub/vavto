@@ -3,7 +3,8 @@
 global $settings;
 $settings = settings::getInstance();
 
-class settings {
+class settings
+{
 	public $default_lang='ru';
     protected static $_instance;
     private function __clone() {}
@@ -11,7 +12,8 @@ class settings {
     private function __construct() {}
 
 
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (self::$_instance === null) { self::$_instance = new self; }
         return self::$_instance;
     }
@@ -23,11 +25,14 @@ class settings {
 	}
 
 	//Получаем настройки сайта
-	public function get_site_options($name=false){
+	public function get_site_options($name=false)
+    {
 		$db = db::getInstance();
 		return $db->getInd('name','SELECT * FROM `site_option`');
 	}
-	public function update_mo($data){
+
+	public function update_mo($data)
+    {
 		$lang_sname=$data['sname'];
 		$db = db::getInstance();
 		$lang=$db->getRow('SELECT * FROM lang WHERE sname=?s',$lang_sname);
@@ -50,7 +55,8 @@ class settings {
 		return false;
 	}
 
-	public function get_trans_domain($lang){
+	public function get_trans_domain($lang)
+    {
 		$path=$_SERVER['DOCUMENT_ROOT'].'/locale/'.$lang['locale'].'/LC_MESSAGES/';
 		if(is_file($path.'mess_'.$lang['mod_time'])) return 'mess_'.$lang['mod_time'];
 		else{
@@ -76,7 +82,8 @@ class settings {
 	}
 
 	//Получить все блоки для страницы
-	public function get_page_blocks($data){
+	public function get_page_blocks($data)
+    {
 		$db = db::getInstance();
 		$blocks_tmp=$db->getAll('SELECT * FROM `htmlblock` WHERE page_name=?s AND lang=?s ',$data['page'],$data['lang']);
 		if(!$blocks_tmp) return false;
@@ -88,13 +95,15 @@ class settings {
 	}
 
 	//Получить содержимое определенного блока
-	public function get_block_val($data){
+	public function get_block_val($data)
+    {
 		$db = db::getInstance();
 		return $db->getOne('SELECT val FROM `htmlblock` WHERE page_name=?s AND lang=?s ',$data['page'],$data['lang']);
 	}
 
 
-    public function setTranslate($locale,$domain){
+    public function setTranslate($locale, $domain)
+    {
 	    putenv("LANGUAGE=$locale");
 	    setlocale(LC_ALL, $locale);
 	    bindtextdomain($domain, "./locale");
@@ -102,125 +111,111 @@ class settings {
     }
 
 	//Получить список форм
-	public function formList (){
+	public function formList()
+    {
 		return [ 'form_application' => ['name'=>'index-form.html','desc'=>'Полная главная форма'],'form_cat' => ['name'=>'cat-form.html','desc'=>'Основная форма для категорий'],'form_shinomontag' => ['name'=>'shinomontag-form.html','desc'=>'Форма шиномонтажа'],'form_avtourist' => ['name'=>'avtourist-form.html','desc'=>'Форма автоюриста'],'form_sokr' => ['name'=>'index-form-sokr.html','desc'=>'Сокращенная форма'] ];
 	}
 
 
-
-// вернуть ид и емейл города по названию
-public function getCityByName ($data){
-
-    $db = db::getInstance();
-    $row= $db->getRow('SELECT id, city_email
-    FROM `geo_city`
-    WHERE name=?s',$data);
-    return $row;
-}
-
-
-// получить данные о юзере если авторизирован
-public function authuser (){
-
-    $clid=$_SESSION['client']['id'];
-    if(!$clid) return false;
-    //5054
-    $db = db::getInstance();
-    return $db->getRow('SELECT client.*, geo_city.name as gorod
-    FROM `client`
-    INNER JOIN `geo_city` ON `client`.`city_id`=`geo_city`.`id`
-    WHERE `client`.`id`=?i',$clid);
-}
-
-
-//добавить заявку в БД
-public function add_history($data=false)
-{
-    $db = db::getInstance();
-    if(!$data) return false;
-
-    $k="id, ";
-    $v="null, ";
-    foreach($data as $key=>$val)
+    // вернуть ид и емейл города по названию
+    public function getCityByName($data)
     {
-        $k.="$key, ";
-        $v.="'$val', ";
+        $db = db::getInstance();
+        $row= $db->getRow('SELECT id, city_email
+        FROM `geo_city`
+        WHERE name=?s',$data);
+        return $row;
     }
-    $k=substr($k,0,strlen($k)-2 );
-    $v=substr($v,0,strlen($v)-2 );
-
-    $sql="INSERT INTO history ($k) VALUE ($v); ";
-
-            if($sql)
-            {
-                $db = db::getInstance();
-                $my_history= $db->query($sql);
-                return true;
-            }
-            return false;
-    
-}
 
 
-
-
-
-// получить данные о юзере если авторизирован
-public function myAuto (){
-
-    $clid=$_SESSION['client']['id'];
-    if(!$clid) return 'var myavto = {};
-    ';
-    
-    $db = db::getInstance();
-    $row= $db->getAll('SELECT id, autoBrand_id, autoModel_id, vin, year_issue
-    FROM `cars_clients`
-    WHERE `client_id`=?i',$clid);
-
-//масив моих авто для автоподставновки года и ВИНа , вывод в frontend\templates\general\blocks\index-form-sokr.html
-    $jsvars='var myavto = {};
-    ';
-    foreach($row as $key=>$v)
+    // получить данные о юзере если авторизирован
+    public function authuser ()
     {
-        if( $v['id'] )
-        {
-            //$marka=$v['autoBrand_id'];
-            $model=$v['autoModel_id'];
-            if($model)
-            {
-$jsvars.="myavto[$model]={\n";
-                foreach($v as $v2=>$v3)
-                {
-                    if(!$v3) $v3='0';
-                    if($v2=='vin') $v2_tmp=$v3;
-                    if($v2=='year_issue') $v3_tmp=$v3;
+        $clid=$_SESSION['client']['id'];
+        if(!$clid) return false;
+        //5054
+        $db = db::getInstance();
+        return $db->getRow('SELECT client.*, geo_city.name as gorod
+        FROM `client`
+        INNER JOIN `geo_city` ON `client`.`city_id`=`geo_city`.`id`
+        WHERE `client`.`id`=?i',$clid);
+    }
+
+
+    //добавить заявку в БД
+    public function add_history($data=false)
+    {
+        $db = db::getInstance();
+        if(!$data) return false;
+
+        $k="id, ";
+        $v="null, ";
+        foreach($data as $key=>$val) {
+            $k.="$key, ";
+            $v.="'$val', ";
+        }
+        $k=substr($k,0,strlen($k)-2 );
+        $v=substr($v,0,strlen($v)-2 );
+
+        $sql="INSERT INTO history ($k) VALUE ($v); ";
+
+        if ($sql) {
+            $db = db::getInstance();
+            $my_history= $db->query($sql);
+            return true;
+        }
+        return false;
+
+    }
+
+    // получить данные о юзере если авторизирован
+    public function myAuto()
+    {
+
+        $clid=$_SESSION['client']['id'];
+        if(!$clid) return 'var myavto = {};
+        ';
+
+        $db = db::getInstance();
+        $row= $db->getAll('SELECT id, autoBrand_id, autoModel_id, vin, year_issue
+        FROM `cars_clients`
+        WHERE `client_id`=?i',$clid);
+
+        //масив моих авто для автоподставновки года и ВИНа , вывод в frontend\templates\general\blocks\index-form-sokr.html
+        $jsvars='var myavto = {};
+        ';
+        foreach($row as $key=>$v) {
+            if( $v['id'] ) {
+                //$marka=$v['autoBrand_id'];
+                $model=$v['autoModel_id'];
+                if($model) {
+                    $jsvars.="myavto[$model]={\n";
+                    foreach($v as $v2=>$v3) {
+                        if(!$v3) $v3='0';
+                        if($v2=='vin') $v2_tmp=$v3;
+                        if($v2=='year_issue') $v3_tmp=$v3;
+                    }
+
+                    $jsvars.="  vin:'$v2_tmp',\n";
+                    $jsvars.="  year:'$v3_tmp'\n
+                    };\n";
+
                 }
-
-$jsvars.="  vin:'$v2_tmp',\n";
-$jsvars.="  year:'$v3_tmp'\n
-};\n";
-
-
             }
         }
-    }
 
-
-    
     //return htmlspecialchars_decode($jsvars);
     return $jsvars;
-}
 
-
-
+    }
 
     //Получить марки
-    public function autoBrands (){
+    public function autoBrands()
+    {
         $db = db::getInstance();
         $clid=$_SESSION['client']['id'];
 
-        if($clid)
-        {
+        if($clid) {
             $cl_cars = $db->getAll('SELECT  car_mark.*
             FROM `cars_clients`
             INNER JOIN `car_mark` ON `cars_clients`.`autoBrand_id`=`car_mark`.`id`
@@ -247,13 +242,12 @@ $jsvars.="  year:'$v3_tmp'\n
     }
 
     //Получить модели
-    public function autoModels (){
-
+    public function autoModels()
+    {
         $clid=$_SESSION['client']['id'];
         $db = db::getInstance();
         //если юзер атворизирован подтягиваем его авто
-        if($clid)
-        {
+        if($clid) {
             $cl_cars = $db->getAll('SELECT  car_model.*, cars_clients.autoBrand_id as brand_id
             FROM `cars_clients`
             INNER JOIN `car_model` ON `cars_clients`.`autoModel_id`=`car_model`.`id`
@@ -268,8 +262,9 @@ $jsvars.="  year:'$v3_tmp'\n
             foreach($rows as $k=>$v)
                 if(in_array($v['id'],$cl_cars_list ))      unset($rows[$k]);
             $rows=array_merge_recursive ($cl_cars, $rows );
+        } else {
+            $rows = $db->getInd('id','SELECT * FROM `car_model` ORDER BY `name` ASC');
         }
-        else  $rows = $db->getInd('id','SELECT * FROM `car_model` ORDER BY `name` ASC');
 
         $array = array();
         foreach( $rows as $id => $row )
@@ -281,7 +276,8 @@ $jsvars.="  year:'$v3_tmp'\n
     }
 
     //Год выпуска
-    public function autoYears (){
+    public function autoYears()
+    {
 
         $array = array();
         for( $i = 1970; $i <= date('Y',time()); $i++ )
@@ -292,7 +288,8 @@ $jsvars.="  year:'$v3_tmp'\n
     }
 
     //Получить весь список категорий и работ (вытащить всю таблиу cats)
-    public function GetAllCategorys ($lang){
+    public function GetAllCategorys($lang)
+    {
         $db = db::getInstance();
 	    $rows = $db->getAll('SELECT c.`id`, c.`parent_id`, cl.`title` as category
             FROM `cats` c
@@ -300,8 +297,7 @@ $jsvars.="  year:'$v3_tmp'\n
             ORDER BY type, title',$lang);
         //$rows = json_decode($db->getOne('SELECT `value` FROM `settings` WHERE `name`="workCategory"'),1);
         $res=array();
-        foreach($rows as $key)
-        {
+        foreach($rows as $key) {
             if($key['parent_id'])
                 $res[$key['parent_id']][$key['id']]=$key;
             else $res[$key['id']]=$key;
@@ -313,7 +309,8 @@ $jsvars.="  year:'$v3_tmp'\n
     }
 
     //Получить весь список категорий и работ (вытащить всю таблиу cats) //для азказов
-    public function GetAllCategorys_orders ($lang){
+    public function GetAllCategorys_orders($lang)
+    {
         $db = db::getInstance();
 	    $rows = $db->getAll('SELECT c.`id`, c.`parent_id`, cl.`title` as title
             FROM `cats` c
@@ -321,10 +318,8 @@ $jsvars.="  year:'$v3_tmp'\n
             ORDER BY type, title',$lang);
         //$rows = json_decode($db->getOne('SELECT `value` FROM `settings` WHERE `name`="workCategory"'),1);
         $res=array();
-        foreach($rows as $key)
-        {
-            if($key['parent_id'])
-            {
+        foreach($rows as $key) {
+            if($key['parent_id']) {
                 $res[$key['parent_id']]['child'][$key['id']]=$key;
                 $res[$key['parent_id']]['child'][$key['id']]['name']=$key['title'];
             }
@@ -338,7 +333,8 @@ $jsvars.="  year:'$v3_tmp'\n
 
 
 	//Получить ссылку на вид работ
-	public function getWorkLink($work_address){
+	public function getWorkLink($work_address)
+    {
 		$db = db::getInstance();
 		$parent_address=$db->getOne('SELECT p.address FROM `cats` c INNER JOIN cats p ON (c.parent_id=p.id) WHERE c.address=?s',$work_address);
 		if($parent_address) $work_address=$parent_address.'/'.$work_address;
@@ -349,7 +345,8 @@ $jsvars.="  year:'$v3_tmp'\n
 
 
   //Получить список категорий
-    public function workMainCategory ($lang){
+    public function workMainCategory($lang)
+    {
         $db = db::getInstance();
 	    $rows = $db->getAll('SELECT c.id,c.address,c.parent_id,c.img_icon,c.type,cl.title FROM `cats` c INNER JOIN cats_lang cl ON (c.id=cl.cat_id AND cl.lang=?s) WHERE ((c.type=1 AND c.parent_id=0 AND c.img_icon IS NOT NULL) OR c.address="gbo" )  ORDER BY type,title',$lang);
         //$rows = json_decode($db->getOne('SELECT `value` FROM `settings` WHERE `name`="workCategory"'),1);
@@ -382,7 +379,8 @@ $jsvars.="  year:'$v3_tmp'\n
     }
 
     //Получить список видов работ
-    public function workType (){
+    public function workType()
+    {
 
         $db = db::getInstance();
         $rows = json_decode($db->getOne('SELECT `value` FROM `settings` WHERE `name`="workType"'),1);
@@ -569,9 +567,9 @@ $jsvars.="  year:'$v3_tmp'\n
 
     }
 
-
     //Получить список категорий (для форм)
-    public function workMainCategory2 ($lang){
+    public function workMainCategory2($lang)
+    {
         $db = db::getInstance();
 	    $rows = $db->getAll('SELECT c.id,c.address,c.parent_id,c.img_icon,c.type,cl.title FROM `cats` c INNER JOIN cats_lang cl ON (c.id=cl.cat_id AND cl.lang=?s) WHERE ((c.type=1 AND c.parent_id=0 AND c.img_icon IS NOT NULL) OR c.address="gbo" )  ORDER BY type,title',$lang);
         //$rows = json_decode($db->getOne('SELECT `value` FROM `settings` WHERE `name`="workCategory"'),1);
@@ -580,7 +578,8 @@ $jsvars.="  year:'$v3_tmp'\n
     }
 
     //Получить список видов работ для форм
-    public function workType2 (){
+    public function workType2()
+    {
 
         $db = db::getInstance();
         //$rows = json_decode($db->getOne('SELECT `value` FROM `settings` WHERE `name`="workType"'),1);
@@ -589,18 +588,4 @@ $jsvars.="  year:'$v3_tmp'\n
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-?>

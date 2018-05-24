@@ -1,4 +1,5 @@
 <?php
+
 if (empty($_SESSION['client']['status'])) {
     header('location:' . $_SESSION['langlink'].'/cabinet/login/');
     exit;

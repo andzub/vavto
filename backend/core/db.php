@@ -127,7 +127,7 @@ class db
 
     public function getAll()
     {
-        $ret   = array();
+        $ret = array();
         $query = $this->prepareQuery(func_get_args());
         if ($res = $this->rawQuery($query)) {
             while($row = $this->fetch($res)) {

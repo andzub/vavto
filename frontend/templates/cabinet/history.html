@@ -1,96 +1,75 @@
 {% extends "./general/include/main.html" %}
 
-
 {% block head %}
     <link href="/frontend/public/css/cabinet/style.css" rel="stylesheet" />
 {% endblock %}
+
 {% block content %}
-<div class="container-fluid hesers">
-    <a href="{{langlink}}/cabinet/">{%trans%}ДАННЫЕ КЛИЕНТА{%endtrans%}</a> |  <b>{%trans%}ИСТОРИЯ ОБРАЩЕНИЙ{%endtrans%}</b>  |
-    <a href="{{langlink}}/cabinet/data/" >{%trans%}БОНУСНАЯ ПРОГРАМА{%endtrans%}</a>
-</div>
-
-
-    
-<div class="container bottom">
-
-    <div class="row">
-        <div class="silca col-md-120">
-            <a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/">←  {%trans%}назад{%endtrans%}</a> |
-            <b>{%trans%}ИСТОРИЯ ОБРАЩЕНИЙ{%endtrans%}</b>
-        </div>
-        <div class="alert alert-danger col-md-120" role="alert" style="display: none;"></div>
-        
-
-
-
-
-
-
-
-            <div class="col-md-120 bonusu" >
-                <div class="row">
-
-                    <div class="col-md-120">
-                        
-                        <div class="thumbnail bonus"  >
-                        	<div id="bonus"  >
-                            <table  class="accia_table table_bonus">
-                                <tr class="table_bonus_perv">
-                                    <th width='150'><b>{%trans%}Дата заявки{%endtrans%}</b></th>
-                                    <th><b>{%trans%}Вид ремонта{%endtrans%}</b></th>
-                                    <th><b>{%trans%}Сервис{%endtrans%}</b></th>
-                                    <th><b>{%trans%}Стоимость ремонта{%endtrans%}</b></th>
-                                    <th><b>{%trans%}Стоимость запчастей{%endtrans%}</b></th>
-                                    <th><b>{%trans%}Начислено бонусов{%endtrans%}</b></th>
-                                    <th><b>{%trans%}Статус{%endtrans%}</b></th>
-                                </tr>
-                                
-
-                {% for row in history %}
-                                <tr>
-                                    <td><a href="{{langlink}}/cabinet/index/order/{{row.id}}/" style=''>{{row.date_add}}</a></td>
-                                    <td>{{row.cats}}</td>
-                                    <td >{{row.service}}</td>
-                                    <td >{{row.price_work}}</td>
-                                    <td >{{row.price_detail}}</td>
-                                    <td >{{row.bonus}}</td>
-                                    <td ><!--{{row.problem}}-->{{row.status|raw}}</td>
-                                </tr>
-                {% endfor %}
-
-                                
-                                <tr class="pusto" style='display:none'>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
- 
-                                
-                            </table>
-                        	</div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
+    <div class="container-fluid hesers">
+        <a href="{{langlink}}/cabinet/">{%trans%}ДАННЫЕ КЛИЕНТА{%endtrans%}</a> |
+        <b>{%trans%}ИСТОРИЯ ОБРАЩЕНИЙ{%endtrans%}</b>  |
+        <a href="{{langlink}}/cabinet/bonus/" >{%trans%}БОНУСНАЯ ПРОГРАМА{%endtrans%}</a>
     </div>
 
-</div>
+    <div class="container bottom">
+        <div class="row">
+            <div class="silca col-md-120">
+                <a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/">←  {%trans%}назад{%endtrans%}</a> |
+                <b>{%trans%}ИСТОРИЯ ОБРАЩЕНИЙ{%endtrans%}</b>
+            </div>
+            <div class="alert alert-danger col-md-120" role="alert" style="display: none;"></div>
+                <div class="col-md-120 bonusu" >
+                    <div class="row">
+                        <div class="col-md-120">
+                            <div class="thumbnail bonus">
+                                <div id="bonus">
+                                <table  class="accia_table table_bonus">
+                                    <tr class="table_bonus_perv">
+                                        <th width='150'><b>{%trans%}Дата заявки{%endtrans%}</b></th>
+                                        <th><b>{%trans%}Вид ремонта{%endtrans%}</b></th>
+                                        <th><b>{%trans%}Сервис{%endtrans%}</b></th>
+                                        <th><b>{%trans%}Стоимость ремонта{%endtrans%}</b></th>
+                                        <th><b>{%trans%}Стоимость запчастей{%endtrans%}</b></th>
+                                        <th><b>{%trans%}Начислено бонусов{%endtrans%}</b></th>
+                                        <th><b>{%trans%}Статус{%endtrans%}</b></th>
+                                    </tr>
 
+                                    {% for history in histories %}
 
+                                    <tr>
+                                        <td><a href="{{langlink}}/cabinet/order/{{history.id}}/">
+                                            {{history.date_add}}
+                                        </a></td>
+                                        <td>{{history.problem}}</td>
+                                        <td>{{history.service}}</td>
+                                        <td>{{history.price_work}}</td>
+                                        <td>{{history.price_detail}}</td>
+                                        <td>{{history.bonus}}</td>
+                                        <td>{{history.status|raw}}</td>
+                                    </tr>
 
+                                    {% endfor %}
 
+                                    <tr class="pusto" style='display:none'>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+        </div>
 
+    </div>
 {% endblock %}
-
 
 
 {% block script %}
