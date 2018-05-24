@@ -1,0 +1,64 @@
+{% extends "include/main.html" %}
+
+{% set title = 'Все марки' %}
+
+{% block content %}
+<style>
+
+    #brands-page-list {
+        margin: 0;
+        padding: 20px 0;
+    }
+    #brands-page-list li{
+        display: inline-block;
+        width: 240px;
+        list-style: none;
+        border-radius: 5px;
+        margin: 0 5px 10px 5px;
+        box-shadow: 0 0 3px 1px #9c9c9c;
+    }
+    #brands-page-list li > a{
+        color: #3a3a3a;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: block;
+        font-weight: 600;
+    }
+    #brands-page-list li > a > div{
+        display: inline-block;
+        width: 140px;
+    }
+    #brands-page-list li > a > div.img{
+        width: 42px;
+        height: 42px;
+        vertical-align: middle;
+        margin: 0 10px 0 0;
+        line-height: 36px;
+    }
+    #brands-page-list li > a img{
+        width: 100%;
+        height: auto;
+    }
+</style>
+<div class="info text clearfix">
+    <div class="wrapper">
+        <div class="col-xs-120 no-padding">
+            <ul id="brands-page-list">
+            {% for brand in brands %}
+                <li>
+                    <a href="{{u}}#">
+                        <div class="img">
+                        {% if brand.img %}
+                        <img src="{{ brand.img }}">
+                        {% endif %}
+                        </div>
+                         <div>{{brand.name}}</div>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

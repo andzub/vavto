@@ -1,0 +1,186 @@
+.hesers{
+    text-align: center;
+    font-size:18px;
+    background-color: #f0f0f0;
+     padding: 10px;
+}
+.hesers>a, .hesers>b{
+    color:#4a80c6;
+}
+.silca{
+    text-align: center;
+     padding: 30px;
+}
+.silca b{
+    font-size:26px;
+}
+.form-control{
+    height: 41px;
+}
+
+.foto_video{
+    margin-top: 40px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-top: 30px;  
+    padding-bottom: 30px;
+    border-top: solid 1px #c8d9ee;
+    border-bottom: solid 1px #c8d9ee;
+}
+
+.checbocs{
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-top: 30px;  
+    padding-bottom: 30px;
+    border-bottom: solid 1px #c8d9ee;
+}
+
+.opis span{
+    margin-left: 15px;
+}
+.opis div{
+    margin-top: 6px;
+}
+.btn_auto_form , .btn{
+    font-weight: bold;
+    background-color: #4a8dc6;
+}
+
+.my_btn {
+    padding: 10px 30px ;
+}
+
+.info a{
+    text-decoration: underline;
+}
+
+
+
+.thumbnail{
+    padding: 0;
+    border-radius: 0;
+}
+.addauto{
+    margin-top: 32px;
+    font-weight:bold;
+}
+
+.thumbnail_head{
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 1px;
+    height: 80px;
+    position: relative;
+}
+
+.info{
+    padding: 25px;
+    text-align: left;
+    border-radius: 5px;
+}
+
+.markaauto{
+    margin: 20px 10px 0 10px;
+    border-top: solid 1px #ccc;
+}
+.audi_logo{
+    position: absolute;
+    left:10px ;
+    top: 10px;
+}
+.title_auto{
+    text-align: left;
+    margin-top: 10px;
+    padding-left: 80px;
+}
+
+.table_price{
+    width: 100%;
+    border: none;
+    margin-top: 10px;
+}
+
+.table_price td{
+    border: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.conteiner_add{
+    margin-top: 20px;
+}
+
+.form_table{
+    height:24px;
+    width: 60px;
+    display: inline;
+}
+.btn_auto_add , .btn{
+    font-weight: bold;
+    background-color: #4a8dc6;
+}
+
+.btn_auto_add {
+    width: 100%;
+    border-radius: 0;
+    padding: 10px;
+    font-size: 16px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.add_auto{
+    position: relative;
+    height: 430px;
+    padding-bottom: 50px;
+}
+
+.conteiner_add .select2-container--default .select2-selection--multiple {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: text;
+    font-size: 14px;
+    min-height: 41px;
+}
+
+.conteiner_add .select2-container--default .select2-search--inline .select2-search__field {
+    background: transparent;
+    border: none;
+    outline: 0;
+    box-shadow: none;
+    -webkit-appearance: textfield;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.add_auto td input{
+    border-color: #4a80c6;
+}
+.conteiner_add .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #e4e4e4;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    cursor: default;
+    float: left;
+    margin-right: 5px;
+    margin-top: 8px;
+    padding: 0 5px;
+}
+
+.add_auto input[type=checkbox]{
+    background-color: #fff;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+.select2-container--default .select2-results>.select2-results__options {
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 14px;
+
+}

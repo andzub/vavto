@@ -1,0 +1,59 @@
+{% extends "admin/include/admin.html" %}
+
+{% set active_menu = 'car_marks' %}
+
+{% block content %}
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="page-title">Марки</h4>
+            <div class="pull-right" style="margin-top:-55px;">
+                <a href="/admin/car_marks/add/" class="btn btn-primary">Добавить марку</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <table class="table table-responsive table-striped m-0">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Название</th>
+                        <th class="text-center">Название (Англ.)</th>
+                        <th class="text-center">Картинка</th>
+                        <th class="text-center"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in rows %}
+                        <tr class="text-center">
+                            <td>{{row.name_rus}}</td>
+                            <td>{{row.name}}</td>
+                            <td>{{row.img}}</td>
+                            <td>
+                                <a href="/admin/car_marks/edit/{{row.id}}/" class="on-default edit-row"><i class="fa fa-pencil m-r-5"></i></a>
+                                <a href="/admin/car_marks/delete/{{row.id}}/" class="on-default remove-row delete"><i class="fa fa-trash-o  m-r-5"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.delete').click(function () {
+                if( !confirm('Вы уверены, что желаете удалить?') )
+                    return false;
+            });
+
+
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,261 @@
+{% extends "./general/include/main.html" %}
+
+
+{% block head %}
+    <link href="/frontend/public/css/cabinet/auto.css" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+<div class="container-fluid hesers">
+    <a href="{{langlink}}/cabinet/index/bonus/">{%trans%}ДАННЫЕ АВТОСЕРВИСА{%endtrans%}</a> |
+     <a href="{{langlink}}/cabinet/index/history/" >{%trans%}ИСТОРИЯ ОБРАЩЕНИЙ{%endtrans%}</a>  | <b>{%trans%}НАСТРОЙКА ЦЕН{%endtrans%}</b>
+</div>
+
+    
+<div class="container bottom">
+
+    <div class="row">
+        <div class="silca col-md-120" style="margin-top: 40px;">
+            <a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/">← {%trans%}назад{%endtrans%}</a> |
+            <b>{%trans%}ФИКСИРОВАНЫЕ ЦЕНЫ НА ОСНОВНЫЕ РАБОТЫ{%endtrans%}</b> | <a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/data/">{%trans%}редактировать{%endtrans%}  →</a>
+        </div>
+
+            <div class="col-md-100  col-md-offset-10" >
+                <div class="row">
+
+                    <div class="col-md-40" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix add_auto">
+                            <div class="thumbnail_head" >
+                                <img src="/frontend/public/img/cabinet/langrover.png" class="audi_logo" alt="">
+                                <p class="title_auto">Land Rover</p>
+                                <p class="markaauto">Замена передних колодок</p>
+                            </div>
+                            <table class="table_price">
+                                <tr>
+                                    <td style="text-align: left;">Disciveri II</td>
+                                    <td style="text-align: right;">1450 руб.</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">Disciveri III</td>
+                                    <td style="text-align: right;">1600 руб.</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">Disciveri IV</td>
+                                    <td style="text-align: right;">1800 руб.</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">Defender</td>
+                                    <td style="text-align: right;">1950 руб.</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-40" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix add_auto">
+                            <div class="thumbnail_head" >
+                                <img src="/frontend/public/img/cabinet/audi_logo.png" class="audi_logo" alt="">
+                                <p class="title_auto">Audi</p>
+                                <p class="markaauto">Замена передних колодок</p>
+                            </div>
+                            <table class="table_price">
+                                <tr>
+                                    <td style="text-align: left;">A3</td>
+                                    <td style="text-align: right;">1600 руб.</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">A4</td>
+                                    <td style="text-align: right;">1600 руб.</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">A5</td>
+                                    <td style="text-align: right;">1600 руб.</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">A6</td>
+                                    <td style="text-align: right;">1800 руб.</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">A7</td>
+                                    <td style="text-align: right;">1800 руб.</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">Q3</td>
+                                    <td style="text-align: right;">1800 руб.</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">Q5</td>
+                                    <td style="text-align: right;">1900 руб.</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">Q7</td>
+                                    <td style="text-align: right;">1950 руб.</td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="col-md-40" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix add_auto">
+                            <div class="thumbnail_head" >
+                                <h4 class="addauto">ШИНОМОНТАЖ</h4>
+                            </div>
+                            <table class="table_price">
+                                <tr>
+                                    <td style="text-align: left;">R14</td>
+                                    <td style="text-align: right;">1450 руб.</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">R15</td>
+                                    <td style="text-align: right;">1600 руб.</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">R16</td>
+                                    <td style="text-align: right;">1800 руб.</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">R17</td>
+                                    <td style="text-align: right;">1950 руб.</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="silca col-md-120" style="margin-top: 10px;">
+                <b>РАБОТЫ, ЦЕНЫ КОТОРЫХ ЗАРАНЕЕ НЕ ИЗВЕСТНЫ </b> 
+                <p style="margin-top: 20px;">
+                    ремонт двигателя, ремонт ходовой, 
+                    ремонт АКПП, кузовной ремонт, покраска, 
+                    электрика
+                </p>
+            </div>
+
+            <div class="col-md-100  col-md-offset-10" >
+                <div class="row">
+
+                    <div class="col-md-40" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix add_auto">
+                            <div class="thumbnail_head" >
+                                <img src="/frontend/public/img/cabinet/langrover.png" class="audi_logo" alt="">
+                                <p class="title_auto">Land Rover</p>
+                                <p class="markaauto">Ремонт двигателя</p>
+                            </div>
+                            <table class="table_price">
+                                <tr>
+                                    <td style="text-align: left;">Disciveri II</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">Disciveri III</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">Disciveri IV</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">Defender</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-40" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix add_auto">
+                            <div class="thumbnail_head" >
+                                <img src="/frontend/public/img/cabinet/audi_logo.png" class="audi_logo" alt="">
+                                <p class="title_auto">Audi</p>
+                                <p class="markaauto">Ремонт двигателя</p>
+                            </div>
+                            <table class="table_price">
+                                <tr>
+                                    <td style="text-align: left;">A3</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">A4</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">A5</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">A6</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">A7</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                                
+                            </table>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-40" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix add_auto">
+                            <div class="thumbnail_head" >
+                                <img src="/frontend/public/img/cabinet/audi_logo.png" class="audi_logo" alt="">
+                                <p class="title_auto">Audi</p>
+                                <p class="markaauto">Ремонт АКПП</p>
+                            </div>
+                            <table class="table_price">
+                                <tr>
+                                    <td style="text-align: left;">A3</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">A4</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">A5</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">A6</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">A7</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">Q3</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">Q5</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">Q7</td>
+                                    <td style="text-align: right;"></td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+           
+
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block script %}
+{% endblock %}

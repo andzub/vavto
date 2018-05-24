@@ -1,0 +1,171 @@
+{% extends "./general/include/main.html" %}
+
+
+{% block head %}
+    <link href="/frontend/public/css/cabinet/auto.css" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+<div class="container-fluid hesers">
+    <b>ДАННЫЕ АВТОСЕРВИСА</b> |  <a href="/avtoservis/history/" >ИСТОРИЯ ОБРАЩЕНИЙ</a>  | 
+    <a href="/avtoservis/price/">НАСТРОЙКА ЦЕН</a>
+</div>
+    
+<div class="container bottom">
+
+    <div class="row">
+        <div class="silca col-md-120">
+            <a style="font-size: 16px;" class="previous" href="/avtoservis/data/">← назад</a> | 
+            <b>ДАННЫЕ АВТОСЕРВИСА</b>
+        </div>
+        
+            <div class="col-md-120" style="margin-top: 20px;" >
+                <div class="row">
+                    <div class="col-md-30">
+                        <div class="col-md-120">
+                            <div class="form-group clearfix">
+                                <input type="name" class="form-control"
+                                 placeholder="Название" value="{{ session.avtoservis.name }}" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-30">
+                        <div class="col-md-120">
+                            <div class="form-group clearfix">
+                                <select name="" id="" class="form-control js-example-basic-single">
+                                    {% if session.avtoservis.city_id %}
+                                        <option value="{{ session.avtoservis.city_id }}">
+                                            {{ session.avtoservis.city }}
+                                        </option>
+                                    {% else %}
+                                        <option >Выберите город</option>
+                                    {% endif %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-30">
+                        <div class="col-md-120">
+                            <div class="form-group clearfix">
+                                <input type="tel" class="form-control" name="phone"     
+                                placeholder="+7 (900) 123-45-67" required="" 
+                                pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$" 
+                                title="Пример: +792853001020"   >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-30">
+                        <div class="col-md-120">
+                            <div class="form-group clearfix">
+                                <input type="text" class="form-control" 
+                                placeholder="Район" value="{{ session.avtoservis.districts }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-120" style="margin-top:25px;" >
+                <div class="col-md-120" >
+                    <div class="form-group clearfix">
+                        <input type="text" class="form-control" 
+                        placeholder="Адрес"  value="{{ session.avtoservis.address }}">
+                    </div>
+                </div>   
+            </div>
+        
+            <div class="col-md-120 " >
+                <div class="foto_video clearfix">
+                    <div class="col-md-60">
+                        <div><span>Фото</span></div>
+                        <div>
+                            <img src="/frontend/public/img/cabinet/knopka.png" >
+                            <img src="/frontend/public/img/cabinet/foto1.png" style="margin-left: 12px;">
+                            <img src="/frontend/public/img/cabinet/foto2.png" style="margin-left: 12px;" >
+                        </div>
+                    </div>
+                    <div class="col-md-60" style="padding-left: 40px">
+                        <div><span>Видео</span></div>
+                        <div>
+                            <img src="/frontend/public/img/cabinet/knopka.png" >
+                            <img src="/frontend/public/img/cabinet/vidio1.png" style="margin-left: 12px;">
+                        </div>
+                    </div>
+                </div>            
+            </div>
+            <div class="col-md-120 " >
+                <div class="checbocs clearfix">
+                    <div class="col-md-60 opis">
+                        <div><span>Скидка сайту <b>8</b>%</span></div>
+                        <div><input type="checkbox" ><span>Официальный диллер</span></div>
+                        <div><input type="checkbox" ><span>Наличие запчастей</span></div>
+                        <div><input type="checkbox" ><span>Наличие Эвакуатора</span></div>
+                    </div>
+                    <div class="col-md-60 opis" style="padding-left: 40px">
+                        <div><span></span></div>
+                        <div>
+                            <input type="checkbox" ><span>Безналичная оплата</span>
+                        </div>
+                        <div>
+                            <input type="checkbox" checked="checked" >
+                            <span>Скидка клиенту в День Рождения 
+                                <input type="text" class="form-control" 
+                                style="height: 30px; width:50px;display: inline;" > %
+                            </span>
+                        </div>
+                        <div>
+                            <input type="checkbox" >
+                            <span>Принимаем бонусные рублини не болие 
+                                <input type="text" class="form-control" style="height: 30px; width:50px;display: inline;" > руб за визит
+                            </span>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+            <div class="silca col-md-120" style="margin-bottom: 50px;" > 
+                <a class="btn btn-primary my_btn" >СОХРАНИТЬ</a>
+            </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}
+{% block script %}
+<script type="text/javascript" >
+    $(document).ready(function() {
+        var select = $('.js-example-basic-single').select2({
+            placeholder:"Город",
+            //theme : "classic",
+            //maximumSelectionLength : 10 ,
+            ajax: {
+            delay: 250,
+            type: 'POST',
+            url: '/ajax/geo/getAllCity/',
+            dataType: 'json',
+            data: function (params) {
+                      params.lang=page_lang;
+                      params.q=params.term;
+                      return params;
+            },
+            processResults: function (data) {
+                console.log(data);
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                    text: item.text,
+                                    id: item.id
+                            };
+                        })
+                    };
+                }
+            }
+        });
+        
+    }); 
+</script>
+
+
+{% endblock %}

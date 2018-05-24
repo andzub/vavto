@@ -1,0 +1,363 @@
+.avtoservis-card .card{
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 0px 0px 4px 4px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.avtoservis-card .card:hover{
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+}
+.avtoservis-card .card-img{
+    width: 100%;
+}
+.avtoservis-card .card-rating{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 144px;
+    height: 28px;
+    background: url("/frontend/public/img/general/empty-star.png") rgb(255, 255, 255);
+
+}
+.avtoservis-card .card-rating div {
+    background: url("/frontend/public/img/general/full-star.png");
+    width: 0;
+    height: 100%;
+}
+.avtoservis-card .card-body{
+    text-align: left;
+    margin: 10px 5px;
+}
+
+
+
+.top-block{
+    width: 100%;
+    background-image: url("/frontend/public/img/avtoservis/index/top-foud.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+}
+.widgets{
+    margin-top: 120px;
+}
+.widget{
+    height: 263px;
+    width: 200px;
+    background: rgba(0, 0, 0, 0.7); /* Цвет фона */
+    text-align: center;
+    padding: 0 20px;
+}
+.icon{
+    border-bottom: 1px solid #fff;
+}
+.icon img{
+    margin: 25px 0;
+}
+.text, .number{
+    color: #fff;
+    font-family: "OpenSansLight", sans-serif;
+    font-size: 16px;
+}
+.text{
+    padding: 25px 0 5px 0;
+    height: 80px;
+}
+.text span{
+    display: block;
+}
+.number{
+    margin: 10px;
+    font-family: "OpenSansBold", sans-serif;
+    font-size: 42px;
+}
+@media screen and (max-width: 1000px) {
+    .widgets{
+        margin-top: 5px;
+    }
+    .widgets .col-md-30{
+        display: inline-block;
+        width: 48%;
+    }
+    .widget{
+        margin: 5px auto;
+        height: 235px;
+        width: 150px;
+    }
+    .icon img{
+        margin: 10px 0;
+    }
+}
+
+
+.recent-applications h2{
+    margin: 73px 0 35px 0;
+    text-align: center;
+    color: #3a3a3a;
+    font-family: "OpenSansBold", sans-serif;
+    font-size: 26px;
+}
+
+.application{
+    width: 400px;
+    min-height: 155px;
+    height: 155px;
+    border-radius: 10px;
+    background: none;
+    border: 1px solid #cccccc;
+    padding: 20px 15px 20px 20px;
+    font-size: 16px;
+    color: #3a3a3a;
+    font-family: "OpenSansLight", sans-serif;
+}
+.application .car{
+    font-family: "OpenSansBold", sans-serif;
+    color: #4a80c6;
+}
+.application .data{
+    color: #b2b2b2;
+}
+.application .operation{
+    min-height: 40px;
+    margin: 15px 0 10px 0;
+}
+@media screen and (max-width: 1250px) {
+    .application{
+        height: 0;
+        width: 100%;
+        min-height: 200px;
+    }
+}
+
+.want-price{
+    margin-top: 80px;
+    background: #f5f5f5;
+    min-height: 380px;
+    padding: 0;
+}
+.want-price .title{
+    width: 100%;
+    margin: 36px 0;
+}
+.want-price .title h2{
+    width: 450px;
+    margin: 0 auto;
+    color: #3a3a3a;
+    font-family: "OpenSansBold", sans-serif;
+    font-size: 26px;
+    padding: 0;
+}
+
+.avtoservices-block{
+    text-align: center;
+    color: #3a3a3a;
+    font-family: "OpenSansLight", sans-serif;
+    font-size: 16px;
+}
+.avtoservices-block h2{
+    margin-top: 73px;
+    color: #3a3a3a;
+    font-family: "OpenSansBold", sans-serif;
+    font-size: 26px;
+}
+.avtoservices-block p{
+    /*line-height: 0.7;*/
+}
+.top-avtoservices, .all-avtoservices{
+    margin-top: 35px;
+}
+.avtoservices-block .avtoservis{
+    border: 1px solid #cccccc;
+    height: 275px;
+    margin: 0;
+    padding: 0;
+}
+.avtoservices-block .avtoservis:nth-child(2n){
+    border-left: none;
+}
+.avtoservices-block .avtoservis:nth-child(2n+3), .avtoservices-block .avtoservis:nth-child(2n+4){
+    border-top: none;
+}
+.avtoservis .avtoservis-top{
+    text-align: right;
+    height: 85px;
+    padding: 15px 15px 0 15px;
+}
+.avtoservis .avtoservis-top .name{
+    text-align: left;
+}
+.avtoservis .avtoservis-top .info .address{
+    width: 50%;
+    float: left;
+    text-align: left;
+}
+.avtoservis-top .info{
+    position: relative;
+    width: 100%;
+    margin-top: 8px;
+}
+.avtoservis-top .right-block{
+    width: 45%;
+    float: right;
+}
+.avtoservis-top .address, .avtoservis-top .star, .avtoservis-top .reviews, .avtoservis-top .rating-number{
+    display: inline-block;
+}
+.avtoservis-top .rating-number{
+}
+.avtoservis-top .rating{
+    width: 120px;
+    display: inline-block;
+    margin-right: 20px;
+}
+.avtoservis-top .star{
+    text-align: right;
+    width: 85px;
+    height: 16px;
+    background: url("/frontend/public/img/avtoservis/index/empty-star.png") rgb(255, 255, 255);
+
+}
+.avtoservis-top .star div {
+    background: url("/frontend/public/img/avtoservis/index/full-star.png");
+    width: 0;
+    height: 100%;
+}
+.avtoservis-top .reviews{
+    float: right;
+    position: relative;
+    margin: 0;
+}
+.avtoservis-top .reviews .icon{
+    position: absolute;
+    display: inline-block;
+    width: 24px;
+    height: 18px;
+    background: url("/frontend/public/img/avtoservis/index/icon-review.jpg") no-repeat;
+    bottom: 0;
+}
+.reviews .reviews-count{
+    margin-left: 26px;
+}
+.avtoservis-top .name{
+    font-family: "OpenSansBold", sans-serif;
+    font-size: 26px;
+}
+.avtoservis .avtoservis-content{
+    display: block;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+.avtoservis .avtoservis-img {
+    float: left;
+    display: inline-block;
+    height: 190px;
+    width: 200px;
+}
+.avtoservis-img button, .wrapper .button{
+    display: inline-block;
+    font-family: "OpenSansBold", sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    height: 40px;
+    width: 200px;
+    background-image: linear-gradient(to top, #356098 0%, #477bbf 100%);
+    border: none;
+}
+.avtoservis .avtoservis-comments {
+    display: inline-block;
+    height: 190px;
+    width: 395px;
+    margin: 0 14px;
+    padding: 16px 0;
+    border-top: 1px solid #cccccc;
+}
+.avtoservis-comments .user{
+    font-family: "OpenSansBold", sans-serif;
+    color: #4a80c6;
+    font-size: 16px;
+}
+.avtoservis-comments .rating{
+    font-size: 14px;
+}
+.avtoservis-comments .btn-down, .avtoservis-comments .btn-up{
+    border: none;
+    padding: 0;
+    width: 15px;
+    height: 7px;
+    margin: 6px 2px 0;
+}
+.btn-up{
+    background: url("/frontend/public/img/avtoservis/index/btn-up.png");
+    float: right;
+}
+.btn-down{
+    background: url("/frontend/public/img/avtoservis/index/btn-down.png");
+    float: right;
+}
+.avtoservis .avtoservis-comments .comment-btn{
+    text-align: right;
+    float: right;
+    width: 45px;
+}
+.avtoservis-comments .car{
+    color: #b2b2b2;
+    margin-top: 4px;
+}
+
+.avtoservis-comments .comment{
+    font-size: 16px;
+    margin-top: 16px;
+}
+.wrapper .btn-show-all{
+    margin-top: 40px;
+}
+@media screen and (max-width: 1335px) {
+    .top-avtoservices .avtoservis, .all-avtoservices  .avtoservis{
+        float: none;
+        margin: 0 auto;
+        width: 640px;
+    }
+    .top-avtoservices .avtoservis:nth-child(2n), .all-avtoservices .avtoservis:nth-child(2n){
+        border-left: 1px solid #cccccc;;
+    }
+    .avtoservices-block .avtoservis:not(:first-child), .all-avtoservices .avtoservis:not(:first-child){
+        border-top: none;
+    }
+}
+@media screen and (max-width: 730px) {
+    .top-avtoservices .avtoservis, .all-avtoservices .avtoservis{
+      width: 100%;
+    }
+    .avtoservis .avtoservis-comments{
+        display: block;
+        margin: 0;
+        width: auto;
+        padding: 5px;
+    }
+    .avtoservis .avtoservis-img{
+        margin-right: 5px;
+    }
+}
+@media screen and (max-width: 660px) {
+    .avtoservis-comments .car, .avtoservis-comments .comment{
+        margin: 0;
+    }
+}
+@media screen and (max-width: 675px) {
+    .avtoservis-top .rating{
+        margin-right: 0;
+        display: block;
+        text-align: right;
+        width: auto;
+    }
+}
+.all-avtoservices-block .btn-show-all{
+    margin-bottom: 100px;
+}
+

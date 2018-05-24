@@ -1,0 +1,72 @@
+{% extends "include/main.html" %}
+
+{% set title = row.title %}
+{% set description = row.short_desc %}
+
+{% block content %}
+<style>
+    .new-top-line {padding: 30px 0 20px; background-image: linear-gradient(to bottom, #f0f0f0 0%, #fff 100%);}
+    .new-top-line > .wrapper > div{text-decoration: none;  color: #487cc1;  font-weight: 600;}
+    .new-top-line > .wrapper > div:nth-child(1){text-align: left;}
+    .new-top-line > .wrapper > div:nth-child(2){text-align: center;}
+    .new-top-line > .wrapper > div:nth-child(3){text-align: right;}
+    .new-h1 {border-top: 1px solid #cccccc;margin: 0;padding: 15px 0 10px;font-size: 18px;font-weight: 600;}
+    .new-content .date {
+        color: #b2b2b2;
+        margin-bottom: 15px;
+    }
+    .sharebtn .at-share-btn {padding: 4px;margin-left: 5px;}
+    .sharebtn {background-color: #f5f5f5;margin-top: 20px;padding: 25px 10px;text-align: center;}
+    .sharebtn .txt {font-weight: 600;margin-bottom: 15px;}
+</style>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5abb3c1cdb2ad5b2"></script>
+
+<div class="clearfix new-top-line">
+    <div class="wrapper">
+        <div class="col-xs-40 no-padding">
+            {% if row.prev %}
+            <a href="new/{{row.prev}}/">< {%trans%}Предыдущая{%endtrans%}</a>
+            {% endif %}
+        </div>
+        <div class="col-xs-40 no-padding"><a href="news/">{%trans%}Все новости{%endtrans%}</a></div>
+        <div class="col-xs-40 no-padding">
+            {% if row.next %}
+            <a href="new/{{row.next}}/">{%trans%}Следующая{%endtrans%} ></a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="info text clearfix new-content">
+    <div class="wrapper">
+        <div class="col-sm-40 col-xs-120 no-padding" style="padding-right: 0;">
+            {% if row.img %}
+            <div class="img clearfix" style="background: url('{{row.img}}') 0 0 no-repeat;background-size: 100% 100%;min-height: 300px;">
+            {% else %}
+            <div class="img clearfix" style="background:#333;">
+            {% endif %}
+            </div>
+            <div class="sharebtn">
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="txt">{%trans%}Поделитесь с друзьями!{%endtrans%}</div>
+                <div class="addthis_inline_share_toolbox"></div>
+            </div>
+        </div>
+        <div class="col-sm-80 col-xs-120">
+            <div class="wrapper clearfix">
+                <div class="col-xs-120 no-padding">
+                    <h1 class="new-h1">{{row.title}}</h1>
+                    <div class="date">{{row.date_create}}</div>
+                    <div class="text" style="margin-bottom: 90px;">{{row.text | raw}}</div>
+                    <div class="comment-form">
+                        <form>
+                            <textarea rows="5" placeholder="{%trans%}Оставьте свой комментарий{%endtrans%}" style="width: 100%;border-radius: 4px;border: 1px solid #ccc;padding: 12px 10px;"></textarea>
+                            <div class="vbtn" style="margin-top: 20px;">{%trans%}Комментировать{%endtrans%}</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

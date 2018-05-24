@@ -1,0 +1,45 @@
+{% extends "./general/include/main.html" %}
+
+
+{% block head %}
+<link href="/frontend/public/css/avtoservis/style.css" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+<div class="container-fluid hesers">
+    <a href="/avtoservis/avtoservis/"><b>АВТОСЕРВИСЫ</b></a>
+</div>
+
+<div class="container bottom">
+
+    <div class="row">
+        <div class="silca col-md-120">
+
+            {% for avtoservis in avtoservices %}
+            <div class="col-md-40 avtoservis-card">
+                <div class="card">
+                    <img class="card-img" src="/frontend/public/img/general/item-2.png">
+                    <div class="card-rating">
+                        <div style="width: {{avtoservis.rating}}%"></div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-name">{{avtoservis.name}}</h4>
+                        <div class="card-description"><p>{{avtoservis.description}}</p></div>
+                        <div class="card-address"><small class="text-muted">Адрес: </small>{{avtoservis.address}}</div>
+                        <div class="card-address"><small class="text-muted">тел: </small>{{avtoservis.phone}}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}
+
+
+
+{% block script %}
+{% endblock %}

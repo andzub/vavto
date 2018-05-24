@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% if lang and lang!=default_lang %}
+    <base href="/{{lang}}/">
+    {%else%}
+    <base href="/">
+    {%endif%}
+    <title>{{title}}</title>
+    <link href="/frontend/public/css/general/bootstrap.min.css" rel="stylesheet">
+    <link href="/frontend/public/css/general/style.css" rel="stylesheet">
+    <link href="/frontend/public/css/general/select2.min.css" rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+    <meta name="description" content="{{description}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+
+{{city.code_metrika | raw}}
+
+<div class="header">
+    <div class="header-top">
+        <div class="wrapper clearfix">
+            <div class="col-sm-23 no-padding">
+                <div class="city"><a href="#modalGeo" data-toggle="modal">{{city.name}} ▼</a></div>
+                <div id="modalGeo" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 id = "ismoskow" style="display:none;text-align: center;">{%trans%}Вы из Москвы?{%endtrans%}<button type="button" class="btn btn-primary" data-dismiss="modal">{%trans%}Да{%endtrans%}</button></h4>
+                                <h4>{%trans%}Выберите город{%endtrans%}</h4>
+                            </div>
+                            <div class="modal-body clearfix">
+                                <div class="row">
+                                    <div class="col-md-120 clearfix">
+                                        <form action="" method="POST">
+                                            <select name="city" class="select2 geo-search"></select>
+                                        </form>
+                                    </div>
+                                    {% for row in city_all %}
+                                    <div class="col-md-40 text-center padding-5">
+                                        <a href="#" data-id="{{ row.id }}" class="changeCity">{{ row.text }}</a>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 no-padding">
+                <div class="vertical-line">
+                    <img src="/frontend/public/img/general/vertical-line.png">
+                </div>
+            </div>
+            <div class="col-sm-20 no-padding">
+                <div class="phone">
+                    <a href="tel:{{city.phone}}">{{city.phone}}</a>
+                </div>
+            </div>
+            <div class="col-sm-40 no-padding">
+              <div class="lang">
+                <div class="btn-group dropdown">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="text-transform: uppercase;">
+                    <span class="lang-sm lang-lbl">{{lang}}</span> <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    {% for l in langs %}
+                    <li><a href="{%if l.sname==default_lang%}/{%else%}/{{l.sname}}/{%endif%}" class="multilanguage-set" data-language="1"><span class="lang-sm lang-lbl">{{l.title}}</span></a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-20 city" style="color:#fff;">
+                {% if session.client.id %}
+                    <a href="{{langlink}}/cabinet/logout/" >{%trans%}Выход{%endtrans%}</a> | <a href="{{langlink}}/cabinet/">{%trans%}Кабинет{%endtrans%}</a>
+                {% else %}
+                    <a href="{{langlink}}/cabinet/login/" >{%trans%}Вход{%endtrans%}</a> | <a href="{{langlink}}/cabinet/registration/">{%trans%}Регистрация{%endtrans%}</a>
+                {% endif %}
+            </div>
+            <!--<div class="col-sm-52 no-padding">
+                <div class="log-in">
+                    <a href="#">Вход</a>&nbsp;&nbsp;|&nbsp;
+                    <a href="#">Регистрация</a>
+                </div>
+            </div>-->
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="wrapper clearfix">
+            <div class="col-md-33 col-sm-50 no-padding">
+                <div class="logo">
+                    <a href=""><img src="/frontend/public/img/general/logo.png"></a>
+                </div>
+            </div>
+            <div class="col-md-60 col-sm-55">
+                <div class="trust">
+                    <a href="pochemu-remont-doveryayut-nam/">{%trans%}Почему ремонт доверяют нам?{%endtrans%}</a>
+                </div>
+            </div>
+            <!--<div class="col-md-30 col-sm-15">
+                <div class="services">
+                    <a href="/services/">Услуги</a>
+                </div>
+            </div>-->
+            <div class="col-md-27 col-sm-15">
+                <div class="calculation">
+                    <a href="#want-price" class="get-price">{%trans%}Расчет стоимости ремонта{%endtrans%}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% block content %}{% endblock %}
+
+<div class="footer clearfix">
+    <div class="wrapper">
+        <div class="col-sm-60 no-padding">
+            <div class="logo-footer">
+                <a href="/"><img src="/frontend/public/img/general/logo-white.png"></a>
+            </div>
+        </div>
+        <div class="col-sm-60 no-padding clearfix">
+            <div class="phone"><a href="tel:{{city.phone}}">{{city.phone}}</a></div>
+        </div>
+        <div class="col-xs-120 no-padding">
+            <div class="line"></div>
+        </div>
+        <div class="col-md-20 col-sm-40 no-padding width-245">
+            <div class="socials">
+                <a href="https://vk.com/public158802195" class="vk">
+                    <img src="/frontend/public/img/general/vk.png">
+                </a>
+                <a href="https://www.facebook.com/groups/Vavtoservice/about/" class="fb">
+                    <img src="/frontend/public/img/general/fb.png">
+                </a>
+                <a href="https://www.ok.ru/group/58784412139559" class="ok">
+                    <img src="/frontend/public/img/general/ok.png">
+                </a>
+                <a href="https://twitter.com/V_Avtoservice" class="tw">
+                    <img src="/frontend/public/img/general/tw.png">
+                </a>
+                <!--<a href="#" class="youtube">
+                    <img src="/frontend/public/img/general/youtube.png">
+                </a>-->
+            </div>
+            <div class="address">
+                <div class="location"><a href="tel:{{city.phone}}">{{city.phone}}</a></div>
+                <div class="email">t@v-avtoservice.com</div>
+            </div>
+            <div class="pay">
+                <!--<h4>Способы оплаты</h4>
+                <div class="methods">
+                    <img src="/frontend/public/img/general/visa.png">
+                    <img src="/frontend/public/img/general/master-card.png">
+                    <img src="/frontend/public/img/general/maestro.png">
+                    <img src="/frontend/public/img/general/mir.png">
+                </div>-->
+            </div>
+        </div>
+        <div class="col-md-20 col-sm-40 no-padding margin-left">
+            <div class="car-owner">
+                <h4>{%trans%}Автовладельцам{%endtrans%}</h4>
+                <ul>
+                    <li><a href="car-marks/">{%trans%}Все марки авто{%endtrans%}</a></li>
+                    <li><a href="vot-pochemu-u-nas-deshevle/">{%trans%}Почему ремонт у нас дешевле{%endtrans%}</a></li>
+                    <!--<li><a href="#">Все сервисы</a></li>-->
+                    <li><a href="sovety-avtovladelcam/">{%trans%}Советы по ремонту авто{%endtrans%}</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-20 col-sm-40 no-padding margin-left">
+            <div class="patrner-program">
+                <h4>{%trans%}Партнерские программы{%endtrans%}</h4>
+                <ul>
+                    <li><a href="connection/" class="bold">{%trans%}Подключить автосервис{%endtrans%}</a></li>
+                    <li><a href="postavshikam-zapchastej/">{%trans%}Поставщикам запчастей{%endtrans%}</a></li>
+                    <li><a href="avtomobil-nym-sajtam-i-blogeram/">{%trans%}Автомобильным сайтам{%endtrans%}</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-20 col-sm-40 no-padding margin-left">
+            <div class="info">
+                <h4>{%trans%}Информация{%endtrans%}</h4>
+                <ul>
+                    <li><a href="rabota-s-yur-licami-i-avtoparkami/">{%trans%}Обслуживание автопарков{%endtrans%}</a></li>
+                    <!--<li><a href="#">Политика конфиденциальности</a></li>-->
+                    <li><a href="pol-zovatel-skoe-soglashenie/">{%trans%}Пользовательское соглашение{%endtrans%}</a></li>
+                    <!--<li><a href="#">Публичная оферта</a></li>-->
+                    <li><a href="smi/" class="for-smi">{%trans%}Для СМИ{%endtrans%}</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-20 col-sm-40 no-padding margin-left width-160">
+            <div class="cooperation">
+                <h4>{%trans%}Сотрудничество{%endtrans%}</h4>
+                <ul>
+                    <li><a href="sale-franchise/">{%trans%}Открыть “В-Автосервис” в своём городе{%endtrans%}</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-20 col-sm-40 no-padding margin-left width-288">
+            <div class="mobile">
+                <!--<h4>Мобильные приложения</h4>
+                <div class="mobile-app">
+                    <img src="/frontend/public/img/general/app-store.png">
+                    <img src="/frontend/public/img/general/google-play.png">
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/frontend/public/plugins/general/slick/slick.min.js"></script>
+<script src="/frontend/public/js/general/select2.min.js"></script>
+<script src="/frontend/public/plugins/general/inputmask/inputmask.js"></script>
+<script src="/frontend/public/plugins/general/inputmask/jquery.inputmask.js   "></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //Подключаем селект для выбора города
+        $('#modalGeo').on('shown.bs.modal', function (e) {;
+            $('select.geo-search').select2({
+                placeholder: '{%trans%}Введите название города{%endtrans%}',
+                ajax: {
+                    delay: 250,
+                    type: 'POST',
+                    url: '/ajax/geo/getAllCity/',
+                    data: function (params) {
+                      params.lang=page_lang;
+                      params.q=params.term;
+                      return params;
+                    },
+                    dataType: 'json',
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (item) {
+                                return {
+                                    text: item.text,
+                                    id: item.id,
+                                }
+                            })
+                        };
+                    }
+                }
+            });
+        });
+
+        // //Выбор города из селекта
+        // $('select.geo-search').change(function () {
+        //     window.location.replace('/changecity/'+$(this).val()+'/');
+        // });
+
+        //Выбор города из списка
+        // $('.changeCity').click(function () {
+        //     window.location.replace('/changecity/'+$(this).attr('data-id')+'/');
+        //     return false;
+        // });
+
+
+
+        $('select.geo-search').change(function () {
+            window.location.replace('/setcity/'+$(this).val()+'/');
+        });
+
+        
+        $('.changeCity').click(function () {
+            window.location.replace('/setcity/'+$(this).attr('data-id')+'/');
+            return false;
+        });
+
+
+        if( $('.slider-responsive').length > 0 ){
+
+            $('.slider-responsive').slick({
+                dots: false,
+                infinite: false,
+                speed: 300,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+
+        }
+
+        $('body').on('change','select[name=brand]',function () {
+
+            $('.select-models').find('select').addClass('select2-hidden');
+            $('#brand_' + $(this).val()).removeClass('select2-hidden');
+
+        });
+
+        $('body').on('change','select[name=category]',function () {
+
+            $('.select-work-type').find('select').addClass('select2-hidden');
+            $('#work_type_' + $(this).val()).removeClass('select2-hidden');
+
+        });
+
+        $('body').on('submit','#application',function () {
+
+            var form = $(this);
+            var error = $(this).find('.error').hide();
+            var button = form.find('button');
+            var button_text = button.text();
+
+            button.text('Отправка данных...');
+            button.attr('disabled',true);
+
+            $.ajax({
+                url: '/',
+                type: "POST",
+                data: $(this).serialize(),
+                success: function(data){
+
+                    button.attr('disabled',false);
+                    button.text(button_text);
+
+                    if( data != 'success' ){
+
+                        error.text(data).show();
+
+                    }else{
+                        form.fadeOut(function () {
+                            form.html('<div class="alert alert-success text-center">{%trans%}Ваша заявка отправлена!<br>В самое ближайшее время мы свяжемся с Вами!{%endtrans%}</div>');
+                            form.fadeIn();
+                        });
+                        //$("#successForm").modal('show');
+                    }
+
+                }
+            });
+            return false;
+        });
+
+        $('body').on('submit','#application_connection',function () {
+
+            var form = $(this);
+            var error = $(this).find('.error').hide();
+            var button = form.find('button');
+            var button_text = button.text();
+
+            button.text('Отправка данных...');
+            button.attr('disabled',true);
+
+            $.ajax({
+                url: '/connection/',
+                type: "POST",
+                data: $(this).serialize(),
+                success: function(data){
+
+                    button.attr('disabled',false);
+                    button.text(button_text);
+
+                    if( data != 'success' ){
+                        error.text(data).show();
+                    }else{
+                        form.fadeOut(function () {
+                            form.html('<div class="alert alert-success text-center">{%trans%}Ваша заявка отправлена!<br>В самое ближайшее время мы свяжемся с Вами!{%endtrans%}</div>');
+                            form.fadeIn();
+                        });
+                        //$("#successForm").modal('show');
+                    }
+
+                }
+            });
+            return false;
+
+        });
+
+        $('body').on('submit','#application_partner',function () {
+
+            var form = $(this);
+            var error = $(this).find('.error').hide();
+            var button = form.find('button');
+            var button_text = button.text();
+
+            button.text('Отправка данных...');
+            button.attr('disabled',true);
+
+            $.ajax({
+                url: '/connect-service/',
+                type: "POST",
+                data: $(this).serialize(),
+                success: function(data){
+                    button.attr('disabled',false);
+                    button.text(button_text);
+                    if( data != 'success' ){
+                        error.text(data).show();
+                    }else{
+                        form.fadeOut(function () {
+                            form.html('<div class="alert alert-success text-center">{%trans%}Ваша заявка отправлена!<br>В самое ближайшее время мы свяжемся с Вами!{%endtrans%}</div>');
+                            form.fadeIn();
+                        });
+                        //$("#successForm").modal('show');
+                    }
+                }
+            });
+            return false;
+        });
+
+        $('#application .select2').select2();
+        $('input[name=phone]').inputmask({ mask: '+7(999)-999-99-99'});
+                setTimeout(function () {
+                    var brand_select_width = $('.select-models').find('.select2:nth-child(2)').width();
+                    $('.select-models').find('.select2').each(function (index, el){
+                        $(this).width(brand_select_width);
+                    });
+                },2500);
+                setTimeout(function () {
+                    var brand_select_width = $('.select-work-type').find('.select2:nth-child(2)').width();
+                    $('.select-work-type').find('.select2').each(function (index, el){
+                        $(this).width(brand_select_width);
+                    });
+                },2500);
+
+        $('.add-photo a').click(function(){
+            $(this).parents('.add-photo').find('input[type=file]').click();
+            return false;
+        });
+
+        function alertObj(obj) {
+            var str = "";
+            for(k in obj) {
+                str += k+": "+ obj[k]+"\r\n";
+            }
+            alert(str);
+        }
+
+        $('.add-photo input[type=file]').change(function(){
+
+            var div_images = $(this).parents('.add-photo').find('.images');
+            formData = new FormData($(this).parents('form').get(0));
+            formData.append('upload', 'true');
+
+            $.ajax({
+                url: '/connection/',
+                contentType: false,
+                processData: false,
+                type: "POST",
+                data: formData,
+                success: function(json){
+                    if(json){
+                        json = jQuery.parseJSON(json);
+                        for( key in json ){
+                            var file = json[key];
+                            if( file.status == 'error' ){
+                                alert(file.text);
+                            }else{
+                                div_images.append('<img src="'+file.url+'"><input type="hidden" name="img[]" value="'+file.url+'">');
+                            }
+                        }
+                    }else{
+                        alert('{%trans%}Произошла ошибка!{%endtrans%}');
+                    }
+                }
+            });
+        });
+
+        var d = getCookie("secondraund");
+        if(typeof d == "undefined"){
+          $('#ismoskow').show();
+          $('#modalGeo').modal("show");
+          var date = new Date;
+          date.setDate(date.getDate() + 180000000);
+          var time = date.toUTCString();
+          var cookie = "secondraund = true; " + "expires=" + time;
+          document.cookie = cookie;
+        }
+
+    });
+    function getCookie(name) {
+      var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+
+
+    
+
+var page_lang='{{lang}}';
+if(page_lang=='ru') page_lang='';
+
+</script>
+{% block script %}{% endblock %}
+
+{{city.code_footer | raw}}
+
+<link rel="stylesheet" href="https://cdn.envybox.io/widget/cbk.css">
+<script type="text/javascript" src="https://cdn.envybox.io/widget/cbk.js?wcb_code=7514097db8045a6eb5716a7590eccee6" charset="UTF-8" async></script>
+</body>
+</html>

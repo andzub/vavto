@@ -1,0 +1,128 @@
+{% extends "include/main.html" %}
+
+{% block head %}
+	<link href="/frontend/public/css/general/acii.css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<div class="main_block">
+
+	<h1>Акции и подарки для наших автовладельцев</h1>
+</div>
+    <div class="wrapper">
+    	<div id="conext" class="container">
+			{% set cols = 0 %}
+			{% for acii in rows %}
+				{% if cols == 0 %}
+	    			<div class="row">	
+				{% endif %}
+					{% set cols = cols + 1 %}
+					<div class="col-md-40">
+						<div class="logo">
+							<div><img src="{{acii.logo}}" alt=""></div>
+							<div><a href="">все акции товара</a></div>
+						</div>
+						<div class="thumbnail clearfix">
+							<div class="img_conteinr " style = "background:url({{acii.img}}) no-repeat center;width:128px;height:128px;background-size:cover;" >
+	
+							</div>
+							<h4>{{acii.title}}</h4>
+							<p><span>до конца акции:</span> <b class="otshet">{{acii.time.h}}:{{acii.time.m}}:{{acii.time.s}}</b></p>
+							<a href="/acii/{{acii.id}}/"><img src="/frontend/public/img/general/acii/icon.png" alt=""></a>			
+						</div>
+					</div>
+				{% if cols == 3 %}
+	    			</div>
+	    			{% set cols = 0 %}
+				{% endif %}
+            {% endfor %} 
+            	{% if cols != 0 %}
+	    			</div>	
+				{% endif %}
+			</div>
+			<div class="row" style="margin: 40px;">
+				<div class="col-md-120" style="text-align:center;">
+					<button id="btnnext" class="btn btn_next" >показать все</button>
+				</div>
+			</div>
+		
+    </div>
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+		var pagesajax = 0;
+        $(document).ready(function(){
+            $( "#btnnext" ).on( "click", function() {
+            	window.pagesajax ++;
+            	var url = "/acii/"+window.pagesajax+"/";
+            	downlod_contents(url);
+            	$(this).hide();
+            });
+        });
+		function downlod_contents(url) {
+			$.ajax({
+				type: "GET",
+				url: url,
+				context: document.body,
+				success: function(data){
+					data = $.parseJSON(data);
+					if (data.length != 0) {
+						window.createelemrnt(data);
+					}
+		  		}
+			});    
+		}
+		function createelemrnt(data){
+			var divElem = $('<div class="row" ></div>');
+			var i = 0;
+			for(var a in data) {
+				
+				$('<div class="col-md-40"><div class="logo"><div><img src="'+data[a].logo+'" alt=""></div><div><a href="">все акции товара</a></div></div><div class="thumbnail clearfix"><div class="img_conteinr " style = "background:url('+data[a].img+') no-repeat center;width:128px;height:128px;background-size:cover;" ></div><h4>'+data[a].title+'</h4><p><span>до конца акции:</span> <b class="otshet" >'+data[a].time.h+':'+data[a].time.m+':'+data[a].time.s+'</b></p><a href="/acii/'+data[a].id+'/"><img src="/frontend/public/img/general/acii/icon.png" alt=""></a></div></div>').appendTo(divElem);
+				i++;
+				if(i == 3) {
+					$('#conext').append(divElem);
+					divElem = $('<div class="row" ></div>');
+					i=0;
+				}
+			}
+			if(i != 3) {
+					$('#conext').append(divElem);
+			}
+			$( "#btnnext" ).show();
+		}
+		$(document).ready(function(){
+			setInterval(function() {
+ 		 		otschet();
+			}, 1000);
+		});
+		function otschet(){
+			$('.otshet').each(function(i,elem) {
+				var time = elem.innerHTML;
+				var mass = time.split(':');
+				if((mass[0]==0 && mass[1]==0 && mass[2]==0)||
+				(mass[0]<0 || mass[1]<0 || mass[2]<0)) {
+					mass[0]=0;
+					mass[1]=0;
+					mass[2]=0;
+					elem.style.color = 'red';
+				}else if(mass[2]>0){
+						mass[2]--;
+				} else {
+						mass[2]=59;
+						if(mass[1]>0){
+							mass[1]--;
+						} else {
+							mass[1]=59;
+							if(mass[0]>0){
+								mass[0]--;
+							} else {
+								elem.style.color = 'red';
+							}
+						}
+				}
+				elem.innerHTML = mass.join(':');
+			});
+		}
+
+</script>
+{% endblock %}

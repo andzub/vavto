@@ -1,0 +1,66 @@
+{% extends "admin/include/admin.html" %}
+
+{% set active_menu = 'cats' %}
+
+{% block content %}
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="page-title">Категории</h4>
+            <div class="pull-right" style="margin-top:-55px;">
+                <a href="/admin/cats/add/" class="btn btn-primary">Добавить категорию</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <table class="table table-responsive m-0">
+                    <thead>
+                    <tr>
+                        <th class="text-left">Название</th>
+                        <th class="text-center">Ссылка</th>
+                        <th class="text-center"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cat in rows %}
+                        <tr class="text-center active">
+                            <td class="text-left">{{cat.title}}</td>
+                            <td><a href="{{cat.link}}" target="_blank">{{cat.link}}</a></td>
+                            <td>
+                                <a href="/admin/cats/edit/{{cat.id}}/" class="on-default edit-row"><i class="fa fa-pencil m-r-5"></i></a>
+                                <a href="/admin/cats/delete/{{cat.id}}/" class="on-default remove-row delete"><i class="fa fa-trash-o  m-r-5"></i></a>
+                            </td>
+                        </tr>
+                        {% for work in cat.works %}
+                            <tr class="text-center">
+                                <td class="text-left"> --- {{work.title}}</td>
+                                <td><a href="{{work.link}}" target="_blank">{{work.link}}</a></td>
+                                <td>
+                                    <a href="/admin/cats/edit/{{work.id}}/" class="on-default edit-row"><i class="fa fa-pencil m-r-5"></i></a>
+                                    <a href="/admin/cats/delete/{{work.id}}/" class="on-default remove-row delete"><i class="fa fa-trash-o  m-r-5"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.delete').click(function () {
+                if( !confirm('Вы уверены, что желаете удалить категорию?') )
+                    return false;
+            });
+
+        });
+    </script>
+{% endblock %}

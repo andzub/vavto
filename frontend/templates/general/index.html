@@ -1,0 +1,237 @@
+{% extends "include/main.html" %}
+
+{% set title = '«В-автосервис» — все автосервисы города на одном сайте. Честная стоимость ремонта и запись в сервис без очереди.' %}
+{% set description = 'Подай заявку в ближайший автосервис и получи предложения за 7 минут' %}
+
+{% block content %}
+
+		<div class="main-block">
+		<video width="100%" autoplay muted loop>
+           <source src="/frontend/public/video/1.mp4" type="video/ogg;">
+            <source src="/frontend/public/video/1.mp4" type="video/mp4;">
+            <source src="/frontend/public/video/1.mp4" type="video/webm;">
+        </video>
+		
+        <div class="wrapper">
+            <div class="col-xs-120">
+                <div class="get-price">
+                    <h1>{%trans%}Больше не нужно искать сервис, звонить и записываться!{%endtrans%}</h1>
+                    <span>{%trans%}Найдем для Вас лучший автосервис за 7 минут.{%endtrans%}</span>
+                </div>
+                <a href="{{u}}#want-price" class="get-price" onclick="yaCounter{{city.yaCounter}}.reachGoal ('otpravka2'); return true;">{%trans%}Получить честную стоимость ремонта{%endtrans%}</a>
+            </div>
+        </div>
+    </div>
+    <div class="advantages">
+        <div class="wrapper clearfix">
+            <div class="col-xs-120">
+                <div class="item">
+                    <img src="/frontend/public/img/general/sale.png">
+                    <div class="item-text">{%trans%}Для клиентов нашего сайта цена на ремонт ниже до 60%{%endtrans%}</div>
+                    <div class="item-text-small"><a href="/vot-pochemu-u-nas-deshevle/">{%trans%}как это возможно?{%endtrans%}</a></div>
+                </div>
+                <div class="item">
+                    <img src="/frontend/public/img/general/no-commission.png">
+                    <div class="item-text">{%trans%}Бесплатно подберем ближайший к Вам автосервис, который предложит лучшую цену и удобное время записи{%endtrans%}</div>
+                </div>
+                <div class="item">
+                    <img src="/frontend/public/img/general/back-difference.png">
+                    <div class="item-text">{%trans%}Экономим Ваше время и деньги{%endtrans%}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="repair clearfix">
+        <div class="wrapper clearfix">
+            <div class="col-md-120 no-padding">
+                <h2>{%trans%}Вот как пройдет ваш ремонт{%endtrans%}</h2>
+                <div class="col-md-30 col-sm-60">
+                    <div class="item clearfix">
+                        <img src="/frontend/public/img/general/problem.png">
+                        <div class="title-text">{%trans%}Выбираете <a href="#want-price">проблему автомобиля</a>{%endtrans%}</div>
+                    </div>
+                </div>
+                <div class="col-md-30 col-sm-60">
+                    <div class="item clearfix">
+                        <img src="/frontend/public/img/general/personal-consultant.png">
+                        <div class="title-text">{%trans%}Персональный мастер-консультант{%endtrans%}</div>
+                        <!--<div class="text">сам подберет Вам сервис с удобным для Вас расположением, временем ремонта и самой низкой ценой.</div>-->
+                        <div class="text">{%trans%}подберет Вам сервис в Вашем районе с самой низкой ценой{%endtrans%}</div>
+                    </div>
+                </div>
+                <div class="col-md-30 col-sm-60">
+                    <div class="item clearfix">
+                        <img src="/frontend/public/img/general/parts.png">
+                        <div class="title-text">{%trans%}Запчасти{%endtrans%}</div>
+                        <!--<div class="text">мы привезем их точно ко времени начала ремонта. Если запчасти потребуются в процессе мы доставим их согласовав с Вами стоимость.</div>-->
+                        <div class="text">{%trans%}мы привезем их точно ко времени начала ремонта. Вы можете привести свои запчасти{%endtrans%}</div>
+                    </div>
+                </div>
+                <div class="col-md-30 col-sm-60">
+                    <div class="item clearfix">
+                        <img src="/frontend/public/img/general/fix.png">
+                        <div class="title-text">{%trans%}Ремонт{%endtrans%}</div>
+                        <div class="text">{%trans%}Вы приезжаете в сервис и ремонтируете автомобиль по честной цене на ранее оговоренных условиях. Ваш мастер-консультант следит за ремонтом вплоть до его окончания, гарантируя качество.{%endtrans%}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="want-price clearfix" id="want-price">
+        <div class="wrapper clearfix">
+            <div class="col-md-120">
+                {% include 'blocks/index-form-sokr.html' %}
+            </div>
+        </div>
+    </div>
+    <div class="reviews clearfix">
+        <div class="wrapper">
+            <div class="col-xs-120 no-padding">
+			<a name="otzivy"></a>
+                <h2>{%trans%}Истории ремонта автомобиля{%endtrans%}</h2>
+                {{block.reviews | raw}}
+            </div>
+        </div>
+    </div>
+    <div class="stocks clearfix">
+        <div class="wrapper clearfix">
+            <div class="col-md-120">
+			<a name="akcii"></a>
+                <h2>{%trans%}Акции для любимых клиентов{%endtrans%}</h2>
+                {% for row in stocks %}
+                <div class="col-md-37 stock">
+                    <div class="col-md-40">
+                        <div class="img" style="background:url({{row.img}}) no-repeat;"></div>
+                    </div>
+                    <div class="col-md-80">
+                        <p>{{row.title}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="category clearfix category-links">
+        <div class="wrapper clearfix">
+            <div class="col-xs-120">
+                <h2>{%trans%}Более 150 услуг по ремонту и обслуживанию авто{%endtrans%}</h2>
+                <h3>{%trans%}Выберите категорию, нужную услугу, расчитайте стоимость и запишитесь онлайн{%endtrans%}</h3>
+            </div>
+
+            <div class="col-md-29 col-sm-60 no-padding choose-marka clearfix" id="marka-form-choose">
+                <div class="label">{%trans%}Выберите по марке{%endtrans%}</div>
+                <ul class="menu left">
+                    <li><a href="{{u}}#application" class="alfa-romeo" data-bid="3">Alfa Romeo</a></li>
+                    <li><a href="{{u}}#application" class="audi" data-bid="10">Audi</a></li>
+                    <li><a href="{{u}}#application" class="fiat" data-bid="61">Fiat</a></li>
+                    <li><a href="{{u}}#application" class="ford" data-bid="63">Ford</a></li>
+                    <li><a href="{{u}}#application" class="land-rover" data-bid="97">Land Rover</a></li>
+                    <li><a href="{{u}}#application" class="land-rover" data-bid="97">Land Rover</a></li>
+                    <li id="allmarks_list"><a href="##">{%trans%}Все марки{%endtrans%}</a>
+                        <ul class="allmarks" style="display: none;">
+                        {% for brand in brands %}
+                            <li><a href="#application" data-bid="{{brand.id}}">{{brand.name}}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-91 col-sm-60 no-padding padding-left choose-category clearfix">
+                <div class="label">{%trans%}Выбор по категории{%endtrans%}</div>
+                {% set cat_count=workCategory|length %}
+                {%for key,collumn in workCategory%}
+                <div class="col-md-30 col-sm-120 no-padding block">
+                    <ul class="menu right right-{{key+1}}">
+                        {%for cat in collumn%}
+                        <li class="work-cats"><div class="img"><img src="{{cat.img_icon}}"></div><a href="{{cat.link}}" class="">{{cat.title}}</a></li>
+                        {%endfor%}
+                        {%if key==2%}
+                        <li><a href="#" class="need-advice">{%trans%}Нужна консультация?{%endtrans%}</a></li>
+                        {%endif%}
+                    </ul>
+                </div>
+                {%endfor%}
+                <!--<div class="col-md-30 col-sm-120 no-padding block">
+                   <ul class="menu right right-1">
+                       <li><a href="/diagnostika/" class="diagnosis">Диагностика</a></li>
+                       <li><a href="/kuzovnye-raboty/" class="body-work">Кузовные работы</a></li>
+                       <li><a href="/podveska/" class="suspension">Подвеска</a></li>
+                       <li><a href="/stekla-fary/" class="glass">Стёкла, фары</a></li>
+                       <li><a href="/tormoznaya-sistema/" class="brake-system">Тормозная система</a></li>
+                       <li><a href="/elektrika/" class="electrician">Электрика</a></li>
+                       <li><a href="/dopolnitel-noe-oborudovanie/" class="additional-equipment long">Дополнительное оборудование</a></li>
+                   </ul>
+               </div>
+               <div class="col-md-30 col-sm-120 no-padding block">
+                   <ul class="menu right right-2">
+                       <li><a href="/maslo-zhidkosti-fil-try/" class="oil long">Масло, жидкости, фильтры</a></li>
+                       <li><a href="/polirovka-uhod/" class="care">Полировка, уход</a></li>
+                       <li><a href="/tehnicheskoe-obsluzhivanie/" class="technical-service long">Техническое обслуживание</a></li>
+                       <li><a href="/transmissiya/" class="transmission">Трансмиссия</a></li>
+                       <li><a href="/zashitnye-plenki/" class="protective-foil">Защитные плёнки</a></li>
+                       <li><a href="/mojka-himchistka/" class="wash">Мойка, химчистка</a></li>
+                       <li><a href="/slozhnyj-agregatnyj-remont/" class="difficult-fix long">Сложный агрегатный ремонт</a></li>
+                   </ul>
+               </div>
+               <div class="col-md-30 col-sm-120 no-padding block">
+                   <ul class="menu right right-3">
+                       <li><a href="/tonirovka/" class="tinted">Тонировка</a></li>
+                       <li><a href="/shinomontazh/" class="tire-service">Шиномонтаж</a></li>
+                       <!--<li><a href="#" class="departure">Услуги с выездом</a></li>
+                       <li><a href="/avtoyurist/" class="auto-lawyer">Автоюрист</a></li>
+                       <li><a href="/zamena-akb/" class="replacement-battery">Замена АКБ</a></li>
+                       <li><a href="/dopolnitel-noe-oborudovanie/gbo/">ГБО</a></li>
+                       <li><a href="#" class="need-advice">{%trans%}Нужна консультация?{%endtrans%}</a></li>
+                   </ul>
+               </div>-->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- HTML-код модального окна -->
+    <div id="successForm" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Заголовок модального окна -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success text-center">{%trans%}Ваша заявка отправлена!<br>В самое ближайшее время мы свяжемся с Вами!{%endtrans%}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+$(document).ready(function () {
+
+    $('.stocks .stock').click(function () {
+        var text = $(this).find('p').text();
+        $('html, body').animate({ scrollTop: $('#application').offset().top-150 }, 500);
+        $('#application').find('input[name=stock]').val(text);
+        return false;
+    });
+    $('#marka-form-choose ul.menu li:not(#allmarks_list)').click(function(){//Автовыбор марки в форме
+        var bid=$(this).children('a').data('bid');
+        if(bid){
+          $('#application-brand-field > select').val(bid).trigger('change');
+        }
+    });
+    $('#allmarks_list').click(function(){
+      $(this).children('.allmarks').toggle();
+    });
+    $('#select-add-field select').change(function(){
+      var $this=$(this);
+      $('#application .addfield'+$this.val()).removeAttr("style");
+      $this.find('option[value='+$this.val()+']').remove();
+      if($this.find('option').length<2)$('#select-add-field').remove();
+      return false;
+    });
+});
+</script>
+{% endblock %}

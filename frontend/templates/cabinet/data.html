@@ -1,0 +1,469 @@
+{% extends "./general/include/main.html" %}
+
+
+{% block head %}
+    
+   <!--  <link href="/frontend/public/css/general/select2.min.css" rel="stylesheet" /> -->
+    <link href="/frontend/public/css/cabinet/style.css" rel="stylesheet" />
+    <link href="/frontend/public/css/cabinet/datedropper.min.css" rel="stylesheet" />
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid hesers">
+    <b>{%trans%}ДАННЫЕ КЛИЕНТА{%endtrans%}</b> |  <a href="{{langlink}}/cabinet/index/history/" >{%trans%}ИСТОРИЯ ОБРАЩЕНИЙ{%endtrans%}</a> |
+    <a href="{{langlink}}/cabinet/index/bonus/">{%trans%}БОНУСНАЯ ПРОГРАМА{%endtrans%}</a>
+</div>
+    
+<div class="container bottom">
+
+    <div class="row">
+        <div class="silca col-md-120">
+            <a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/">← {%trans%}назад{%endtrans%}</a> | <b>{%trans%}ДАННЫЕ КЛИЕНТА{%endtrans%}</b>
+        </div>
+        <div class="alert alert-danger col-md-120" role="alert" style="display: none;"></div>
+        <form role="form"  method="POST" target="form_submit" action="/cabinet/data/personal/" ><!-- -->
+            <div class="col-md-120" style="margin-top: 20px;" >
+                <div class="row">
+                    <div class="col-md-60">
+                        <div class="row">
+                            <div class="col-md-60">
+                                <div class="form-group clearfix"> 
+                                    
+                                        <input type="text" class="form-control" name="surname"
+                                        placeholder="{%trans%}Фамилия{%endtrans%}" value="{{ session.client.famaliname }}" >
+                                    
+                                </div>
+                                <div class="form-group clearfix" > 
+                                    
+                                        <select   class="js-example-basic-single form-control " name="city" >
+                                            
+                                            {% if session.client.city_id %}
+                                                <option value="{{ session.client.city_id }}">{{ session.client.city }}</option>
+                                            {% else %}
+                                                <option >{%trans%}Выберите город{%endtrans%}</option>
+                                            {% endif %}
+                                        </select>
+                                    
+                                </div>                      
+                            </div>
+
+                            <div class="col-md-60">
+                                <div class="form-group clearfix"> 
+                                    
+                                        <input type="text" class="form-control" name="name"
+                                        placeholder="{%trans%}Ваше имя{%endtrans%}" value="{{ session.client.name }}">
+                                    
+                                </div>
+                                <div class="form-group clearfix"> 
+                                    
+
+                                        <input type="tel" class="form-control" name="phone"     
+                                        placeholder="+7 (900) 123-45-67" required="" 
+                                        pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$" 
+                                        title="{%trans%}Пример{%endtrans%}: +792853001020"  value="{{ session.client.tel }}" >
+                                    
+                                </div>                      
+                            </div>                  
+                        </div>
+                    </div>
+                    <div class="col-md-60">
+                    <div class="row">
+                        <div class="col-md-60">
+                            <div class="form-group clearfix"> 
+                                
+                                    <input type="text" class="form-control" name="patronymic"
+                                    placeholder="{%trans%}Отчество{%endtrans%}" value="{{ session.client.patronymic }}"  >
+                                
+                            </div>
+                            <div class="form-group clearfix"> 
+                                
+                                    <input type="text" class="form-control" name="email"
+                                    placeholder="Email" value="{{ session.client.email }}">
+                                
+                            </div>                      
+                        </div>
+
+                        <div class="col-md-60">
+                            <div class="form-group clearfix date_r">
+                                
+
+                                    <input type="date" value="{{ session.client.date }}" 
+                                    class="form-control" name="date"/>
+
+                                
+                            </div>
+                            <div class="form-group clearfix"> 
+                                
+                                    <input type="submit" class="form-control btn btn-primary" 
+                                    placeholder="{%trans%}Фамилия{%endtrans%}" value="{%trans%}Сохранить{%endtrans%}">
+                                
+                            </div>   
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form role="form"  method="POST" target="form_submit" action="/cabinet/data/pass_reset/">
+            <div class="col-md-120" style="margin-top: 20px;">
+                    <div class="row">
+                        <div class="col-md-30">
+                            <div class="form-group clearfix"> 
+                                
+                                    <input type="password" class="form-control" name="pass"
+                                    placeholder="{%trans%}Ваш пароль{%endtrans%}">
+                                
+                            </div> 
+                        </div>
+                        <div class="col-md-30">
+                            <div class="form-group clearfix"> 
+                                
+                                    <input type="password" class="form-control" name="newpass"
+                                    placeholder="{%trans%}Новый пароль{%endtrans%}">
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-30">
+                            <div class="form-group clearfix"> 
+                                
+                                    <input type="password" class="form-control" name="newpass_p"
+                                    placeholder="{%trans%}Повторите пароль{%endtrans%}">
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-30">
+                            <div class="form-group clearfix"> 
+                                
+                                    <input type="submit" class="form-control btn btn-primary" 
+                                    value="{%trans%}Сменить пароль{%endtrans%}">
+                                
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </form>
+
+
+    <div class="col-md-60" style="margin-top: 20px;" > 
+                <div class="row"> 
+                    <form role="form"  method="POST"  action="/cabinet/data/car_add/" target="form_submit" >
+                        <div class="col-md-120">
+                            <div class="thumbnail no-padding clearfix">
+                                <div class="thumbnail_head" >
+                                    <h4 class="addauto">{%trans%}ДОБАВИТЬ АВТО{%endtrans%}</h4>
+                                </div>
+                                <div class="col-md-120" style="margin-top: 20px;" >
+                                    <div class="row">
+                                        <div class="col-md-60 parent">
+                                            <div class="form-group clearfix"> 
+                                                <select  class="js-example-brend form-control " name="marka" >
+                                                </select>
+                                            </div>
+                                            <div class="form-group clearfix"> 
+                                                <select  class="js-example-model form-control " disabled name="model" >
+                                                </select>
+                                            </div>
+                                            <div class="form-group clearfix year_issue"> 
+                                                <input type="text"  
+                                                    data-lang="{{lang}}" 
+                                                    data-large-default="true"
+                                                    data-format = "Y"
+                                                    class="form-control dates" name="year_issue" >
+                                            </div>
+                                            <div class="form-group clearfix"> 
+                                                <input type="text" class="form-control" 
+                                                placeholder="VIN" name="vin" >
+                                            </div>
+                                            <div class="form-group clearfix"> 
+                                                <input type="text" class="form-control" 
+                                                placeholder="{%trans%}Гос. номер (Х777ХХ199){%endtrans%}" name="number_gos" >
+                                            </div>
+                                        </div>
+                                        <div class="col-md-60">
+                                            <div class="form-group clearfix"> 
+                                                <input type="text" class="form-control" 
+                                                placeholder="{%trans%}Резина (летняя){%endtrans%}" name="tires_summer" >
+                                            </div>
+                                            <div class="form-group clearfix"> 
+                                                <input type="text" class="form-control" 
+                                                placeholder="{%trans%}Резина (зимняя){%endtrans%}" name="tires_winter" >
+                                            </div>
+                                            <div class="form-group clearfix osago_do"> 
+                                                <input type="date" name="osago_do" 
+                                                class="form-control" >
+
+                                            </div>
+                                            <div class="form-group clearfix"> 
+                                                <input type="text" class="form-control" 
+                                                placeholder="{%trans%}ОСАГО (страховая компания){%endtrans%}"
+                                                name="osago_strah" >
+                                            </div>
+                                            <div class="form-group clearfix kasko_do"> 
+
+                                                <input type="date" name="kasko_do" 
+                                                class="form-control" >
+                                            </div>
+                                            <div class="form-group clearfix"> 
+                                                <input type="text" class="form-control" 
+                                                placeholder="{%trans%}КАСКО (страховая компания){%endtrans%}"
+                                                name="kasko_strah" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div  >
+                                    <button class="btn btn-primary btn_auto_form" >{%trans%}Добавить{%endtrans%}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+    </div>
+
+
+
+
+
+{% for car in cars %}
+    <div class="col-md-60" style="margin-top: 20px;" > 
+                <div class="row"> 
+                    <form role="form"  method="POST"  action="/cabinet/data/car_update/" target="form_submit" ><!--  -->
+                        <div class="col-md-120">
+                            <div class="thumbnail no-padding clearfix ">
+                                <div class="thumbnail_head" >
+                                    {% if car.carlogo %}
+                                    <img src="{{car.carlogo}}" class="audi_logo" alt="{{car.namebrend}}" title="{{car.namebrend}}">
+                                    {% else %}
+                                    <img src="/frontend/public/img/cabinet/audi_logo.png" class="audi_logo" alt="">
+                                    {% endif %}
+
+                                     <p class="markaauto" >{{car.namebrend}}  {{car.namemodel}}</p>
+                                </div>
+                                <div class="col-md-120" style="margin-top: 20px;" >
+                                    <div class="row">
+                                        <div class="col-md-60 parent">
+                                            
+                                            <div class="form-group clearfix"> 
+                                                <select  class="js-example-brend form-control " name="marka" >
+                                                    {% if car.namebrend %}
+                                                        <option value="{{ car.autoBrand_id }}" >{{ car.namebrend }}</option>
+                                                    {% else %}
+                                                        <option >{%trans%}Выберите марку{%endtrans%}</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                            <div class="form-group clearfix"> 
+                                                <select  class="js-example-model form-control " name="model" >
+                                                    {% if car.namemodel %}
+                                                        <option value="{{ car.autoModel_id }}" >{{ car.namemodel }}</option>
+                                                    {% else %}
+                                                        <option >{%trans%}Выберите марку{%endtrans%}</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                            <div class="form-group clearfix year_issue"> 
+
+                                                <input type="text"  
+                                                    data-lang="{{lang}}" 
+                                                    data-default-date="00-00-{{car.year_issue}}"
+                                                    data-large-default="true" 
+                                                    data-max-year="2030"
+                                                    data-format = "Y"
+                                                    class="form-control dates" name="year_issue" >
+    
+                                            </div>
+                                            <div class="form-group clearfix"> 
+                                                <input type="text" class="form-control" 
+                                                placeholder="VIN: JHLRE48577C415490" name="vin" 
+                                                value="{{ car.vin }}">
+                                            </div>
+                                            <div class="form-group clearfix"> 
+                                                <input type="text" class="form-control" 
+                                                placeholder="{%trans%}Гос. номер (Х777ХХ199){%endtrans%}"
+                                                name="number_gos" value="{{ car.number_gos }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-60">
+                                            <div class="form-group clearfix"> 
+                                                <input type="text" class="form-control" 
+                                                placeholder="{%trans%}Летняя{%endtrans%}: 185/60 R15"
+                                                name="tires_summer" value="{{ car.tires_summer }}" >
+                                            </div>
+                                            <div class="form-group clearfix"> 
+                                                <input type="text" class="form-control" 
+                                                placeholder="{%trans%}Зимняя{%endtrans%}: 205/55 R16"
+                                                name="tires_winter" value="{{ car.tires_winter }}">
+                                            </div>
+                                            <div class="form-group clearfix osago_do"> 
+                                                
+                                                <input type="date" name="osago_do" 
+                                                value="{{ car.osago_do }}" 
+                                                class="form-control" >
+
+                                            </div>
+                                            <div class="form-group clearfix"> 
+                                                <input type="text" class="form-control" 
+                                                placeholder="{%trans%}ОСАГО от: РЕСО Ганрантия{%endtrans%}"
+                                                name="osago_strah"
+                                                value="{{ car.osago_strah }}" >
+                                            </div>
+                                            <div class="form-group clearfix kasko_do"> 
+
+                                                <input type="date" name="kasko_do" 
+                                                class="form-control" value="{{ car.kasko_do }}" >
+                    
+                                            </div>
+                                            <div class="form-group clearfix"> 
+                                                <input type="text" class="form-control" 
+                                                placeholder="{%trans%}КАСКО от: ВА-Гарант{%endtrans%}"
+                                                name="kasko_strah" value="{{ car.kasko_strah }}">
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </div>
+                                <div  >
+                                    <button class="btn btn-primary btn_auto_form" >{%trans%}Сохранить{%endtrans%}</button>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" value="{{ car.id }}"  name="id" >
+                    </form>
+                </div>
+    </div>
+{% endfor %}
+
+    <iframe name="form_submit" class="hidden"></iframe>
+</div>
+</div>
+{% endblock %}
+
+
+
+{% block script %}
+<script src="/frontend/public/js/cabinet/datedropper.min.js"></script>
+<script type="text/javascript" >
+    var page_lang='{{lang}}';
+    if(page_lang=='ru') page_lang='';
+    
+    $(document).ready(function() {
+        var select = $('.js-example-basic-single').select2({
+            placeholder:"{%trans%}Выберите город{%endtrans%}",
+            //theme : "classic",
+            //maximumSelectionLength : 10 ,
+            ajax: {
+            delay: 250,
+            type: 'POST',
+            url: '/ajax/geo/getAllCity/',
+            dataType: 'json',
+            data: function (params) {
+                      params.lang=page_lang;
+                      params.q=params.term;
+                      return params;
+            },
+            processResults: function (data) {
+                console.log(data);
+                    alert(data);
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                    text: item.text,
+                                    id: item.id
+                            };
+                        })
+                    };
+                }
+            }
+        });
+        
+    }); 
+
+</script>
+<script type="text/javascript">
+    $('iframe[name=form_submit]').on('load', function(){
+            var data = $(this).contents().text();
+            data = jQuery.parseJSON(data);
+
+            var error = $('.alert').hide();
+
+            if( data.error ){
+                error.show().removeClass('hidden').text(data.text);
+            }else{
+                if(page_lang) window.location.href = "/"+page_lang+"/cabinet/data/";
+                    else window.location.href = "/cabinet/data/";
+            }
+
+        });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.dates').dateDropper({
+            lang: 'ru',
+            format: 'd-m-Y'
+        });
+    });
+</script>
+<script type="text/javascript">
+    var selct1 = false; 
+    $(document).ready(function() {
+        //Выбор brand из селекта
+        $('.js-example-brend').change(function () {
+            $('.js-example-model').prop('disabled',false);;
+        });
+        $('.js-example-brend').select2({
+            placeholder:"{%trans%}Выберите Марку{%endtrans%}",
+            ajax: {
+            delay: 250,
+            type: 'POST',
+            data: function (params) {
+                      params.q=params.term;
+                      return params;
+            },
+            url: '/ajax/car/brendcl/',
+            dataType: 'json',
+            processResults: function (data) {
+                //alert(data);
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                    text: item.name,
+                                    id: item.id
+                            };
+                        })
+                    };
+                }
+            }
+        });
+
+        $('.js-example-model').select2({
+            placeholder:"{%trans%}Выберите Модель{%endtrans%}",
+            ajax: {
+            delay: 250,
+            type: 'POST',
+            data: function (params) {
+                var id_model = this.parents('.parent').find('.js-example-brend').val();
+                
+                      params.brend_id=id_model;
+                      params.q=params.term;
+                      return params;
+            },
+            url: '/ajax/car/modelcl/',
+            dataType: 'json',
+            processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                    text: item.name,
+                                    id: item.id
+                            };
+                        })
+                    };
+                }
+            }
+        });
+
+    });   
+
+</script>
+
+{% endblock %}

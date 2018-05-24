@@ -1,0 +1,103 @@
+{% extends "admin/include/admin.html" %}
+
+{% set active_menu = 'cities' %}
+
+{% block content %}
+
+    <!-- Title page -->
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="page-title">Города</h4>
+            <div class="pull-right" style="margin-top:-55px;">
+                <!-- <a href="/admin/articles/add/" class="btn btn-primary">Добавить город</a> -->
+                <select name="regions" class="form-control regions">
+                    <option value="all">Все регионы</option>
+                    {% for reg in regions %}
+                        <option value="{{reg.id}}" {% if reg.id == region %} selected="selected" {% endif %}>{{reg.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-sm-12">
+            <span>Редактировать переводы: </span>
+            {% for l in langs %}
+            <a class="btn btn-success" href="/admin/cities/lang/{{l.sname}}/">{{l.title}}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Table data -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <table class="table table-responsive table-striped m-0">
+                    <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in rows.city %}
+                        <tr>
+                            <td>{{row.name}}</td>
+                            <td>
+                                <a href="/admin/city-edit/{{row.id}}/" class="on-default edit-row"><i class="fa fa-pencil m-r-5"></i></a>
+                                <!-- <a href="/admin/articles/delete/{{row.id}}/" class="on-default remove-row delete"><i class="fa fa-trash-o  m-r-5"></i></a> -->
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="row">
+        <div class="col-md-12">
+            {% if rows.pages > 1 %}
+                {% if page > 1 %}
+                    <a href="/admin/cities/{{region}}/{{page-1}}/" class="btn">Prev</a>
+                {% endif %}
+                <select class="page" name="page" data-region="{{region}}">
+                    {% for i in range(1, rows.pages) %}
+                        <option value="{{i}}" {% if i == page %} selected="selected" {% endif %}>{{i}}</option>
+                    {% endfor %}
+                </select>
+                {% if page < rows.pages %}
+                    <a href="/admin/cities/{{region}}/{{page+1}}/" class="btn">Next</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // $('.delete').click(function () {
+            //     if( !confirm('Вы уверены, что желаете удалить статью?') )
+            //         return false;
+            // });
+
+            $('.regions').on('change', function(event) {
+                event.preventDefault();
+                var id = $(this).val();
+                window.location.href = '/admin/cities/'+id+'/';
+            });
+
+            $('.page').on('change', function(event) {
+                event.preventDefault();
+                var id = $(this).data('region');
+                var page = $(this).val();
+                window.location.href = '/admin/cities/'+id+'/'+page+'/';
+            });
+
+
+        });
+    </script>
+{% endblock %}

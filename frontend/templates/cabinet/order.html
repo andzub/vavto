@@ -1,0 +1,582 @@
+{% extends "./general/include/main.html" %}
+
+
+{% block head %}
+    <link href="/frontend/public/css/cabinet/style.css" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+<div class="container-fluid hesers">
+    <a href="{{langlink}}/cabinet/">{%trans%}ДАННЫЕ КЛИЕНТА{%endtrans%}</a> |  <b>{%trans%}ИСТОРИЯ ОБРАЩЕНИЙ{%endtrans%}</b>  |
+    <a href="{{langlink}}/cabinet/data/" >{%trans%}БОНУСНАЯ ПРОГРАМА{%endtrans%}</a>
+</div>
+
+
+
+
+<div class="container bottom">
+
+    <div class="row cartorder">
+        <div class="silca col-md-120">
+            <a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/index/history/">← {%trans%}назад{%endtrans%}</a> |
+            <b>{%trans%}КАРТОЧКА ЗАЯВКИ{%endtrans%} #{{order.id}}</b>
+        </div>
+        <div class="alert alert-danger col-md-120" role="alert" style="display: none;"></div>
+
+
+<form id='application' class='ordercart' role="form"  method="POST"  action="/cabinet/data/saveorder/" target="form_submit" ><!--  -->
+
+
+            <div class="col-md-40" style="margin-top: 20px;" >
+                <div class="row">
+
+                        <div class="col-md-120">
+                            <div class="thumbnail no-padding clearfix ">
+                                <div class="thumbnail_head" >
+                                    <span style='display:none'>{% if car.carlogo %}
+                                    <img src="info.png" class="audi_logo">
+                                    {% else %}
+                                    <img src="/frontend/public/img/cabinet/audi_logo.png" class="audi_logo" alt="">
+                                    {% endif %}
+                                    </span>
+
+
+                                    <img src="/frontend/public/img/cabinet/info.png" class="audi_logo" alt="">
+
+
+
+                                     <p class="markaauto" >{%trans%}Общая информация{%endtrans%}</p>
+                                </div>
+
+                                <div class="col-md-120" style="margin-top: 20px;" >
+                                
+                                        <div class="form-group clearfix">
+                                                <select name="status" class="form-control select2  {% if order.status==1 %} stsord {% endif %}">
+                                                    {% for id,status in order.stlist %}
+                                                        {% if id == order.status %}
+                                                            <option selected value="{{id}}">{{status|raw}}</option>
+                                                            {% else %}
+                                                            <option value="{{id}}">{{status|raw}}</option>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </select>
+                                        
+                                            <input style='display:none' type="text" class="form-control stsord"
+                                            title="{%trans%}Статус заявки{%endtrans%}" placeholder="{%trans%}Статус заявки{%endtrans%}" name="status"
+                                            value="{{ order.statustext |raw}}">
+                                            
+                                        </div>
+                                        
+
+                                        <div class="form-group clearfix">
+                                            <input type="text" class="form-control"
+                                            title="{%trans%}Дата заявки{%endtrans%}" placeholder="{%trans%}Дата заявки{%endtrans%}" name="date_add"
+                                            value="{{ order.date_add }}">
+                                        </div>
+
+
+                                        <div class="form-group clearfix">
+                                            <input type="text" class="form-control"
+                                            title="{%trans%}Мне удобно подьехать{%endtrans%}" placeholder="{%trans%}Мне удобно подьехать{%endtrans%}" name="date_udobno"
+                                            value="{{ order.date_udobno }}">
+                                        </div>
+
+
+
+                                            <div class="form-group clearfix">
+                                                <select name="category" class="select2 form-control">
+                                                    <option value='0' selected>{%trans%}Категория{%endtrans%}</option>
+                                                    {% for key,category in workCategory %}
+                                                    <option value="{{key}}">{{category.title}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group clearfix select-work-type">
+                                                <select name="work_type_0" id="work_type_0" disabled class="select2 form-control">
+                                                    <option selected>{%trans%}Вид работ{%endtrans%}</option>
+                                                </select>
+                                                {% for work_id,work_type in workType %}
+                                                <select name="work_type_{{work_id}}" id="work_type_{{work_id}}" style="display:none;" class="select2 select2-hidden">
+                                                    <option selected>{%trans%}Вид работ{%endtrans%}</option>
+                                                    {% for id,name in work_type %}
+                                                    <option value="{{id}}">{{name.title}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                {% endfor %}
+                                            </div>
+
+                                        <div class="form-group clearfix">
+                                            <input type="text" class="form-control"
+                                            title="{%trans%}Сервис{%endtrans%}" placeholder="{%trans%}Сервис{%endtrans%}" name="service"
+                                            value="{{ order.service }}">
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <textarea type="text" class="form-control" rows="5"
+                                            title="{%trans%}Проблема{%endtrans%}" placeholder="{%trans%}Проблема{%endtrans%}" name="problem">{{ order.problem }}</textarea>
+                                        </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-md-40" style="margin-top: 20px;" >
+                <div class="row">
+
+                        <div class="col-md-120">
+                            <div class="thumbnail no-padding clearfix ">
+                                <div class="thumbnail_head" >
+                                    <span style='display:none'>{% if car.carlogo %}
+                                    <img src="info.png" class="audi_logo">
+                                    {% else %}
+                                    <img src="/frontend/public/img/cabinet/audi_logo.png" class="audi_logo" alt="">
+                                    {% endif %}
+                                    </span>
+
+
+                                    <img src="/frontend/public/img/cabinet/user.png" class="audi_logo" alt="">
+
+
+
+                                     <p class="markaauto" >{%trans%}Контактное лицо{%endtrans%}</p>
+                                </div>
+
+                                <div class="col-md-120" style="margin-top: 20px;" >
+                                        <div class="form-group clearfix">
+                                            <input type="text" class="form-control"
+                                            title="{%trans%}Имя{%endtrans%}" placeholder="{%trans%}Имя{%endtrans%}" name="cl_name"
+                                            value="{{ order.cl_name }}">
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <input type="text" class="form-control"
+                                            title="Email" placeholder="Email" name="cl_email"
+                                            value="{{ order.cl_email }}">
+                                        </div>
+
+
+                                        <div class="form-group clearfix">
+                                            <input type="text" class="form-control"
+                                            title="{%trans%}Телефон{%endtrans%}" placeholder="{%trans%}Телефон{%endtrans%}" name="cl_tel"
+                                            value="{{ order.cl_tel }}">
+                                        </div>
+
+                                        <div class="form-group clearfix">
+
+
+
+
+                                            <select   class="js-example-basic-single select2 form-control" name="city" >
+                                                    <option >{%trans%}Выберите город{%endtrans%}</option>
+                                                    <option {% if order.cl_city == "Астрахань" %}selected {% endif %} value="Астрахань">Астрахань</option>
+                                                    <option {% if order.cl_city == "Барнаул" %}selected {% endif %} value="Барнаул">Барнаул</option>
+                                                    <option {% if order.cl_city == "Белгород" %}selected {% endif %} value="Белгород">Белгород</option>
+                                                    <option {% if order.cl_city == "Владивосток" %}selected {% endif %} value="Владивосток">Владивосток</option>
+                                                    <option {% if order.cl_city == "Волгоград" %}selected {% endif %} value="Волгоград">Волгоград</option>
+                                                    <option {% if order.cl_city == "Воронеж" %}selected {% endif %} value="Воронеж">Воронеж</option>
+                                                    <option {% if order.cl_city == "Екатеринбург" %}selected {% endif %} value="Екатеринбург">Екатеринбург</option>
+                                                    <option {% if order.cl_city == "Ижевск" %}selected {% endif %} value="Ижевск">Ижевск</option>
+                                                    <option {% if order.cl_city == "Иркутск" %}selected {% endif %} value="Иркутск">Иркутск</option>
+                                                    <option {% if order.cl_city == "Казань" %}selected {% endif %} value="Казань">Казань</option>
+                                                    <option {% if order.cl_city == "Калининград" %}selected {% endif %} value="Калининград">Калининград</option>
+                                                    <option {% if order.cl_city == "Кемерово" %}selected {% endif %} value="Кемерово">Кемерово</option>
+                                                    <option {% if order.cl_city == "Киров" %}selected {% endif %} value="Киров">Киров</option>
+                                                    <option {% if order.cl_city == "Краснодар" %}selected {% endif %} value="Краснодар">Краснодар</option>
+                                                    <option {% if order.cl_city == "Красноярск" %}selected {% endif %} value="Красноярск">Красноярск</option>
+                                                    <option {% if order.cl_city == "Курск" %}selected {% endif %} value="Курск">Курск</option>
+                                                    <option {% if order.cl_city == "Липецк" %}selected {% endif %} value="Липецк">Липецк</option>
+                                                    <option {% if order.cl_city == "Махачкала" %}selected {% endif %} value="Махачкала">Махачкала</option>
+                                                    <option {% if order.cl_city == "Москва" %}selected {% endif %} value="Москва">Москва</option>
+                                                    <option {% if order.cl_city == "Набережные Челны" %}selected {% endif %} value="Набережные Челны">Набережные Челны</option>
+                                                    <option {% if order.cl_city == "Нижний Новгород" %}selected {% endif %} value="Нижний Новгород">Нижний Новгород</option>
+                                                    <option {% if order.cl_city == "Нижний Тагил" %}selected {% endif %} value="Нижний Тагил">Нижний Тагил</option>
+                                                    <option {% if order.cl_city == "Новокузнецк" %}selected {% endif %} value="Новокузнецк">Новокузнецк</option>
+                                                    <option {% if order.cl_city == "Новосибирск" %}selected {% endif %} value="Новосибирск">Новосибирск</option>
+                                                    <option {% if order.cl_city == "Омск" %}selected {% endif %} value="Омск">Омск</option>
+                                                    <option {% if order.cl_city == "Оренбург" %}selected {% endif %} value="Оренбург">Оренбург</option>
+                                                    <option {% if order.cl_city == "Пенза" %}selected {% endif %} value="Пенза">Пенза</option>
+                                                    <option {% if order.cl_city == "Пермь" %}selected {% endif %} value="Пермь">Пермь</option>
+                                                    <option {% if order.cl_city == "Ростов-на Дону" %}selected {% endif %} value="Ростов-на Дону">Ростов-на Дону</option>
+                                                    <option {% if order.cl_city == "Рязань" %}selected {% endif %} value="Рязань">Рязань</option>
+                                                    <option {% if order.cl_city == "Санкт-Петербург" %}selected {% endif %} value="Санкт-Петербург">Санкт-Петербург</option>
+                                                    <option {% if order.cl_city == "Сочи" %}selected {% endif %} value="Сочи">Сочи</option>
+                                                    <option {% if order.cl_city == "Тверь" %}selected {% endif %} value="Тверь">Тверь</option>
+                                                    <option {% if order.cl_city == "Тольятти" %}selected {% endif %} value="Тольятти">Тольятти</option>
+                                                    <option {% if order.cl_city == "Томск" %}selected {% endif %} value="Томск">Томск</option>
+                                                    <option {% if order.cl_city == "Тула" %}selected {% endif %} value="Тула">Тула</option>
+                                                    <option {% if order.cl_city == "Тюмень" %}selected {% endif %} value="Тюмень">Тюмень</option>
+                                                    <option {% if order.cl_city == "Улан-Удэ" %}selected {% endif %} value="Улан-Удэ">Улан-Удэ</option>
+                                                    <option {% if order.cl_city == "Ульяновск" %}selected {% endif %} value="Ульяновск">Ульяновск</option>
+                                                    <option {% if order.cl_city == "Уфа" %}selected {% endif %} value="Уфа">Уфа</option>
+                                                    <option {% if order.cl_city == "Хабаровск" %}selected {% endif %} value="Хабаровск">Хабаровск</option>
+                                                    <option {% if order.cl_city == "Чебоксары" %}selected {% endif %} value="Чебоксары">Чебоксары</option>
+                                                    <option {% if order.cl_city == "Челябинск" %}selected {% endif %} value="Челябинск">Челябинск</option>
+                                                    <option {% if order.cl_city == "Ярославль" %}selected {% endif %} value="Ярославль">Ярославль</option>
+
+                                                 </select>
+
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <input type="text" class="form-control"
+                                            title="{%trans%}Район{%endtrans%}" placeholder="{%trans%}Район{%endtrans%}" name="cl_rayon"
+                                            value="{{ order.cl_rayon }}">
+                                        </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+                <div class="col-md-40" style="margin-top: 20px;" >
+                <div class="row">
+
+                        <div class="col-md-120">
+                            <div class="thumbnail no-padding clearfix ">
+                                <div class="thumbnail_head" >
+                                    {% if car.carlogo %}
+                                    <img src="info.png" class="audi_logo">
+                                    {% else %}
+                                    <img src="/frontend/public/img/cabinet/audi_logo.png" class="audi_logo" alt="">
+                                    {% endif %}
+                                    
+
+                                     <p class="markaauto" >{%trans%}Автомобиль{%endtrans%}</p>
+                                </div>
+
+                                <div class="col-md-120 parent" style="margin-top: 20px;" >
+                                        <div class="form-group clearfix">
+                                            <input type="text" class="form-control" style='display:none'
+                                            placeholder="{%trans%}Марка{%endtrans%}" name="car_marka"
+                                            value="{{ order.car_marka }}">
+
+                                                <select  class="js-example-brend form-control " name="marka" >
+                                                    {% if order.car_marka %}
+                                                        <option value="{{ order.car_marka }}" >{{ order.car_marka_name }}</option>
+                                                    {% else %}
+                                                        <option >{%trans%}Марка{%endtrans%}</option>
+                                                    {% endif %}
+                                                </select>
+
+                                        </div>
+
+                                        <div class="form-group clearfix">
+
+                                            <input type="text" class="form-control" style='display:none'
+                                            placeholder="{%trans%}Модель{%endtrans%}" name="model"
+                                            value="{{ order.car_model }}">
+
+                                                <select  class="js-example-model form-control " name="car_model" >
+                                                    {% if order.car_model %}
+                                                        <option value="{{ order.car_model }}" >{{ order.car_model_name }}</option>
+                                                    {% else %}
+                                                        <option >{%trans%}Выберите модель{%endtrans%}</option>
+                                                    {% endif %}
+                                                </select>
+
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <input type="text" class="form-control"
+                                            title="VIN" placeholder="VIN" name="car_vin"
+                                            value="{{ order.car_vin }}">
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <input type="text" class="form-control"
+                                            title="{%trans%}Год{%endtrans%}" placeholder="{%trans%}Год{%endtrans%}" name="car_year"
+                                            value="{{ order.car_year }}">
+                                        </div>
+
+                                        <div class="form-group clearfix" style='display:none'>
+                                            <input type="text" class="form-control"
+                                            placeholder="{%trans%}Район{%endtrans%}" name="cl_rayon"
+                                            value="{{ order.cl_rayon }}">
+                                        </div>
+                                </div>
+                                <div >
+                                    <button class="btn btn-primary btn_auto_form" disabled='disabled' >{%trans%}Сохранить{%endtrans%}</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div class="col-md-120 bonusu" >
+                <div class="row">
+                    <div class="col-md-40">
+                        <h5><b>{%trans%}Отзыв{%endtrans%}</b></h5>
+                        <textarea name="short_desc" title="{%trans%}Напишите отзыв{%endtrans%}" class="form-control" rows="7">{{order.otziv}}</textarea>
+                    </div>
+
+                    <div class="col-md-80">
+                        <h5><b>{%trans%}Финансы{%endtrans%}</b></h5>
+                        <div class="thumbnail bonus">
+                            <table class="accia_table">
+                                <tr>
+                                    <th>{%trans%}Стоимость ремонта{%endtrans%}</th><th>{{order.price_work}}р</th>
+                                </tr>
+                                <tr>
+                                    <th>{%trans%}Стоимость запчастей{%endtrans%}</th><th>{{order.price_detail}}р</th>
+                                </tr>
+                                <tr>
+                                    <th>{%trans%}Начислено бонусов{%endtrans%}</th><th>{{order.bonus}}р</th>
+                                </tr>
+                                <tr>
+                                    <th>{%trans%}За Написание отзыва{%endtrans%}</th><th>100р</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="col-md-120 bonusu" style='display:none'>
+                <div class="row">
+
+                    <div class="col-md-120">
+
+                        <div class="thumbnail bonus"  >
+                        	<div id="bonus"  >
+                            <table  class="accia_table table_bonus">
+                                <tr class="table_bonus_perv">
+                                    <th ><b>Дата</b></th>
+                                    <th><b>Вид ремонта</b></th>
+                                    <th><b>Сервис</b></th>
+                                    <th><b>Стоимость ремонта</b></th>
+                                    <th><b>Стоимость запчастей</b></th>
+                                    <th><b>Начислено бонусов</b></th>
+                                    <th><b>Отзыв</b></th>
+                                </tr>
+
+
+                {% for row in history %}
+                                <tr>
+                                    <td>{{row.date_udobno}} <br><span style='font-size:11px'>Подано: {{row.date_add}}</span></td>
+                                    <td>{{row.cats}}</td>
+                                    <td >{{row.service}}</td>
+                                    <td >{{row.price_work}}</td>
+                                    <td >{{row.price_detail}}</td>
+                                    <td >{{row.bonus}}</td>
+                                    <td >{{row.problem}}</td>
+                                </tr>
+                {% endfor %}
+
+
+                                <tr class="pusto" style='display:none'>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
+
+                            </table>
+                        	</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}
+
+
+
+{% block script %}
+
+<script type="text/javascript" >
+    $(document).ready(function() {
+        //все поля  и списки закрываем от редактирования
+        $('.cartorder input , .cartorder select, .cartorder textarea').attr('disabled','disabled');
+        $('.cartorder .stsord').prop('disabled', false);
+        
+    });
+</script>
+
+
+
+<script src="/frontend/public/js/cabinet/datedropper.min.js"></script>
+<script type="text/javascript" >
+    /*$(document).ready(function() {
+        var select = $('.js-example-basic-single').select2({
+            placeholder:"{%trans%}Выберите город{%endtrans%}",
+            //theme : "classic",
+            //maximumSelectionLength : 10 ,
+            ajax: {
+            delay: 250,
+            type: 'POST',
+            url: '/ajax/geo/getAllCity/',
+            dataType: 'json',
+            data: function (params) {
+                      params.lang=page_lang;
+                      params.q=params.term;
+                      return params;
+            },
+            processResults: function (data) {
+                   console.log(data);
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                    text: item.text,
+                                    id: item.id
+                            };
+                        })
+                    };
+                }
+            }
+        });
+
+    });*/
+    var page_lang='{{lang}}';
+</script>
+<!--
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.dates').dateDropper({
+            lang: 'ru',
+            format: 'd-m-Y'
+        });
+    });
+</script>-->
+<script type="text/javascript">
+    var selct1 = false;
+    $(document).ready(function() {
+        //Выбор brand из селекта
+        $('.js-example-brend').change(function () {
+            $('.js-example-model').prop('disabled',false);;
+        });
+        $('.js-example-brend').select2({
+            placeholder:"{%trans%}Выберите Марку{%endtrans%}",
+            ajax: {
+            delay: 250,
+            type: 'POST',
+            data: function (params) {
+                      params.q=params.term;
+                      return params;
+            },
+            url: '/ajax/car/brendcl/',
+            dataType: 'json',
+            processResults: function (data) {
+                //alert(data);
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                    text: item.name,
+                                    id: item.id
+                            };
+                        })
+                    };
+                }
+            }
+        });
+
+        $('.js-example-model').select2({
+            placeholder:"{%trans%}Выберите Модедь{%endtrans%}",
+            ajax: {
+            delay: 250,
+            type: 'POST',
+            data: function (params) {
+                var id_model = this.parents('.parent').find('.js-example-brend').val();
+                      params.brend_id=id_model;
+                      params.q=params.term;
+                      return params;
+            },
+            url: '/ajax/car/modelcl/',
+            dataType: 'json',
+            processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                    text: item.name,
+                                    id: item.id
+                            };
+                        })
+                    };
+                }
+            }
+        });
+
+    });
+
+</script>
+
+
+<script>
+$(document).ready(function () {//автозаполнение формы
+    var this_page={id:{{ order.subcatid }},type:{{ order.type }},category_id:{{ order.parcatid }}};
+    if(this_page.type==1){
+      $("#application select[name=category]").val(this_page.id).trigger('change');
+      $('.select-work-type').find('select').addClass('select2-hidden');
+      $('#work_type_' + this_page.id).removeClass('select2-hidden');
+    }
+    else if(this_page.type==2){
+      $('#application select[name=category]').val(this_page.category_id).trigger('change');
+      $('.select-work-type').find('select').addClass('select2-hidden');
+      $('#work_type_' + this_page.category_id).removeClass('select2-hidden').val(this_page.id).trigger('change');
+    }
+});
+</script>
+
+{% endblock %}

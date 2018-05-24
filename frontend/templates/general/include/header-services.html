@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>В-автосервис</title>
+    <link href="/frontend/public/css/general/bootstrap.min.css" rel="stylesheet">
+    <link href="/frontend/public/css/general/style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+{{city.code_metrika | raw}}
+
+<div class="header header-light">
+    <div class="header-top">
+        <div class="wrapper clearfix">
+            <div class="col-sm-30 no-padding">
+                <div class="logo">
+                    <a href="/">
+                        <img src="/frontend/public/img/general/logo-white.png">
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-4 no-padding">
+                <div class="vertical-line">
+                    <img src="/frontend/public/img/general/vertical-line.png">
+                </div>
+            </div>
+            <div class="col-sm-40 no-padding">
+                <div class="phone">
+                    <a href="#">{{city.phone}}</a>
+                </div>
+            </div>
+            <!--<div class="col-sm-45 no-padding">
+                <div class="log-in">
+                    <a href="#">Вход</a>&nbsp;&nbsp;|&nbsp;
+                    <a href="#">Регистрация</a>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>

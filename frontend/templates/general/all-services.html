@@ -1,0 +1,218 @@
+{% extends "include/main.html" %}
+
+{% set title = '«В-автосервис» — все сервисы' %}
+{% set description = 'Подай заявку в ближайший автосервис и получи предложения за 7 минут' %}
+
+{% block content %}
+    <div class="want-price all-services clearfix">
+        <div class="wrapper clearfix">
+            <div class="col-md-120">
+                <h2>Рассчитать стоимость ремонта за 10 минут</h2>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option selected>Марка</option>
+                            <option>Марка</option>
+                            <option>Марка</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option selected>Модель</option>
+                            <option>Модель</option>
+                            <option>Модель</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option selected>Год выпуска</option>
+                            <option>Год выпуска</option>
+                            <option>Год выпуска</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <input type="text" placeholder="VIN-код">
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option selected>Вид работ</option>
+                            <option>Вид работ</option>
+                            <option>Вид работ</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option selected>Категория</option>
+                            <option>Категория</option>
+                            <option>Категория</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option selected>Город</option>
+                            <option>Город</option>
+                            <option>Город</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <input type="text" placeholder="Район или улица">
+                    </div>
+                </div>
+                <div class="col-xs-120">
+                    <div class="field width-100">
+                        <input type="text" class="width-100" placeholder="Опишите проблему">
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <input type="text" placeholder="Ваше имя">
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <input type="tel" name="phone_number" placeholder="+7 (900) 123-45-67" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}">
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <input type="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="add-photo">
+                        <a href="{{u}}#" data-toggle="tooltip" title="Это текст подсказки">
+                            <img src="/frontend/public/img/general/tooltip.png">
+                        </a>
+                        <span>Прикрепить фото</span>
+                        <img src="/frontend/public/img/general/add-photo-plus.png">
+                    </div>
+                </div>
+                <div class="col-xs-120">
+                    <div class="time">
+                        <span>Мне удобно посетить сервсис</span>
+                        <input type="date">
+                        <span>в</span>
+                        <input type="time">
+                    </div>
+                    <div class="get-offer">
+                        <a href="{{u}}#">Получить лучшие предложение от сервисов!</a>
+                    </div>
+                    <div class="agree">
+                        <input type="checkbox">
+                        <span>{%trans%}Я соглашаюсь с <a href="pol-zovatel-skoe-soglashenie/" target="_blank">условиями обработки персональных данных</a>{%endtrans%}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="category all-services clearfix">
+        <div class="wrapper clearfix">
+            <div class="col-xs-120 no-padding padding-left choose-category clearfix">
+                <div class="col-lg-30 col-sm-60 no-padding">
+                    <ul class="menu right right-1">
+                        <li><a href="#" onclick="return false;" class="diagnosis">Диагностика</a></li>
+                        <li><a href="#" onclick="return false;" class="body-work">Кузовные работы</a></li>
+                        <li><a href="#" onclick="return false;" class="suspension">Подвеска</a></li>
+                        <li><a href="#" onclick="return false;" class="glass">Стёкла, фары</a></li>
+                        <li><a href="#" onclick="return false;" class="brake-system">Тормозная система</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-30 col-sm-60 no-padding">
+                    <ul class="menu right right-2">
+                        <li><a href="#" onclick="return false;" class="electrician">Электрика</a></li>
+                        <li><a href="#" onclick="return false;" class="additional-equipment long">Дополнительное оборудование</a></li>
+                        <li><a href="#" onclick="return false;" class="oil long">Масло, жидкости, фильтры</a></li>
+                        <li><a href="#" onclick="return false;" class="care">Полировка, уход</a></li>
+                        <li><a href="#" onclick="return false;" class="technical-service long">Техническое обслуживание</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-30 col-sm-60 no-padding">
+                    <ul class="menu right right-3">
+                        <li><a href="#" onclick="return false;" class="transmission">Трансмиссия</a></li>
+                        <li><a href="#" onclick="return false;" class="protective-foil">Защитные плёнки</a></li>
+                        <li><a href="#" onclick="return false;" class="wash">Мойка, химчистка</a></li>
+                        <li><a href="#" onclick="return false;" class="difficult-fix long">Сложный агрегатный ремонт</a></li>
+                        <li><a href="#" onclick="return false;" class="tinted">Тонировка</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-30 col-sm-60 no-padding">
+                    <ul class="menu right right-4">
+                        <li><a href="#" onclick="return false;" class="tire-service">Шиномонтаж</a></li>
+                        <li><a href="#" onclick="return false;" class="departure">Услуги с выездом</a></li>
+                        <li><a href="#" onclick="return false;" class="auto-lawyer">Автоюрист</a></li>
+                        <li><a href="#" onclick="return false;" class="replacement-battery">Замена АКБ</a></li>
+                        <li><a href="#" onclick="return false;" class="buy-tire">Покупка резины</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="car-services clearfix">
+        <div class="wrapper clearfix">
+            <div class="col-md-60 no-padding">
+                <div class="info clearfix">
+                    <img src="/frontend/public/img/general/photo-service.png">
+                    <div class="stars">
+                        <span class="count">5</span>
+                        <input class="stars star-4" id="star-4" type="radio" name="reviewStars"/>
+                        <label title="gorgeous" for="star-4"></label>
+
+                        <input class="stars star-3" id="star-3" type="radio" name="reviewStars"/>
+                        <label title="good" for="star-3"></label>
+
+                        <input class="stars star-2" id="star-2" type="radio" name="reviewStars"/>
+                        <label title="regular" for="star-2"></label>
+
+                        <input class="stars star-1" id="star-1" type="radio" name="reviewStars"/>
+                        <label title="poor" for="star-1"></label>
+
+                        <input class="stars star-0" id="star-0" type="radio" name="reviewStars"/>
+                        <label title="bad" for="star-0"></label>
+                    </div>
+                    <div class="views">
+                        <img src="/frontend/public/img/general/views.png">
+                        <span>Отзывы: 26</span>
+                    </div>
+                    <div class="name">Коленвал Моторз</div>
+                    <div class="address">ул. Новохохловская, д. 36</div><br>
+                    <a href="#" onclick="return false;" class="sign-up">Записаться</a>
+                </div>
+            </div>
+            <div class="col-md-60 no-padding">
+                <div class="text-view">
+                    <div class="block">
+                        <a class="arrow-left">
+                            <img src="/frontend/public/img/general/arrow-left.png">
+                        </a>
+                        <div class="comment">
+                            <div class="name">Владими Супрун</div>
+                            <span class="value">(оценка: 5)</span>
+                            <div class="auto">ЗАЗ 968</div>
+                            <div class="text">Отличный сервис, парни вмиг поставили на колёса моего зепера (ещё мой дед на нём летал). Перебрали карбюратор, отполировали кузов, прошлись по электрике, теперь и я летаю. Супер!</div>
+                        </div>
+                        <a class="arrow-right">
+                            <img src="/frontend/public/img/general/arrow-right.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<br><br>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "./general/include/main.html" %}
+
+
+{% block head %}
+    <link href="/frontend/public/css/cabinet/style.css" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+<div class="container-fluid hesers">
+    <a href="{{langlink}}/cabinet/">{%trans%}ДАННЫЕ АВТОСЕРВИСА{%endtrans%}</a> |  <b>{%trans%}ИСТОРИЯ ОБРАЩЕНИЙ{%endtrans%}</b>  |
+    <a href="{{langlink}}/cabinet/data/" >{%trans%}НАСТРОЙКА ЦЕН{%endtrans%}</a>
+</div>
+    
+
+<div class="container bottom">
+
+    <div class="row">
+        <div class="silca col-md-120">
+            <a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/">← {%trans%}назад{%endtrans%}</a> |
+            <b>{%trans%}ИСТОРИЯ ОБРАЩЕНИЙ{%endtrans%}</b>
+        </div>
+        <div class="alert alert-danger col-md-120" role="alert" style="display: none;"></div>
+        
+
+
+        
+
+
+            <div class="col-md-120 bonusu" >
+                <div class="row">
+
+                    <div class="col-md-120">
+                        
+                        <div class="thumbnail bonus"  >
+                        	<div id="bonus"  >
+                            <table  class="accia_table table_bonus">
+                                <tr class="table_bonus_perv">
+                                    <th ><b>Дата</b></th>
+                                    <th><b>Вид ремонта</b></th>
+                                    <th><b>Стоимость</b></th>
+                                </tr>
+                                <tr>
+                                    <td class="stroc_data" >05.10.2017</td>
+                                    <td>Замена передних тормозных колодок</td>
+                                    <td class="stroc_data">2500 р</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>10.10.2017</td>
+                                    <td>Диагностика ходовой</td>
+                                    <td >2500 руб</td>
+                                </tr>
+                                <tr>
+                                    <td>10.10.2017</td>
+                                    <td>Ремонт стекла</td>
+                                    <td >1950 руб</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>10.10.2017</td>
+                                    <td>Шиномонтаж</td>
+                                    <td >1750 руб</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>10.10.2017</td>
+                                    <td>Кузовной ремонт</td>
+                                    <td >1500 руб</td>
+                                    
+                                </tr>
+                            </table>
+                        	</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block script %}
+
+{% endblock %}

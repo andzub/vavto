@@ -1,0 +1,18 @@
+{% extends "include/main.html" %}
+
+{% set title = '«В-автосервис» — 404 страница не найдена' %}
+{% set description = 'К сожалению, страница не найдена' %}
+
+{% block content %}
+	<div class="main-block">
+	    <div class="wrapper">
+	        <div class="col-xs-120">
+	            <div style="color: #fff;">
+	                <h1>{%trans%}404{%endtrans%}</h1>
+	                <span>{%trans%}Упс! Страница не найдена.{%endtrans%}</span>
+	            </div>
+	            <a href="" class="get-price">{%trans%}Перейти на главную{%endtrans%}</a>
+	        </div>
+	    </div>
+	</div>
+{% endblock %}

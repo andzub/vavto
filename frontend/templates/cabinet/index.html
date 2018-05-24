@@ -1,0 +1,258 @@
+{% extends "./general/include/main.html" %}
+
+
+{% block head %}
+    <link href="/frontend/public/css/cabinet/style.css" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+<div class="container-fluid hesers">
+    <b>{%trans%}ДАННЫЕ КЛИЕНТА{%endtrans%}</b> |  <a href="{{langlink}}/cabinet/index/history/" >{%trans%}ИСТОРИЯ ОБРАЩЕНИЙ{%endtrans%}</a>  | <a href="{{langlink}}/cabinet/index/bonus/">{%trans%}БОНУСНАЯ ПРОГРАМА{%endtrans%}</a>
+</div>
+
+    
+<div class="container bottom prev">
+
+    <div class="row">
+        <div class="silca col-md-120">
+            <a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/">← {%trans%}назад{%endtrans%}</a> |
+            <b>{%trans%}ДАННЫЕ КЛИЕНТА{%endtrans%}</b> | <a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/data/">{%trans%}редактировать{%endtrans%}  →</a>
+        </div>
+        <div class="alert alert-danger col-md-120" role="alert" style="display: none;"></div>
+        
+            <div class="col-md-120" style="margin-top: 20px;" >
+                <div class="row">
+                    <div class="col-md-60">
+                        <div class="row">
+                            <div class="col-md-60">
+                                <div class="form-group clearfix"> 
+                                    <div class="col-md-120">
+                                        <input type="text" class="form-control" name="surname"
+                                        placeholder="{%trans%}Фамилия{%endtrans%}" value="{{ session.client.famaliname }}" disabled >
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix" > 
+                                    <div class="col-md-120" >
+                                        <select   class="js-example-basic-single form-control " name="city" disabled>
+                                            
+                                            {% if session.client.city_id %}
+                                                <option value="{{ session.client.city_id }}">{{ session.client.city }}</option>
+                                            {% else %}
+                                                <option >{%trans%}Выберите город{%endtrans%}</option>
+                                            {% endif %}
+                                        </select>
+                                    </div>
+                                </div>                      
+                            </div>
+
+                            <div class="col-md-60">
+                                <div class="form-group clearfix"> 
+                                    <div class="col-md-120">
+                                        <input type="text" class="form-control" name="name"
+                                        placeholder="{%trans%}Имя{%endtrans%}" value="{{ session.client.name }}"
+                                        disabled >
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix"> 
+                                    <div class="col-md-120">
+
+                                        <input type="tel" class="form-control" name="phone" 
+                                        placeholder="+7 (900) 123-45-67" required="" 
+                                        pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$" 
+                                        title="{%trans%}Пример{%endtrans%}: +792853001020"
+                                        value="{{ session.client.tel }}"
+                                        disabled >
+                                    </div>
+                                </div>                      
+                            </div>                  
+                        </div>
+                    </div>
+                    <div class="col-md-60">
+                        <div class="row">
+                            <div class="col-md-60">
+                                <div class="form-group clearfix"> 
+                                    <div class="col-md-120">
+                                        <input type="text" class="form-control" name="patronymic"
+                                        placeholder="{%trans%}Отчество{%endtrans%}"
+                                        value="{{ session.client.patronymic }}"  
+                                        disabled >
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix"> 
+                                    <div class="col-md-120">
+                                        <input type="text" class="form-control" name="email"
+                                        placeholder="Email" value="{{ session.client.email }}"
+                                        disabled >
+                                    </div>
+                                </div>                      
+                            </div>
+
+                            <div class="col-md-60">
+                                <div class="form-group clearfix"> 
+                                    <div class="col-md-120 date_r">
+                                        <!-- <select class="form-control" placeholder="Дата рождения"
+                                         name="email">
+                                         <option >Дата рождения</option>    
+                                        </select> -->
+                                        <input type="text"  data-large-mode="true" data-lang="{{lang}}" value="{{ session.client.dates }}" class="form-control dates" name="date"
+                                            placeholder="{%trans%}Отчество{%endtrans%}" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix"> 
+                                    <div class="col-md-120">
+                                        <input type="submit" class="form-control btn btn-primary" 
+                                         value="{%trans%}Редактировать{%endtrans%}" >
+                                    </div>
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        
+            <div class="col-md-120" style="margin-top:40px;margin-bottom:65px;text-align: center;">
+                <a class="btn btn-primary my_btn" >{%trans%}Сменить пароль{%endtrans%}</a>
+            </div>
+
+            <div class="col-md-120" >
+                <div class="row">
+                    <div class="col-md-60" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix add_auto">
+                            <div class="thumbnail_head" >
+                                <h4 class="addauto">{%trans%}ДОБАВИТЬ АВТО{%endtrans%}</h4>
+                            </div>
+                            <img style="margin-top: 180px;" src="/frontend/public/img/cabinet/plus.png" alt="">
+                        </div>
+
+                    </div>
+
+                {% for car in cars %}
+                    <div class="col-md-60" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix ">
+                            <div class="thumbnail_head" >
+                                {% if car.carlogo %}
+                                    <img src="{{car.carlogo}}" class="audi_logo" alt="{{car.namebrend}}" title="{{car.namebrend}}">
+                                {% else %}
+                                    <img src="/frontend/public/img/cabinet/audi_logo.png" class="audi_logo" alt="">
+                                {% endif %}
+
+
+
+                                 <p class="markaauto" >{{car.namebrend}}  {{car.namemodel}}</p>
+                            </div>
+                            <div class="col-md-120" style="margin-top: 20px;" >
+                                <div class="row">
+                                    <div class="col-md-60">
+                                        <div class="form-group clearfix"> 
+                                                <select class="form-control" placeholder="Дата рождения" name="email" disabled >
+                                                 <option >{{ car.namebrend }}</option>    
+                                                </select>
+                                        </div>
+                                        <div class="form-group clearfix"> 
+                                                <select class="form-control" placeholder="Дата рождения" name="email" disabled >
+                                                 <option >{{ car.namemodel }}</option>    
+                                                </select>
+                                        </div>
+                                        <div class="form-group clearfix"> 
+                                                <select class="form-control"  disabled>
+                                                 <option >{%trans%}ДОБАВИТЬ АВТО{%endtrans%} {{ car.year_issue }}</option>
+                                                </select>
+                                        </div>
+                                        <div class="form-group clearfix"> 
+                                            <input type="text" class="form-control" 
+                                            placeholder="VIN: {{ car.vin }}" disabled >
+                                        </div>
+                                        <div class="form-group clearfix"> 
+                                            <input type="text" class="form-control" 
+                                            placeholder="{%trans%}Гос. номер{%endtrans%}: {{ car.number_gos }}" disabled >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-60">
+                                        <div class="form-group clearfix"> 
+                                            <input type="text" class="form-control" 
+                                            placeholder="{%trans%}Летняя{%endtrans%}: {{ car.tires_summer }}" disabled >
+                                        </div>
+                                        <div class="form-group clearfix"> 
+                                            <input type="text" class="form-control" 
+                                            placeholder="{%trans%}Зимняя{%endtrans%}: {{ car.tires_winter }}" disabled >
+                                        </div>
+                                        <div class="form-group clearfix"> 
+                                            <input type="text" class="form-control" 
+                                            placeholder="{%trans%}ОСАГО до{%endtrans%}: {{ car.osago_do }}" disabled >
+                                        </div>
+                                        <div class="form-group clearfix"> 
+                                            <input type="text" class="form-control" 
+                                            placeholder="{%trans%}ОСАГО от{%endtrans%}: {{ car.osago_strah }}" disabled >
+                                        </div>
+                                        <div class="form-group clearfix"> 
+                                            <input type="text" class="form-control" 
+                                            placeholder="{%trans%} до{%endtrans%}: {{ car.kasko_do }}" disabled >
+                                        </div>
+                                        <div class="form-group clearfix"> 
+                                            <input type="text" class="form-control" 
+                                            placeholder="{%trans%}КАСКО от{%endtrans%}: {{ car.kasko_strah }}" disabled >
+                                        </div>
+                                    </div>    
+                                </div>
+                            </div>
+                            <div  >
+                                <button class="btn btn-primary btn_auto_form" >{%trans%}Сохранить{%endtrans%}</button>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+                <iframe name="form_submit" class="hidden"></iframe>
+            </div>
+
+            <div class="col-md-120 bonusu" >
+                <div class="row">
+                    <div class="col-md-28">
+                        <h5><b>{%trans%}БОНУСНЫЙ СЧЁТ{%endtrans%}</b></h5>
+                        <div class="thumbnail bonus bonud_p">
+                            <p>На вашем счету</p>
+                            <p style=" color: #4a8dc6; font-size: 16px;font-weight: bold;">{{ session.client.purse }} {%trans%}бонусов{%endtrans%}</p>
+                            <p class="vitr" style="margin-top:32px;">{%trans%}ПОТРАТИТЬ{%endtrans%}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-92">
+                        <h5><b>{%trans%}КАК ПОЛУЧИТЬ БОНУСЫ, ЧТОБ РЕМОНТИРОВАТЬ АВТО БЕСПЛАТНО{%endtrans%}</b></h5>
+                        <div class="thumbnail bonus">
+                            <table class="accia_table">
+                                <tr>
+                                    <th>500р</th><th>{%trans%}За каждого друга которого вы пригласите{%endtrans%}</th><th class="last_th" {%trans%}>ПОЛУЧИТЬ{%endtrans%}</th>
+                                </tr>
+                                <tr>
+                                    <th>10р</th><th>{%trans%}За Написание отзыва{%endtrans%}</th><th class="last_th" >{%trans%}ПОЛУЧИТЬ{%endtrans%}</th>
+                                </tr>
+                                <tr>
+                                    <th>20р</th><th>{%trans%}За каждого друга которого вы пригласите{%endtrans%}</th><th
+                                     class="last_th" >{%trans%}ПОЛУЧИТЬ{%endtrans%}</th>
+                                </tr>
+                                <tr>
+                                    <th>100р</th><th>{%trans%}За Написание отзыва{%endtrans%}</th><th
+                                     class="last_th" >{%trans%}ПОЛУЧИТЬ{%endtrans%}</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block script %}
+{% endblock %}

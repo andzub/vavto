@@ -1,0 +1,36 @@
+php_flag display_startup_errors off
+php_flag display_errors off
+php_flag html_errors off
+
+
+#php_value display_errors 1
+#php_value display_startup_errors 1
+#php_value error_reporting E_ALL
+
+php_flag log_errors on
+php_flag ignore_repeated_errors off
+php_flag ignore_repeated_source off
+php_flag report_memleaks on
+php_flag track_errors on
+php_value docref_root 0
+php_value docref_ext 0
+#php_value error_log /home/f/f61ros2f/v-avtoservis.rf/public_html/PHP_errors.log
+php_value error_log ./PHP_errors.log
+php_value error_reporting 2047
+php_value log_errors_max_len 0
+
+<Files PHP_errors.log>
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</Files>
+RewriteEngine on
+#RewriteCond %{HTTP_HOST} ^в-автосервис\.рф$
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) http://в-автосервис.рф/$1 [L,R]
+#Don't favicon!
+RewriteCond %{REQUEST_FILENAME} !^favicon\.ico
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [L,QSA]
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]

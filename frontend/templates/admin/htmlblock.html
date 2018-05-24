@@ -1,0 +1,110 @@
+{% extends "admin/include/admin.html" %}
+{% set active_menu = 'htmlblock' %}
+{% block content %}
+<style>
+    #htmlblock_edit_table .l_content{max-height: 120px;overflow-y:hidden;min-height: 20px;}
+    #htmlblock_edit_table .l_content.active{border: 1px solid #08e103;}
+    #htmlblock_edit_table .l_content.full{max-height: 100%;}
+    #htmlblock_edit_table textarea{min-width: 100%;min-height: 150px;}
+    #htmlblock_edit_table thead th:nth-child(n+2){min-width: 300px;}
+    .html_edit_block {position: absolute;background-color: #efe6e6;padding:2px;line-height: 1;right: -2px;top: -2px;display: none;cursor:pointer;}
+    td:hover > .html_edit_block {display: block;}
+    #htmlblock_edit_table td{position: relative;}
+    .html_edit_block .fa:hover{color: #0427c0;}
+</style>
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="page-title">Редактирование блоков"</h4>
+            <div class="pull-right" style="margin-top:-55px;">
+                <a href="/admin/htmlblock/" class="btn btn-primary">&larr; назад</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <form method="POST" class="form-horizontal ajax-form" enctype="multipart/form-data" target="form_submit">
+                    <div class="col-lg-11">
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">Выбрать страницу</label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="htmlblock_page_select" name="page_name">
+                                    <option value=""></option>
+                                    {%for page in pages%}
+                                    <option value="{{page.page_name}}">{{page.page_name}}</option>
+                                    {%endfor%}
+                                </select>
+                            </div>
+                        </div>
+
+                    <input type="hidden" name="ajax" value="true">
+                </form>
+                <iframe name="form_submit" class="hidden"></iframe>
+            </div>
+            <div id="htmlblock_edit_table">
+
+            </div>
+        </div>
+    </div>
+    <div id="show_message" style="display: none;"></div>
+{% endblock %}
+
+{% block script %}
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+    $('iframe[name=form_submit]').on('load', function(){
+        var data = $(this).contents().text();
+        data = jQuery.parseJSON(data);
+        var error = $('.ajax-form').find('.error').hide();
+        if( data.error ){
+            error.show().removeClass('hidden').text(data.text);
+        }else{
+
+        }
+    });
+    $('#htmlblock_page_select').change(function(){
+      if( $(this).val() ){
+      $.post('/admin/htmlblock/page_blocks/',{page_name:$(this).val(),ajax:true}).done(function (res) {
+          $('#htmlblock_edit_table').html(res);
+      });
+      }
+    });
+    $(document).on('click','#htmlblock_edit_table .l_content:not(.full)',function () {
+      $(this).closest('tr').find('.l_content').addClass('full');
+    });
+    $(document).on('click','.html_edit_block .edit',function(){
+        var $target=$(this).closest('td').find('.l_content');
+        $target.addClass('full');
+        $target.next('textarea').css('height',$target.height()).css('width',$target.width()).show().val($target.text());
+        $target.hide();
+    });
+    $(document).on('click','.html_edit_block .save',function(){
+        var $target=$(this).closest('td').find('textarea');
+        var data={'ajax':true};
+        data.page=$target.closest('tbody').data('page');
+        data.block=$target.closest('tr').data('block');
+        data.lang=$target.data('lang');
+        data.val=$target.val();
+        $.post('/admin/htmlblock/ajax_edit/',data).done(function (res) {
+          if(res==='ok')showMessage('Сохранено');
+          $target.hide().prev('.l_content').show().text($target.val());
+
+        });
+    });
+    $(document).on('click','.html_edit_block .close',function(){
+        $(this).closest('td').find('.l_content').show().next('textarea').hide();
+    });
+    function showMessage(mess){
+      $('#show_message').html(mess);
+      $( "#show_message" ).fadeIn( 1000, function() {
+        $( "#show_message" ).fadeOut(2000);
+      });
+    }
+});
+</script>
+
+{% endblock %}

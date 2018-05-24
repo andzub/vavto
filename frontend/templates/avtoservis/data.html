@@ -1,0 +1,120 @@
+{% extends "./general/include/main.html" %}
+
+
+{% block head %}
+    <link href="/frontend/public/css/cabinet/auto.css" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+<div class="container-fluid hesers">
+    <b>ДАННЫЕ АВТОСЕРВИСА</b> |  <a href="/avtoservis/history/" >ИСТОРИЯ ОБРАЩЕНИЙ</a>  | <a href="/avtoservis/price/">НАСТРОЙКА ЦЕН</a>
+</div>
+    
+<div class="container bottom">
+
+    <div class="row">
+        <div class="silca col-md-120">
+            <a style="font-size: 16px;" class="previous" href="/cabinet/">← назад</a> | 
+            <b>ДАННЫЕ АВТОСЕРВИСА</b> | <a style="font-size: 16px;" class="previous" href="/avtoservis/data_red/">редактировать  →</a>
+        </div>
+        
+            <div class="col-md-120" style="margin-top: 20px;" >
+                <div class="row">
+                    <div class="col-md-30">
+                        <div class="col-md-120">
+                            <div class="form-group clearfix">
+                                <input type="text" class="form-control" value="Автосервис Таганский" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-30">
+                        <div class="col-md-120">
+                            <div class="form-group clearfix">
+                                <input type="text" class="form-control" value="Москва" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-30">
+                        <div class="col-md-120">
+                            <div class="form-group clearfix">
+                                <input type="text" class="form-control" value="+7 (495) 123-45-67" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-30">
+                        <div class="col-md-120">
+                            <div class="form-group clearfix">
+                                <input type="text" class="form-control" value="Таганский" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-120" style="margin-top:25px;" >
+                <div class="col-md-120" >
+                    <div class="form-group clearfix">
+                        <input type="text" class="form-control" value="город Москва ул. Таганская 32" disabled>
+                    </div>
+                </div>   
+            </div>
+        
+            <div class="col-md-120 " >
+                <div class="foto_video clearfix">
+                    <div class="col-md-60">
+                        <div><span>Фото</span></div>
+                        <div>
+                            <img src="/frontend/public/img/cabinet/foto1.png" >
+                            <img src="/frontend/public/img/cabinet/foto2.png" style="margin-left: 12px;" >
+                        </div>
+                    </div>
+                    <div class="col-md-60" style="padding-left: 40px">
+                        <div><span>Видео</span></div>
+                        <div><img src="/frontend/public/img/cabinet/vidio1.png" ></div>
+                    </div>
+                </div>            
+            </div>
+            <div class="col-md-120 " >
+                <div class="checbocs clearfix">
+                    <div class="col-md-60 opis">
+                        <div><span>Скидка сайту <b>8</b>%</span></div>
+                        <div><input type="checkbox" disabled><span>Официальный диллер</span></div>
+                        <div><input type="checkbox" disabled><span>Наличие запчастей</span></div>
+                        <div><input type="checkbox" checked="checked" disabled><span>Наличие Эвакуатора</span></div>
+                    </div>
+                    <div class="col-md-60 opis" style="padding-left: 40px">
+                        <div><span></span></div>
+                        <div><input type="checkbox" checked="checked" disabled><span>Безналичная оплата</span></div>
+                        <div><input type="checkbox" checked="checked" disabled><span>Скидка клиенту в День Рождения <b>10</b>%</span></div>
+                        <div><input type="checkbox" checked="checked" disabled><span>Принимаем бонусные рублинеболие <b>20</b>%</span></div>
+                    </div>
+                </div>            
+            </div>
+            <div class="silca col-md-120"> 
+                <a class="btn btn-primary my_btn" >РЕДАКТИРОВАТЬ</a>
+            </div>
+            <div class="silca col-md-120">
+                <h4><strong> ПОЛЕЗНАЯ ИНФОРМАЦИЯ</strong> </h4>
+                <div class="thumbnail info">
+                    <p><a href="">Как автосервису увеличить количество обращений?</a></p>
+                    <p><a href="">Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру?</a></p>
+                    <p><a href="">Сгенерировать несколько абзацев более менее?</a></p>
+                    <p><a href="">Осмысленного текста рыбы на русском языке, а начинающему оратору, отточить навык публичных?</a></p>
+                    <p><a href="">Выступлений в домашних условиях?</a></p>
+                </div>
+            </div>
+            
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block script %}
+
+{% endblock %}

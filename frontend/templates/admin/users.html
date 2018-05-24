@@ -1,0 +1,94 @@
+{% extends "admin/include/admin.html" %}
+{% set active_menu = 'users' %}
+{% block content %}
+
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="page-title">Управление пользователями</h4>
+            <div class="pull-right" style="margin-top:-55px;">
+                <a href="/admin/users/add/" class="btn btn-primary">Добавить</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+
+
+            <div class="card-box table-responsive">
+                <table class="table table-striped table-responsive m-0">
+                    <thead>
+                    <tr>
+                        <th class="text-left">Дата рег.</th>
+                        <th class="text-left">ФИО</th>
+                        <th class="text-left">Email</th>
+                        <th class="text-left">Телефон</th>
+                        <th class="text-left">Город</th>
+                        <th class="text-left">Тип</th>
+                        <th class="text-left"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in rows %}
+                        <tr class="text-center {% if user.status !=1 %}blocked {%endif%} " {% if user.status !=1 %} style=" background-color: #ffebeb!important;" {%endif%} >
+                            <td class="text-left">{{user.date}} </td>
+                            <td class="text-left">{{user.famaliname}} {{user.name}} {{user.patronymic}}</td>
+                            <td class="text-left"><a href="/admin/users/edit/{{user.id}}/" title='Смотреть/Редактировать'>{{user.email}}</a></td>
+                            <td class="text-left">{{user.tel}}</td>
+                            <td class="text-left"><a href='/admin/city-edit/{{user.city_id}}/'>{{user.city}}</a></td>
+                            <td class="text-left">{{user.roletext}}</td>
+                            <td>
+                                <a href="/admin/users/edit/{{user.id}}/" class="on-default edit-row"><i class="fa fa-pencil m-r-5"></i></a>
+                                <a href="/admin/users/delete/{{user.id}}/" class="on-default remove-row delete"><i class="fa fa-trash-o  m-r-5"></i></a>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+    $('iframe[name=form_submit]').on('load', function(){
+        var data = $(this).contents().text();
+        data = jQuery.parseJSON(data);
+        var error = $('.ajax-form').find('.error').hide();
+        if( data.error ){
+            error.show().removeClass('hidden').text(data.text);
+        }else{
+
+        }
+    });
+
+
+
+
+    $('.delete').click(function () {
+        if( !confirm('Вы уверены, что желаете безвозвратно удалить пользователя?') )
+            return false;
+    });
+
+
+  /*  $(document).on('click','.remove-row',function(){
+        var id= $(this).
+        //$(this).closest('td').find('.l_content').show().next('textarea').hide();
+        alert('delete ');
+    });*/
+
+
+});
+</script>
+
+{% endblock %}

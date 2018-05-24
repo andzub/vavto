@@ -1,0 +1,212 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: vavtoservice\n"
+"POT-Creation-Date: 2018-04-03 10:13+0500\n"
+"PO-Revision-Date: 2018-04-06 09:53+0300\n"
+"Last-Translator: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_EN\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.0.6\n"
+
+msgid "Больше не нужно искать сервис, звонить и записываться!"
+msgstr ""
+
+msgid "Найдем для Вас лучший автосервис за 7 минут."
+msgstr ""
+
+msgid "Получить честную стоимость ремонта"
+msgstr ""
+
+msgid "Для клиентов нашего сайта цена на ремонт ниже до 60%"
+msgstr ""
+
+msgid "как это возможно?"
+msgstr ""
+
+msgid "Бесплатно подберем ближайший к Вам автосервис, который предложит лучшую цену и удобное время записи"
+msgstr ""
+
+msgid "Экономим Ваше время и деньги"
+msgstr ""
+
+msgid "Вот как пройдет ваш ремонт"
+msgstr ""
+
+msgid "Выбираете <a href=\"#want-price\">проблему автомобиля</a>"
+msgstr ""
+
+msgid "Персональный мастер-консультант"
+msgstr ""
+
+msgid "подберет Вам сервис в Вашем районе с самой низкой ценой"
+msgstr ""
+
+msgid "Запчасти"
+msgstr ""
+
+msgid "мы привезем их точно ко времени начала ремонта. Вы можете привести свои запчасти"
+msgstr ""
+
+msgid "Ремонт"
+msgstr ""
+
+msgid "Вы приезжаете в сервис и ремонтируете автомобиль по честной цене на ранее оговоренных условиях. Ваш мастер-консультант следит за ремонтом вплоть до его окончания, гарантируя качество."
+msgstr ""
+
+msgid "Истории ремонта автомобиля"
+msgstr ""
+
+msgid "Акции для любимых клиентов"
+msgstr ""
+
+msgid "Более 150 услуг по ремонту и обслуживанию авто"
+msgstr ""
+
+msgid "Выберите категорию, нужную услугу, расчитайте стоимость и запишитесь онлайн"
+msgstr ""
+
+msgid "Выберите по марке"
+msgstr ""
+
+msgid "Выбор по категории"
+msgstr ""
+
+msgid "Ваша заявка отправлена!<br>В самое ближайшее время мы свяжемся с Вами!"
+msgstr ""
+
+msgid "подробнее"
+msgstr ""
+
+msgid "Выберите город"
+msgstr ""
+
+msgid "Почему ремонт доверяют нам?"
+msgstr ""
+
+msgid "Расчет стоимости ремонта"
+msgstr ""
+
+msgid "Автовладельцам"
+msgstr ""
+
+msgid "Все марки авто"
+msgstr ""
+
+msgid "Почему ремонт у нас дешевле"
+msgstr ""
+
+msgid "Советы по ремонту авто"
+msgstr ""
+
+msgid "Партнерские программы"
+msgstr ""
+
+msgid "Подключить автосервис"
+msgstr ""
+
+msgid "Поставщикам запчастей"
+msgstr ""
+
+msgid "Автомобильным сайтам"
+msgstr ""
+
+msgid "Информация"
+msgstr ""
+
+msgid "Обслуживание автопарков"
+msgstr ""
+
+msgid "Пользовательское соглашение"
+msgstr ""
+
+msgid "Для СМИ"
+msgstr ""
+
+msgid "Сотрудничество"
+msgstr ""
+
+msgid "Открыть “В-Автосервис” в своём городе"
+msgstr ""
+
+msgid "Произошла ошибка!"
+msgstr ""
+
+msgid "Рассчитать стоимость юридических услуг"
+msgstr ""
+msgid "консультации бесплатно"
+msgstr ""
+msgid "Категория"
+msgstr ""
+msgid "Вид работ"
+msgstr ""
+msgid "Город"
+msgstr ""
+msgid "Район или улица"
+msgstr ""
+msgid "Опишите проблему"
+msgstr ""
+msgid "Ваше имя"
+msgstr ""
+msgid "Пример"
+msgstr ""
+msgid "Мне удобно посетить сервис"
+msgstr ""
+msgid "Получить лучшие предложения от сервисов!"
+msgstr ""
+msgid "Я соглашаюсь с <a href=\"pol-zovatel-skoe-soglashenie/\" target=\"_blank\">условиями обработки персональных данных</a>"
+msgstr ""
+msgid "Рассчитать стоимость ремонта за 10 минут"
+msgstr ""
+msgid "Марка"
+msgstr ""
+msgid "Модель"
+msgstr ""
+msgid "Год выпуска"
+msgstr ""
+msgid "Вы можете прикрепить фотографию к заявке"
+msgstr ""
+msgid "Прикрепить фото"
+msgstr ""
+msgid "УЗНАЙТЕ САМУЮ НИЗКУЮ ЦЕНУ В СЕРВИСЕ РЯДОМ С ВАМИ.<br>ЭТО БЕСПЛАТНО.."
+msgstr ""
+msgid "VIN-код"
+msgstr ""
+msgid "еще (не обязательные поля)"
+msgstr ""
+msgid "Удобное время"
+msgstr ""
+msgid "Рассчитать стоимость шиномонтажа за 10 минут"
+msgstr ""
+msgid "Диаметр диска"
+msgstr ""
+msgid "Все марки"
+msgstr ""
+msgid "Нужна консультация?"
+msgstr ""
+msgid "Перейти на главную"
+msgstr ""
+msgid "Упс! Страница не найдена."
+msgstr ""
+msgid "Другое"
+msgstr ""
+msgid "В каком районе найти сервис"
+msgstr ""
+
+
+
+msgid "Вход"
+msgstr "SignIn"
+
+msgid "Регистрация"
+msgstr "SignUp"
+
+msgid "Выход"
+msgstr "LogOut"
+
+msgid "Кабинет"
+msgstr "Cabinet"
+

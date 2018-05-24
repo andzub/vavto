@@ -1,0 +1,43 @@
+{% extends "admin/include/admin.html" %}
+{% set active_menu = 'site_option' %}
+{% block content %}
+<!-- Page-Title -->
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">Настройки сайта</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box table-responsive">
+            <form method="POST" class="form-horizontal ajax-form" enctype="multipart/form-data" target="form_submit">
+                <div class="col-lg-11">
+                    <div class="form-group">
+                        <label class="col-md-1 control-label">Язык по умолчанию</label>
+                        <div class="col-md-6">
+                            <select class="form-control" name="default_lang">
+                                <option value=""></option>
+                                {%for l in langs%}
+                                <option value="{{l.sname}}"{%if l.sname==site_options.default_lang.val%} selected="true"{%endif%}>{{l.title}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="ajax" value="true">
+            </form>
+            <iframe name="form_submit" class="hidden"></iframe>
+        </div>
+    </div>
+</div>
+<div id="show_message" style="display: none;"></div>
+{% endblock %}
+
+{% block script %}
+
+<script type="text/javascript">
+
+</script>
+
+{% endblock %}

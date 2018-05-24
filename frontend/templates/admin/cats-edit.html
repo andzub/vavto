@@ -1,0 +1,237 @@
+{% extends "admin/include/admin.html" %}
+
+{% set active_menu = 'cats' %}
+
+{% block content %}
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="page-title">Редактирование категории: "{%if row.title%}{{row.title}}{%else%}{{row.address}}{%endif%}"</h4>
+            <div class="pull-right" style="margin-top:-55px;">
+                    {% for l in langs %}
+                        {%if l.sname !=row.cur_lang %}
+                        <a class="btn btn-success" href="/admin/cats/edit/{{row.id}}/{{l.sname}}/">{{l.title}}</a>
+                        {%endif%}
+                    {% endfor %}
+                <a href="/admin/cats/" class="btn btn-primary">&larr; назад</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+
+                <form method="POST" class="form-horizontal ajax-form" enctype="multipart/form-data" target="form_submit">
+                    <div class="col-lg-11">
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">Заголовок</label>
+                            <div class="col-md-11">
+                                <input type="text" class="form-control" name="title" value="{{row.title}}">
+                            </div>
+                        </div>
+                        {%if(row.is_main_lang)%}
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">Адрес</label>
+                            <div class="col-md-11">
+                                <input type="text" name="address" class="form-control" value="{{row.address}}" >
+                                <p class="">Будет доступно по адресу: <a href="https://в-автосервис.рф/{{row.parrent.address}}{{row.address}}" target='_blank' id="address-text">https://в-автосервис.рф/{{row.parrent.address}}<span class='urlchanged'>{{row.address}}</span>/</a></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">Тип записи (Категория/Вид работ)</label>
+                            <div class="col-md-11">
+                                <select name="type" class="form-control">
+                                    <option value="1">Категория</option>
+                                    <option value="2" {% if row.type==2 %}selected{%endif%}>Вид работ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">Выбрать родительскую категорию</label>
+                            <div class="col-md-11">
+                                <select name="parent_id" class="form-control">
+                                    <option value="0">Без родительской</option>
+                                    {% for cat in row.cats %}
+                                    <option value="{{cat.id}}" {% if cat.id==row.parent_id %}selected{%endif%}>{{cat.title}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">Большая картинка (1920х180)</label>
+                            <div class="col-md-11">
+                                <input type="file" name="img" class="dropify" data-height="300" data-default-file="{{row.img}}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">Маленькая картинка (240х180)</label>
+                            <div class="col-md-11">
+                                <input type="file" name="img_min" class="dropify" data-height="300" data-default-file="{{row.img_min}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">Иконка (42х42)</label>
+                            <div class="col-md-11">
+                                <input type="file" name="img_icon" class="dropify" data-height="100" data-default-file="{{row.img_icon}}"/>
+                            </div>
+                        </div>
+                        {%endif%}
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">Краткое описание</label>
+                            <div class="col-md-11">
+                                <textarea name="short_desc" class="form-control" rows="10">{{row.short_desc}}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">Текст</label>
+                            <div class="col-md-11">
+                                <div class="alert alert-info">Вы можете в любое место в тексте вставить шорткод формы <br>На месте этого кода появиться соответствующая форма.<div>{% for key,form in row.forms %}<span>{{'{'}}{{key}}{{'}'}}</span> - {{form.desc | raw}}; {% endfor %}</div></div>
+                                <textarea id="editor" name="text">{{row.text | raw}}</textarea>
+                            </div>
+                        </div>
+                        <input type="hidden" name="cur_lang" value="{{row.cur_lang}}">
+                     <!--  <div class="form-group">
+                            <label class="col-md-1 control-label">Меню</label>
+                            <div class="col-md-11">
+                                
+                                <textarea id="editor" name="text">{{row.choice | raw}}</textarea>
+                            </div>
+                        </div>-->
+
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-1">
+                        <div class="alert alert-danger error hidden"></div>
+                        <button class="btn btn-success">Сохранить</button>
+                    </div>
+
+                    <input type="hidden" name="ajax" value="true">
+                    <input type="hidden" name="id" value="{{row.id}}">
+                </form>
+                <iframe name="form_submit" class="hidden"></iframe>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+    $('.dropify').dropify({
+        messages: {
+            'default': 'Перенесите или кликните для загрузки картинки',
+            'replace': 'Перенесите или кликните для загрузки картинки',
+            'remove': 'Удалить',
+            'error': 'Упс, что-то пошло не так.'
+        },
+        error: {
+            'fileSize': 'Файл слишком большого размера!'
+        }
+    });
+
+
+    if($("#editor").length > 0){
+        tinymce.init({
+            language: 'ru_RU',
+            selector: "textarea#editor",
+            theme: "modern",
+            height:300,
+            plugins: [
+                "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                "save table contextmenu directionality emoticons template paste textcolor"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+            style_formats: [
+                {title: 'Bold text', inline: 'b'},
+                {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+                {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+                {title: 'Example 1', inline: 'span', classes: 'example1'},
+                {title: 'Example 2', inline: 'span', classes: 'example2'},
+                {title: 'Table styles'},
+                {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+            ]
+        });
+    }
+
+    $('iframe[name=form_submit]').on('load', function(){
+        var data = $(this).contents().text();
+        data = jQuery.parseJSON(data);
+
+        var error = $('.ajax-form').find('.error').hide();
+
+        if( data.error ){
+            error.show().removeClass('hidden').text(data.text);
+        }else{
+            window.location.href = "/admin/cats/";
+        }
+
+    });
+
+    $('input[name=title]').keyup(function () {
+
+        var text = translit($(this).val());
+        $('input[name=address]').val(text);
+        $('#address-text .urlchanged').text(text);
+        $('#address-text').attr('href'," https://в-автосервис.рф/{{row.parrent.address}}"+text+"/");
+
+    });
+
+    $('input[name=address]').keyup(function () {
+
+        var text = translit($(this).val());
+        $('input[name=address]').val(text);
+        $('#address-text .urlchanged').text(text);
+        $('#address-text').attr('href'," https://в-автосервис.рф/{{row.parrent.address}}"+text+"/");
+    });
+
+    function translit(text){
+
+        var space = '-';
+        var text = text.toLowerCase();
+
+        var transl = {
+            'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e', 'ж': 'zh',
+            'з': 'z', 'и': 'i', 'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n',
+            'о': 'o', 'п': 'p', 'р': 'r','с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h',
+            'ц': 'c', 'ч': 'ch', 'ш': 'sh', 'щ': 'sh','ъ': space, 'ы': 'y', 'ь': space, 'э': 'e', 'ю': 'yu', 'я': 'ya',
+            ' ': space, '_': space, '`': space, '~': space, '!': space, '@': space,
+            '#': space, '$': space, '%': space, '^': space, '&': space, '*': space,
+            '(': space, ')': space,'-': space, '\=': space, '+': space, '[': space,
+            ']': space, '\\': space, '|': space, '/': space,'.': space, ',': space,
+            '{': space, '}': space, '\'': space, '"': space, ';': space, ':': space,
+            '?': space, '<': space, '>': space, '№':space
+        }
+
+        var result = '';
+        var curent_sim = '';
+
+        for(i=0; i < text.length; i++) {
+            if(transl[text[i]] != undefined) {
+                if(curent_sim != transl[text[i]] || curent_sim != space){
+                    result += transl[text[i]];
+                    curent_sim = transl[text[i]];
+                }
+            }
+            else {
+                result += text[i];
+                curent_sim = text[i];
+            }
+        }
+
+
+        return result;
+
+    }
+
+
+});
+</script>
+
+{% endblock %}

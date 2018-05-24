@@ -1,0 +1,52 @@
+{% extends "./general/include/main.html" %}
+
+{% block content %}
+<div class="container" style="margin-bottom: 80px;">
+    <div class="row">
+    	<br>
+        <h1 style="text-align: center;" >{%trans%}Востановление пароля{%endtrans%}</h1>
+        <br>
+        <br>
+        <div class="alert alert-danger col-md-offset-20 col-md-80" role="alert" 
+        	style="display: none;" id="danger" ></div>
+        <div class="alert alert-success col-md-offset-20 col-md-80" role="alert"
+        	style="display: none;" id="success"></div>
+
+            <form role="form"  method="POST" target="form_submit" id="form"> <!--  -->
+        
+                        <div class="form-group col-md-offset-30 col-md-60">
+                            <input type="text" class="form-control" 
+                            placeholder="{%trans%}Введите email{%endtrans%}" name="email">
+                        </div>
+            
+                        <div class="form-group col-md-offset-30 col-md-60" >
+                            <button type="submit" class="btn btn-primary">{%trans%}Востановить{%endtrans%}</button>
+                        </div>
+
+            </form>
+        <iframe name="form_submit" class="hidden"></iframe>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+	<script type="text/javascript">
+	var page_lang='{{lang}}';
+	if(page_lang=='ru') page_lang='';
+	
+    $('iframe[name=form_submit]').on('load', function(){
+            var data = $(this).contents().text();
+            data = jQuery.parseJSON(data);
+            var error = $('#danger').hide();
+            var status = $('#success').hide();
+            if( data.error == true){
+                error.show().removeClass('hidden').text(data.text);
+            }else if(data.status == true) {
+            	status.show().removeClass('hidden').text(data.text);
+            	 $('#form').hide();
+            } else {
+                if(page_lang) window.location.href = "/"+page_lang+"/cabinet/";
+                    else window.location.href = "/cabinet/";
+            }
+        });
+	</script>
+{% endblock %}

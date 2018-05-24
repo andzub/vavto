@@ -1,0 +1,285 @@
+
+<div class="footer clearfix">
+    <div class="wrapper">
+        <div class="col-sm-60 no-padding">
+            <div class="logo-footer">
+                <a href="/"><img src="/frontend/public/img/general/logo-white.png"></a>
+            </div>
+        </div>
+        <div class="col-sm-60 no-padding clearfix">
+            <div class="phone"><a href="#">{{city.phone}}</a></div>
+        </div>
+        <div class="col-xs-120 no-padding">
+            <div class="line"></div>
+        </div>
+        <div class="col-md-20 col-sm-40 no-padding width-245">
+            <div class="socials">
+                <a href="#" class="vk">
+                    <img src="/frontend/public/img/general/vk.png">
+                </a>
+                <a href="#" class="fb">
+                    <img src="/frontend/public/img/general/fb.png">
+                </a>
+                <a href="#" class="ok">
+                    <img src="/frontend/public/img/general/ok.png">
+                </a>
+                <a href="#" class="tw">
+                    <img src="/frontend/public/img/general/tw.png">
+                </a>
+                <a href="#" class="youtube">
+                    <img src="/frontend/public/img/general/youtube.png">
+                </a>
+            </div>
+            <div class="address">
+                <div class="email">&nbsp;<!--info@v-avtoservis.ru--></div>
+            </div>
+            <div class="pay">
+                <h4>Способы оплаты</h4>
+                <div class="methods">
+                    <img src="/frontend/public/img/general/visa.png">
+                    <img src="/frontend/public/img/general/master-card.png">
+                    <img src="/frontend/public/img/general/maestro.png">
+                    <img src="/frontend/public/img/general/mir.png">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-20 col-sm-40 no-padding margin-left">
+            <div class="car-owner">
+                <h4>Автовладельцам</h4>
+                <ul>
+                    <li><a href="/vot-pochemu-u-nas-deshevle/">Почему ремонт у нас дешевле</a></li>
+                    <li><a href="#">Все сервисы</a></li>
+                    <li><a href="/sovety-avtovladelcam/">Советы по ремонту авто</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-20 col-sm-40 no-padding margin-left">
+            <div class="patrner-program">
+                <h4>Партнерские программы</h4>
+                <ul>
+                    <li><a href="/connection/">Подключить автосервис</a></li>
+                    <li><a href="/postavshikam-zapchastej/">Поставщикам запчастей</a></li>
+                    <li><a href="/avtomobil-nym-sajtam-i-blogeram/">Автомобильным сайтам</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-20 col-sm-40 no-padding margin-left">
+            <div class="info">
+                <h4>Информация</h4>
+                <ul>
+                    <li><a href="/rabota-s-yur-licami-i-avtoparkami/">Обслуживание автопарков</a></li>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="/pol-zovatel-skoe-soglashenie/">Пользовательское соглашение</a></li>
+                    <li><a href="#">Публичная оферта</a></li>
+                    <li><a href="/smi/" class="for-smi">Для СМИ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-20 col-sm-40 no-padding margin-left width-160">
+            <div class="cooperation">
+                <h4>Сотрудничество</h4>
+                <ul>
+                    <li><a href="/sale-franchise/">Открыть “В-Автосервис” в своём городе</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-20 col-sm-40 no-padding margin-left width-288">
+            <div class="mobile">
+                <h4>Мобильные приложения</h4>
+                <div class="mobile-app">
+                    <img src="/frontend/public/img/general/app-store.png">
+                    <img src="/frontend/public/img/general/google-play.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/frontend/public/plugins/general/slick/slick.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+    if( $('.slider-responsive').length > 0 ){
+
+        $('.slider-responsive').slick({
+            dots: false,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+
+    }
+
+    $('body').on('change','select[name=brand]',function () {
+
+        $('.select-models').find('select').hide();
+        $('#brand_' + $(this).val()).show();
+
+    });
+
+    $('body').on('change','select[name=category]',function () {
+
+        $('.select-work-type').find('select').hide();
+        $('#work_type_' + $(this).val()).show();
+
+    });
+
+    $('body').on('submit','#application',function () {
+
+        var form = $(this);
+        var error = $(this).find('.error').hide();
+        var button = form.find('button');
+        var button_text = button.text();
+
+        button.text('Отправка данных...');
+        button.attr('disabled',true);
+
+        $.ajax({
+            url: '/',
+            type: "POST",
+            data: $(this).serialize(),
+            success: function(data){
+
+                button.attr('disabled',false);
+                button.text(button_text);
+
+                if( data != 'success' ){
+
+                    error.text(data).show();
+
+                }else{
+                    form.fadeOut(function () {
+                        form.html('<div class="alert alert-success text-center">Ваша заявка отправлена!<br>В самое ближайшее время мы свяжемся с Вами!</div>');
+                        form.fadeIn();
+                    });
+                    //$("#successForm").modal('show');
+                }
+
+            }
+        });
+        return false;
+
+    });
+
+
+
+    $('body').on('submit','#application_connection',function () {
+
+        var form = $(this);
+        var error = $(this).find('.error').hide();
+        var button = form.find('button');
+        var button_text = button.text();
+
+        button.text('Отправка данных...');
+        button.attr('disabled',true);
+
+        $.ajax({
+            url: '/connection/',
+            type: "POST",
+            data: $(this).serialize(),
+            success: function(data){
+
+                button.attr('disabled',false);
+                button.text(button_text);
+
+                if( data != 'success' ){
+
+                    error.text(data).show();
+
+                }else{
+                    form.fadeOut(function () {
+                        form.html('<div class="alert alert-success text-center">Ваша заявка отправлена!<br>В самое ближайшее время мы свяжемся с Вами!</div>');
+                        form.fadeIn();
+                    });
+                    //$("#successForm").modal('show');
+                }
+
+            }
+        });
+        return false;
+
+    });
+
+
+
+    $('body').on('submit','#application_partner',function () {
+
+        var form = $(this);
+        var error = $(this).find('.error').hide();
+        var button = form.find('button');
+        var button_text = button.text();
+
+        button.text('Отправка данных...');
+        button.attr('disabled',true);
+
+        $.ajax({
+            url: '/connect-service/',
+            type: "POST",
+            data: $(this).serialize(),
+            success: function(data){
+
+                button.attr('disabled',false);
+                button.text(button_text);
+
+                if( data != 'success' ){
+
+                    error.text(data).show();
+
+                }else{
+                    form.fadeOut(function () {
+                        form.html('<div class="alert alert-success text-center">Ваша заявка отправлена!<br>В самое ближайшее время мы свяжемся с Вами!</div>');
+                        form.fadeIn();
+                    });
+                    //$("#successForm").modal('show');
+                }
+
+            }
+        });
+        return false;
+
+    });
+    
+    
+    $('.category-links a').click(function () {
+        $('html, body').animate({ scrollTop: $('#application').offset().top-50 }, 500);
+        return false;
+    });
+
+
+});
+</script>
+
+{{city.code_footer | raw}}
+
+<link rel="stylesheet" href="https://cdn.envybox.io/widget/cbk.css">
+<script type="text/javascript" src="https://cdn.envybox.io/widget/cbk.js?wcb_code=7514097db8045a6eb5716a7590eccee6" charset="UTF-8" async></script>
+</body>
+</html>

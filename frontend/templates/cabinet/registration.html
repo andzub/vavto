@@ -1,0 +1,66 @@
+{% extends "./general/include/main.html" %}
+
+{% block content %}
+    <div class="container" style="margin-bottom: 50px;">
+        <div class="row">
+            <h1 style="text-align: center;" >Регистрация</h1>
+            <br>
+            <div class="alert alert-danger" role="alert" style="display: none;"></div>
+            <form role="form" target="form_submit" method="POST">
+
+                <div class="form-group col-md-offset-30 col-md-60">
+
+                    <input type="text" class="form-control" name="email"
+                           id="email" placeholder="Введите email">
+                </div>
+
+                <div class="form-group col-md-offset-30 col-md-60">
+
+                    <input type="text" class="form-control" name="name"
+                           id="name" placeholder="Введите имя">
+                </div>
+
+                <div class="form-group col-md-offset-30 col-md-60">
+
+                    <input type="text" class="form-control" name="surname"
+                           id="surname" placeholder="Введите фамилию">
+                </div>
+
+                <div class="form-group col-md-offset-30 col-md-60">
+
+                    <input type="password" class="form-control" name="pass"
+                           id="pass" placeholder="Введите пароль">
+                </div>
+                <div class="form-group col-md-offset-30 col-md-60">
+
+                    <input type="password" class="form-control" name="pass_p"
+                           id="pass_p" placeholder="Подтвердите пароль">
+                </div>
+
+                <div class="form-group col-md-offset-30 col-md-60">
+                    <button type="submit" class="btn btn-primary">Регистрация</button>
+                </div>
+
+            </form>
+            <iframe name="form_submit" class="hidden"></iframe>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        $('iframe[name=form_submit]').on('load', function(){
+            var data = $(this).contents().text();
+            data = jQuery.parseJSON(data);
+
+            var error = $('.alert').hide();
+
+            if( data.error ){
+                error.show().removeClass('hidden').text(data.text);
+            }else{
+                window.location.href = "/cabinet/confirmation/";
+            }
+
+        });
+    </script>
+{% endblock %}

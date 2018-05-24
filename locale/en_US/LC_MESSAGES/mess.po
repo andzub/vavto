@@ -1,0 +1,517 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: vavtoservice\n"
+"POT-Creation-Date: 2018-04-03 10:13+0500\n"
+"PO-Revision-Date: 2018-04-10 22:58+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_EN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.6\n"
+
+msgid "Больше не нужно искать сервис, звонить и записываться!"
+msgstr "No more need to look for a service, call and record!"
+
+msgid "Найдем для Вас лучший автосервис за 7 минут."
+msgstr "We will find for you the best car service in 7 minutes."
+
+msgid "Получить честную стоимость ремонта"
+msgstr "Get an honest cost of repairs"
+
+msgid "Для клиентов нашего сайта цена на ремонт ниже до 60%"
+msgstr "For customers of our site, the price for repairs is lower to 60%"
+
+msgid "как это возможно?"
+msgstr "how is this possible?"
+
+msgid ""
+"Бесплатно подберем ближайший к Вам автосервис, который предложит лучшую цену "
+"и удобное время записи"
+msgstr ""
+"Free pick up the car service closest to you, which will offer the best price "
+"and convenient recording time"
+
+msgid "Экономим Ваше время и деньги"
+msgstr "We save your time and money"
+
+msgid "Вот как пройдет ваш ремонт"
+msgstr "Here's how to get your repair done"
+
+msgid "Выбираете <a href=\"#want-price\">проблему автомобиля</a>"
+msgstr "Choose the <a href=\"#want-price\">car problem</a>"
+
+msgid "Персональный мастер-консультант"
+msgstr "Personal Master Consultant"
+
+msgid "подберет Вам сервис в Вашем районе с самой низкой ценой"
+msgstr "will pick you up the service in your area with the lowest price"
+
+msgid "Запчасти"
+msgstr "Spare parts"
+
+msgid ""
+"мы привезем их точно ко времени начала ремонта. Вы можете привести свои "
+"запчасти"
+msgstr ""
+"we will bring them exactly to the time of the beginning of the repair. You "
+"can bring your spare parts"
+
+msgid "Ремонт"
+msgstr "Repairs"
+
+msgid ""
+"Вы приезжаете в сервис и ремонтируете автомобиль по честной цене на ранее "
+"оговоренных условиях. Ваш мастер-консультант следит за ремонтом вплоть до "
+"его окончания, гарантируя качество."
+msgstr ""
+"You come to the service and repair the car at an honest price on previously "
+"agreed terms. Your master consultant monitors the repair until its end, "
+"guaranteeing quality."
+
+msgid "Истории ремонта автомобиля"
+msgstr "Car repair history"
+
+msgid "Акции для любимых клиентов"
+msgstr "Promotions for your favorite customers"
+
+msgid "Более 150 услуг по ремонту и обслуживанию авто"
+msgstr "More than 150 auto repair and maintenance services"
+
+msgid ""
+"Выберите категорию, нужную услугу, расчитайте стоимость и запишитесь онлайн"
+msgstr ""
+"Select the category, the desired service, calculate the cost and make an "
+"online request"
+
+msgid "Выберите по марке"
+msgstr "Select by brand"
+
+msgid "Выбор по категории"
+msgstr "Select by category"
+
+msgid "Ваша заявка отправлена!<br>В самое ближайшее время мы свяжемся с Вами!"
+msgstr ""
+"Your application has been sent!<br>In the very near future we will contact "
+"you!"
+
+msgid "подробнее"
+msgstr "more info"
+
+msgid "Выберите город"
+msgstr "Select city"
+
+msgid "Почему ремонт доверяют нам?"
+msgstr "Why does the repair trust us?"
+
+msgid "Расчет стоимости ремонта"
+msgstr "Calculating the cost of repairs"
+
+msgid "Автовладельцам"
+msgstr "Car owners"
+
+msgid "Все марки авто"
+msgstr "All car brands"
+
+msgid "Почему ремонт у нас дешевле"
+msgstr "Why repairs are cheaper for us"
+
+msgid "Советы по ремонту авто"
+msgstr "Tips for car repair"
+
+msgid "Партнерские программы"
+msgstr "Affiliate Programs"
+
+msgid "Подключить автосервис"
+msgstr "Connect car service"
+
+msgid "Поставщикам запчастей"
+msgstr "Parts suppliers"
+
+msgid "Автомобильным сайтам"
+msgstr "Car sites"
+
+msgid "Информация"
+msgstr "Information"
+
+msgid "Обслуживание автопарков"
+msgstr "Vehicle fleet maintenance"
+
+msgid "Пользовательское соглашение"
+msgstr "User Agreement"
+
+msgid "Для СМИ"
+msgstr "For the media"
+
+msgid "Сотрудничество"
+msgstr "Collaboration"
+
+msgid "Открыть “В-Автосервис” в своём городе"
+msgstr "Open in your city"
+
+msgid "Произошла ошибка!"
+msgstr "An error occurred!"
+
+msgid "Рассчитать стоимость юридических услуг"
+msgstr "Calculate the cost of legal services"
+
+msgid "консультации бесплатно"
+msgstr "advice for free"
+
+msgid "Категория"
+msgstr "Category"
+
+msgid "Вид работ"
+msgstr "Type of work"
+
+msgid "Город"
+msgstr "City"
+
+msgid "Район или улица"
+msgstr "District or street"
+
+msgid "Опишите проблему"
+msgstr "Describe the problem"
+
+msgid "Ваше имя"
+msgstr "Your name"
+
+msgid "Пример"
+msgstr "Example"
+
+msgid "Мне удобно посетить сервис"
+msgstr "I find it convenient to visit the service"
+
+msgid "Получить лучшие предложения от сервисов!"
+msgstr "Get the best deals from the services!"
+
+#, fuzzy
+#| msgid ""
+#| "Я соглашаюсь с <a href=\"/pol-zovatel-skoe-soglashenie/\" target=\"_blank"
+#| "\">условиями обработки персональных данных</a>"
+msgid ""
+"Я соглашаюсь с <a href=\"pol-zovatel-skoe-soglashenie/\" target=\"_blank"
+"\">условиями обработки персональных данных</a>"
+msgstr ""
+"I agree to the <a href=\"/pol-zovatel-skoe-soglashenie/\" target=\"_blank"
+"\">personal data processing terms</a>"
+
+msgid "Рассчитать стоимость ремонта за 10 минут"
+msgstr "Calculate the cost of repair for 10 minutes"
+
+msgid "Марка"
+msgstr "Make"
+
+msgid "Модель"
+msgstr "Model"
+
+msgid "Год выпуска"
+msgstr "Year of issue"
+
+msgid "Вы можете прикрепить фотографию к заявке"
+msgstr "You can attach a photo to the application"
+
+msgid "Прикрепить фото"
+msgstr "Attach a photo"
+
+msgid "УЗНАЙТЕ САМУЮ НИЗКУЮ ЦЕНУ В СЕРВИСЕ РЯДОМ С ВАМИ.<br>ЭТО БЕСПЛАТНО.."
+msgstr ""
+"LEARN THE LOWEST PRICE IN THE SERVICE NEAR YOU. <br> THIS IS FREE OF "
+"CHARGE .."
+
+msgid "VIN-код"
+msgstr "VIN code"
+
+msgid "еще (не обязательные поля)"
+msgstr "more (optional fields)"
+
+msgid "Удобное время"
+msgstr "Convenient time"
+
+msgid "Рассчитать стоимость шиномонтажа за 10 минут"
+msgstr ""
+"Calculate the cost of mounting in 10 minutesCalculating the cost of repairs"
+
+msgid "Диаметр диска"
+msgstr "Diameter of the disk"
+
+#, fuzzy
+#| msgid "Все марки авто"
+msgid "Все марки"
+msgstr "All car brands"
+
+msgid "Нужна консультация?"
+msgstr "Need a consultation?"
+
+msgid "Перейти на главную"
+msgstr "Go to Main page"
+
+msgid "Упс! Страница не найдена."
+msgstr "Oops! Page not found."
+
+msgid "Другое"
+msgstr "Other"
+
+msgid "В каком районе найти сервис"
+msgstr "In which district to find the service"
+
+
+
+msgid "Вход"
+msgstr "SignIn"
+
+msgid "Регистрация"
+msgstr "SignUp"
+
+msgid "Выход"
+msgstr "LogOut"
+
+msgid "Кабинет"
+msgstr "Cabinet"
+
+
+msgid "Авторизация"
+msgstr "Login"
+
+msgid "Войти"
+msgstr "Go"
+
+msgid "Забыли пароль"
+msgstr "Forgot password?"
+
+
+msgid "Новый пароль"
+msgstr "New password"
+
+msgid "Повторите пароль"
+msgstr "Confirm password"
+
+msgid "Востановить"
+msgstr "Restore"
+
+msgid "Введите email"
+msgstr "Enter email"
+
+msgid "Введите имя"
+msgstr "Enter you name"
+
+msgid "Введите фамилию"
+msgstr "Enter you surname"
+
+
+msgid "Введите пароль"
+msgstr "Enter password"
+
+msgid "Востановление пароля"
+msgstr "Restore password"
+
+
+msgid "Москва"
+msgstr "Moskow"
+
+msgid "Я соглашаюсь с"
+msgstr "I agree with"
+
+msgid "условиями обработки персональных данных"
+msgstr "conditions of personal data processing"
+
+msgid "Введите название города"
+msgstr "Enter name of the city"
+
+
+
+##******************************************Личый кабинет клиента
+
+msgid "ДАННЫЕ КЛИЕНТА"
+msgstr "CUSTOMER DATA"
+
+msgid "ИСТОРИЯ ОБРАЩЕНИЙ"
+msgstr "HISTORY OF ORDERS"
+
+msgid "БОНУСНАЯ ПРОГРАМА"
+msgstr "BONUS PROGRAM"
+
+msgid "КАРТОЧКА ЗАЯВКИ"
+msgstr "ORDER CARD"
+
+msgid "ДАННЫЕ АВТОСЕРВИСА"
+msgstr "AUTOSERVICE DATA"
+
+msgid "НАСТРОЙКА ЦЕН"
+msgstr "PRICE SETUP"
+
+msgid "ФИКСИРОВАНЫЕ ЦЕНЫ НА ОСНОВНЫЕ РАБОТЫ"
+msgstr "FIXED PRICES FOR MAIN WORKS"
+
+msgid "назад"
+msgstr "back"
+
+msgid "редактировать"
+msgstr "edit"
+
+msgid "Редактировать"
+msgstr "Edit"
+
+msgid "Отчество"
+msgstr "Patronymic"
+
+msgid "Фамилия"
+msgstr "Surname"
+
+msgid "Сохранить"
+msgstr "Save"
+
+msgid "Ваш пароль"
+msgstr "You password"
+
+msgid "Сменить пароль"
+msgstr "Change password"
+
+msgid "ДОБАВИТЬ АВТО"
+msgstr "Add auto"
+
+msgid "Гос. номер (Х777ХХ199)"
+msgstr "State number (Х777ХХ199)"
+
+msgid "Резина (летняя)"
+msgstr "Rubber (summer)"
+
+msgid "Резина (зимняя)"
+msgstr "Rubber (winter)"
+
+msgid "ОСАГО (страховая компания)"
+msgstr "OSAGO (insurance company)"
+
+msgid "КАСКО (страховая компания)"
+msgstr "CASCO (insurance company)"
+
+msgid "Добавить"
+msgstr "Add"
+
+msgid "Выберите марку"
+msgstr "Select brand"
+
+msgid "Летняя"
+msgstr "Summer"
+
+msgid "Зимняя"
+msgstr "Winter"
+
+msgid "ОСАГО от: РЕСО Ганрантия"
+msgstr "OSAGO from: RESO Gunrantia"
+
+msgid "КАСКО от: ВА-Гарант"
+msgstr "CASCO from: VA-Garant"
+
+msgid "Выберите Модедь"
+msgstr "Select Model"
+
+
+msgid "Общая информация"
+msgstr "General information"
+
+msgid "Статус заявки"
+msgstr "Claim status"
+
+msgid "Статус"
+msgstr "Status"
+
+msgid "Дата заявки"
+msgstr "Claim date"
+
+msgid "Мне удобно подьехать"
+msgstr "I can drive up"
+
+msgid "Сервис"
+msgstr "Service"
+
+msgid "Проблема"
+msgstr "Problem"
+
+msgid "Контактное лицо"
+msgstr "Contact person"
+
+msgid "Имя"
+msgstr "Name"
+
+msgid "Телефон"
+msgstr "Phone number"
+
+msgid "Район"
+msgstr "District"
+
+msgid "Автомобиль"
+msgstr "Car"
+
+msgid "Выберите модель"
+msgstr "Choose a model"
+
+msgid "Год"
+msgstr "Year"
+
+msgid "Отзыв"
+msgstr "Feedback"
+
+msgid "Напишите отзыв"
+msgstr "Write a review"
+
+msgid "Финансы"
+msgstr "Finance"
+
+msgid "Стоимость ремонта"
+msgstr "Cost of repairs"
+
+msgid "Стоимость запчастей"
+msgstr "Cost of spare parts"
+
+msgid "Начислено бонусов"
+msgstr "Bonus points added"
+
+msgid "За Написание отзыва"
+msgstr "For Writing a Review"
+
+
+msgid "Вид ремонта"
+msgstr "Type of repair"
+
+msgid "Дата выпуска"
+msgstr "Release date"
+
+msgid "Гос. номер"
+msgstr "State number"
+
+msgid "ОСАГО до"
+msgstr "OSAGO before"
+
+msgid "ОСАГО от"
+msgstr "OSAGO from"
+
+msgid "КАСКО до"
+msgstr "CASCO before"
+
+msgid "КАСКО от"
+msgstr "CASCO from"
+
+msgid "БОНУСНЫЙ СЧЁТ"
+msgstr "BONUS ACCOUNT"
+
+msgid "бонусов"
+msgstr "bonuses"
+
+msgid "ПОТРАТИТЬ"
+msgstr "TO SPEND"
+
+msgid "КАК ПОЛУЧИТЬ БОНУСЫ, ЧТОБ РЕМОНТИРОВАТЬ АВТО БЕСПЛАТНО"
+msgstr "HOW TO GET BONUSES TO REPAIR THE AUTO FREE OF CHARGE"
+
+msgid "За каждого друга которого вы пригласите"
+msgstr "For each friend you invite"
+
+msgid "ПОЛУЧИТЬ"
+msgstr "GET"
+
+msgid "На ваш email отправлено письмо с подтверждением регистрации"
+msgstr "A confirmation email has been sent to your email"
+

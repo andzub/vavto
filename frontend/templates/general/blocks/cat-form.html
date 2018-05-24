@@ -1,0 +1,226 @@
+<h2>{%trans%}Рассчитать стоимость ремонта за 10 минут{%endtrans%}</h2>
+<div class="col-md-38 no-padding">
+    <div class="form2-img clearfix" {% if row.img %}style="background: url('{{row.img_min}}') 0 0 no-repeat;background-size: 100% 100%;"{% else %}style="background:#333;"{% endif %}></div>
+</div>
+<div class="col-md-79 no-padding col-md-offset-3">
+    <form action="" method="POST" id="application" enctype="multipart/form-data" class="form2">
+        <div class="col-lg-40 col-md-60 col-sm-120">
+            <div class="field">
+                <select name="brand" class="select2">
+                    <option selected value="0">{%trans%}Марка{%endtrans%}</option>
+                    {% for brand in brands %}
+                    <option value="{{brand.id}}">{{brand.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-40 col-md-60 col-sm-120">
+            <div class="field select-models">
+                <select name="model_0" id="brand_0" disabled class="select2">
+                    <option selected value="0">{%trans%}Модель{%endtrans%}</option>
+                </select>
+                {% for model_id,model in models %}
+                <select name="model_{{model_id}}" id="brand_{{model_id}}" style="display:none;" class="select2 select2-hidden">
+                    <option selected value="0">{%trans%}Модель{%endtrans%}</option>
+                    {% for row in model %}
+                    <option value="{{row.id}}">{{row.name}}</option>
+                    {% endfor %}
+                </select>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-40 col-md-60 col-sm-120">
+            <div class="field cfyear">
+                <select name="release_year" class="select2">
+                    <option selected>{%trans%}Год выпуска{%endtrans%}</option>
+                    {% for year in autoYears %}
+                    <option value="{{year}}">{{year}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-40 col-md-60 col-sm-120">
+            <div class="field">
+                <input name="vin" class='cfvin' type="text" placeholder="VIN-код">
+            </div>
+        </div>
+        <div class="col-lg-40 col-md-60 col-sm-120">
+            <div class="field">
+                <select name="category" class="select2">
+                    <option selected>{%trans%}Категория{%endtrans%}</option>
+                    {% for key,category in workCategory %}
+                    <option value="{{key}}">{{category}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-40 col-md-60 col-sm-120">
+            <div class="field select-work-type">
+                <select name="work_type_0" id="work_type_0" disabled class="select2">
+                    <option selected>{%trans%}Вид работ{%endtrans%}</option>
+                </select>
+                {% for work_id,work_type in workType %}
+                <select name="work_type_{{work_id}}" id="work_type_{{work_id}}" style="display:none;" class="select2 select2-hidden">
+                    <option selected>{%trans%}Вид работ{%endtrans%}</option>
+                    {% for id,name in work_type %}
+                    <option value="{{id}}">{{name}}</option>
+                    {% endfor %}
+                </select>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-40 col-md-60 col-sm-120">
+            <div class="field">
+                <select name="city" class='select2'>
+                    <option value="" disabled selected>{%trans%}Город{%endtrans%}</option>
+                    <option {% if authuser.gorod == "Астрахань" %}selected {% endif %} value="Астрахань">Астрахань</option>
+                    <option {% if authuser.gorod == "Барнаул" %}selected {% endif %} value="Барнаул">Барнаул</option>
+                    <option {% if authuser.gorod == "Белгород" %}selected {% endif %} value="Белгород">Белгород</option>
+                    <option {% if authuser.gorod == "Владивосток" %}selected {% endif %} value="Владивосток">Владивосток</option>
+                    <option {% if authuser.gorod == "Волгоград" %}selected {% endif %} value="Волгоград">Волгоград</option>
+                    <option {% if authuser.gorod == "Воронеж" %}selected {% endif %} value="Воронеж">Воронеж</option>
+                    <option {% if authuser.gorod == "Екатеринбург" %}selected {% endif %} value="Екатеринбург">Екатеринбург</option>
+                    <option {% if authuser.gorod == "Ижевск" %}selected {% endif %} value="Ижевск">Ижевск</option>
+                    <option {% if authuser.gorod == "Иркутск" %}selected {% endif %} value="Иркутск">Иркутск</option>
+                    <option {% if authuser.gorod == "Казань" %}selected {% endif %} value="Казань">Казань</option>
+                    <option {% if authuser.gorod == "Калининград" %}selected {% endif %} value="Калининград">Калининград</option>
+                    <option {% if authuser.gorod == "Кемерово" %}selected {% endif %} value="Кемерово">Кемерово</option>
+                    <option {% if authuser.gorod == "Киров" %}selected {% endif %} value="Киров">Киров</option>
+                    <option {% if authuser.gorod == "Краснодар" %}selected {% endif %} value="Краснодар">Краснодар</option>
+                    <option {% if authuser.gorod == "Красноярск" %}selected {% endif %} value="Красноярск">Красноярск</option>
+                    <option {% if authuser.gorod == "Курск" %}selected {% endif %} value="Курск">Курск</option>
+                    <option {% if authuser.gorod == "Липецк" %}selected {% endif %} value="Липецк">Липецк</option>
+                    <option {% if authuser.gorod == "Махачкала" %}selected {% endif %} value="Махачкала">Махачкала</option>
+                    <option {% if authuser.gorod == "Москва" %}selected {% endif %} value="Москва">Москва</option>
+                    <option {% if authuser.gorod == "Набережные Челны" %}selected {% endif %} value="Набережные Челны">Набережные Челны</option>
+                    <option {% if authuser.gorod == "Нижний Новгород" %}selected {% endif %} value="Нижний Новгород">Нижний Новгород</option>
+                    <option {% if authuser.gorod == "Нижний Тагил" %}selected {% endif %} value="Нижний Тагил">Нижний Тагил</option>
+                    <option {% if authuser.gorod == "Новокузнецк" %}selected {% endif %} value="Новокузнецк">Новокузнецк</option>
+                    <option {% if authuser.gorod == "Новосибирск" %}selected {% endif %} value="Новосибирск">Новосибирск</option>
+                    <option {% if authuser.gorod == "Омск" %}selected {% endif %} value="Омск">Омск</option>
+                    <option {% if authuser.gorod == "Оренбург" %}selected {% endif %} value="Оренбург">Оренбург</option>
+                    <option {% if authuser.gorod == "Пенза" %}selected {% endif %} value="Пенза">Пенза</option>
+                    <option {% if authuser.gorod == "Пермь" %}selected {% endif %} value="Пермь">Пермь</option>
+                    <option {% if authuser.gorod == "Ростов-на Дону" %}selected {% endif %} value="Ростов-на Дону">Ростов-на Дону</option>
+                    <option {% if authuser.gorod == "Рязань" %}selected {% endif %} value="Рязань">Рязань</option>
+                    <option {% if authuser.gorod == "Санкт-Петербург" %}selected {% endif %} value="Санкт-Петербург">Санкт-Петербург</option>
+                    <option {% if authuser.gorod == "Сочи" %}selected {% endif %} value="Сочи">Сочи</option>
+                    <option {% if authuser.gorod == "Тверь" %}selected {% endif %} value="Тверь">Тверь</option>
+                    <option {% if authuser.gorod == "Тольятти" %}selected {% endif %} value="Тольятти">Тольятти</option>
+                    <option {% if authuser.gorod == "Томск" %}selected {% endif %} value="Томск">Томск</option>
+                    <option {% if authuser.gorod == "Тула" %}selected {% endif %} value="Тула">Тула</option>
+                    <option {% if authuser.gorod == "Тюмень" %}selected {% endif %} value="Тюмень">Тюмень</option>
+                    <option {% if authuser.gorod == "Улан-Удэ" %}selected {% endif %} value="Улан-Удэ">Улан-Удэ</option>
+                    <option {% if authuser.gorod == "Ульяновск" %}selected {% endif %} value="Ульяновск">Ульяновск</option>
+                    <option {% if authuser.gorod == "Уфа" %}selected {% endif %} value="Уфа">Уфа</option>
+                    <option {% if authuser.gorod == "Хабаровск" %}selected {% endif %} value="Хабаровск">Хабаровск</option>
+                    <option {% if authuser.gorod == "Чебоксары" %}selected {% endif %} value="Чебоксары">Чебоксары</option>
+                    <option {% if authuser.gorod == "Челябинск" %}selected {% endif %} value="Челябинск">Челябинск</option>
+                    <option {% if authuser.gorod == "Ярославль" %}selected {% endif %} value="Ярославль">Ярославль</option>
+                    <!--<option value="{{city.name}}">{{city.name}}</option>-->
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-40 col-md-60 col-sm-120">
+            <div class="field">
+                <input name="address" type="text" placeholder="{%trans%}Район или улица{%endtrans%}">
+            </div>
+        </div>
+      <div class="col-lg-40 col-md-60 col-sm-120">
+        <div class="field">
+          <input name="name"  value="{{authuser.name}}"  type="text" placeholder="{%trans%}Ваше имя{%endtrans%}">
+        </div>
+      </div>
+        <div class="col-xs-120">
+            <div class="field width-100">
+                <input name="problem" type="text" class="width-100" placeholder="{%trans%}Опишите проблему{%endtrans%}">
+            </div>
+        </div>
+        <div class="col-lg-40 col-md-60 col-sm-120">
+            <div class="field">
+                <input type="tel" name="phone" value="{{authuser.tel}}" placeholder="+7 (900) 123-45-67" required pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$" title="Пример: +792853001020">
+            </div>
+        </div>
+        <div class="col-lg-40 col-md-60 col-sm-120">
+            <div class="field">
+                <input name="email" value="{{authuser.email}}" type="email" placeholder="Email" required pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})" title="Пример: example@mail.ru">
+            </div>
+        </div>
+        <div class="col-lg-40 col-md-60 col-sm-120">
+            <div class="add-photo">
+                <a href="#" data-toggle="tooltip" title="{%trans%}Вы можете прикрепить фотографию к заявке{%endtrans%}">
+                    <img src="/frontend/public/img/general/tooltip.png">
+                    <span>{%trans%}Прикрепить фото{%endtrans%}</span>
+                    <img src="/frontend/public/img/general/add-photo-plus.png">
+                </a>
+                <input type="file" name="files[]" multiple class="hidden">
+                <div class="images">
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-120">
+            <div class="time">
+                <span>{%trans%}Мне удобно посетить сервис{%endtrans%}</span>
+                <input name="date" id="date_c2" type="date">
+                <span>{%trans%}в{%endtrans%}</span>
+                <input name="time" type="time">
+            </div>
+
+            <div class="get-offer">
+                <button onclick="yaCounter{{city.yaCounter}}.reachGoal ('otpravka'); return true;">{%trans%}Получить лучшие предложения от сервисов!{%endtrans%}</button>
+            </div>
+            <div class="error alert alert-danger" style="display:none;"></div>
+            <div class="agree">
+                <label>
+                    <input type="checkbox" required name="rules">
+                    <span>{%trans%}Я соглашаюсь с{%endtrans%} <a href="pol-zovatel-skoe-soglashenie/" target="_blank">{%trans%}условиями обработки персональных данных{%endtrans%}</a></span>
+                </label>
+            </div>
+        </div>
+        <input type="hidden" name="ajax" value="true">
+        <input type="hidden" name="stock" value="Нет">
+        <div class="clearfix"></div>
+    </form>
+</div>
+<script type="text/javascript">document.getElementById('date_c2').valueAsDate = new Date();</script>
+
+
+<script type="text/javascript">
+
+    {{myavto|raw}}
+    $(document).ready(function() {
+        $('body').on("change",'.select-models select', function(e) {
+                //тут проверка на наличие авто
+                    var id_model= $(this).val();
+                    //найти в масиве моих авто нужную инфу
+                    if(id_model)
+                    {
+                        var mod = myavto[id_model];
+                        var vin='';
+                        var year='';
+                        if(mod && id_model)
+                        {
+                            vin = mod.vin;
+                            year = mod.year;
+                        }
+                        
+                        if(year && year>0) // показать год
+                        {
+                            $('.cfyear select').val(year);
+                            $('.cfyear .select2-selection__rendered').html(year);
+                            $('.cfyear .select2-selection__rendered').attr('title',year);
+                        }
+                        else
+                        {
+                            $('.cfyear select').val('');
+                            $('.cfyear .select2-selection__rendered').html('Год выпуска');
+                            $('.cfyear .select2-selection__rendered').attr('title','Год выпуска');
+                        }
+                        if(vin) // показать вин
+                            $('.cfvin').val(vin);
+                        else $('.cfvin').val('');
+
+                    }
+        });
+    });
+</script>

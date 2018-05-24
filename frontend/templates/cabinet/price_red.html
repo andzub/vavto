@@ -1,0 +1,469 @@
+{% extends "./general/include/main.html" %}
+
+
+{% block head %}
+    <link href="/frontend/public/css/cabinet/auto.css" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+<div class="container-fluid hesers">
+    <a href="{{langlink}}/cabinet/index/bonus/">{%trans%}ДАННЫЕ АВТОСЕРВИСА{%endtrans%}</a> |
+    <a href="{{langlink}}/cabinet/index/history/">{%trans%}ИСТОРИЯ ОБРАЩЕНИЙ{%endtrans%}</a>  | <b>{%trans%}НАСТРОЙКА ЦЕН{%endtrans%}</b>
+</div>
+
+
+    
+<div class="container bottom">
+
+    <div class="row">
+        <div class="silca col-md-120" style="margin-top: 40px;">
+            <a style="font-size: 16px;" class="previous" href="{{langlink}}/cabinet/">← {%trans%}назад{%endtrans%}</a> |
+            <b>{%trans%}ФИКСИРОВАНЫЕ ЦЕНЫ НА ОСНОВНЫЕ РАБОТЫ{%endtrans%}</b>
+        </div>
+
+            <div class="col-md-120  " ><!-- col-md-offset-10 -->
+                <div class="row">
+                    <div class="col-md-30" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix add_auto">
+                            <div class="thumbnail_head" >
+                                <h4 class="addauto">ДОБАВИТЬ УСЛУГУ</h4>
+                            </div>
+                            <div class="col-md-120">
+                                <div class="form-group clearfix conteiner_add ">
+                                    <select name="" id="" class="form-control">
+                                        <option value="">Услуга</option>
+                                    </select>
+                                </div>
+                                <div class="form-group clearfix conteiner_add ">
+                                    <select multiple name="hero[]"" class="form-control js-example-brend">
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn_auto_add">Добавить</button>
+                        </div>
+                    </div>
+                    <div class="col-md-30" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix add_auto">
+                            <div class="thumbnail_head" >
+                                <img src="/frontend/public/img/cabinet/langrover.png" class="audi_logo" alt="">
+                                <p class="title_auto">Land Rover</p>
+                                <p class="markaauto">Замена передних колодок</p>
+                            </div>
+                            <table class="table_price">
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">Disciveri II
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">Disciveri III
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">Disciveri IV
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">Defender
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class="btn btn-primary btn_auto_add">Сохранить</button>
+                        </div>
+                    </div>
+                    <div class="col-md-30" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix add_auto">
+                            <div class="thumbnail_head" >
+                                <img src="/frontend/public/img/cabinet/audi_logo.png" class="audi_logo" alt="">
+                                <p class="title_auto">Audi</p>
+                                <p class="markaauto">Замена передних колодок</p>
+                            </div>
+                            <table class="table_price">
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">A3
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">A4
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">A5
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">A6
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">A7
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">Q3
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">Q5
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">Q7
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class="btn btn-primary btn_auto_add">Сохранить</button>
+                        </div>
+                    </div>
+                    <div class="col-md-30" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix add_auto">
+                            <div class="thumbnail_head" >
+                                <h4 class="addauto">ШИНОМОНТАЖ</h4>
+                            </div>
+                            <table class="table_price">
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">R14
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">R15
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">R16
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">R17
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="text" class="form-control form_table"> руб.
+                                    </td>
+                                </tr>
+                                 <button class="btn btn-primary btn_auto_add">Сохранить</button>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="silca col-md-120" style="margin-top: 10px;">
+                <b>РАБОТЫ, ЦЕНЫ КОТОРЫХ ЗАРАНЕЕ НЕ ИЗВЕСТНЫ </b> 
+                <p style="margin-top: 20px;">
+                    ремонт двигателя, ремонт ходовой, 
+                    ремонт АКПП, кузовной ремонт, покраска, 
+                    электрика
+                </p>
+            </div>
+
+            <div class="col-md-120  " >
+                <div class="row">
+                    <div class="col-md-30" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix add_auto">
+                            <div class="thumbnail_head" >
+                                <h4 class="addauto">ДОБАВИТЬ УСЛУГУ</h4>
+                            </div>
+                            <div class="col-md-120">
+                                <div class="form-group clearfix conteiner_add ">
+                                    <select name="" id="" class="form-control">
+                                        <option value="">Услуга</option>
+                                    </select>
+                                </div>
+                                <div class="form-group clearfix conteiner_add ">
+                                    <select name="" id="" class="form-control">
+                                        <option value="">Марка</option>
+                                    </select>
+                                </div>
+                                 <div class="form-group clearfix conteiner_add ">
+                                    <select name="" id="" class="form-control">
+                                        <option value="">Модель</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn_auto_add">Добавить</button>
+                        </div>
+                    </div>
+                    <div class="col-md-30" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix add_auto">
+                            <div class="thumbnail_head" >
+                                <img src="/frontend/public/img/cabinet/langrover.png" class="audi_logo" alt="">
+                                <p class="title_auto">Land Rover</p>
+                                <p class="markaauto">Ремонт двигателя</p>
+                            </div>
+                            <table class="table_price">
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">Disciveri II
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">Disciveri III
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">Disciveri IV
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">Defender
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class="btn btn-primary btn_auto_add">Сохранить</button>
+                        </div>
+                    </div>
+                    <div class="col-md-30" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix add_auto">
+                            <div class="thumbnail_head" >
+                                <img src="/frontend/public/img/cabinet/audi_logo.png" class="audi_logo" alt="">
+                                <p class="title_auto">Audi</p>
+                                <p class="markaauto">Ремонт двигателя</p>
+                            </div>
+                            <table class="table_price">
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">A3
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">A4
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">A5
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">A6
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">A7
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                            <button class="btn btn-primary btn_auto_add">Сохранить</button>
+
+                        </div>
+                    </div>
+                    <div class="col-md-30" style="margin-bottom:30px;">
+                        <div class="thumbnail no-padding clearfix add_auto">
+                            <div class="thumbnail_head" >
+                                <img src="/frontend/public/img/cabinet/audi_logo.png" class="audi_logo" alt="">
+                                <p class="title_auto">Audi</p>
+                                <p class="markaauto">Ремонт АКПП</p>
+                            </div>
+                            <table class="table_price">
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">A3
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">A4
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">A5
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">A6
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">A7
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">Q3
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">Q5
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <img src="/frontend/public/img/cabinet/close.png">Q7
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <input type="checkbox"  >
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class="btn btn-primary btn_auto_add">Сохранить</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+           
+
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block script %}
+<script type="text/javascript">
+    var selct1 = false; 
+    $(document).ready(function() {
+        $('.js-example-brend').select2({
+            placeholder:"Выберите марку",
+            teme:"classic",
+            ajax: {
+            delay: 250,
+            type: 'POST',
+            data: function (params) {
+                      params.q=params.term;
+                      return params;
+            },
+            url: '/ajax/car/brend/',
+            dataType: 'json',
+            processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                    text: item.name,
+                                    id: item.id
+                            };
+                        })
+                    };
+                }
+            }
+        });
+    });
+</script>
+
+{% endblock %}

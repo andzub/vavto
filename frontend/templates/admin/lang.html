@@ -1,0 +1,78 @@
+{% extends "admin/include/admin.html" %}
+{% set active_menu = 'lang' %}
+{% block content %}
+<style>
+body.loading *{cursor: wait;}
+
+</style>
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="page-title">Языки</h4>
+            <div class="pull-right" style="margin-top:-55px;">
+                <a href="/admin/htmlblock/" class="btn btn-primary">&larr; назад</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <table class="table table-responsive table-striped m-0">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Обозначение</th>
+                        <th class="text-center">Локаль</th>
+                        <th class="text-center">Название</th>
+                        <th class="text-center">Метка времени последнего изменения</th>
+                        <th class="text-center"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for l in langs %}
+                    <tr class="text-center">
+                        <td class="sname">{{l.sname}}</td>
+                        <td>{{l.locale}}</td>
+                        <td>{{l.title}}</td>
+                        <td class="mod_time">{{l.mod_time}}</td>
+                        <td>
+                            <div class="btn btn-primary mo_update">Обновить файл перевода</div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="show_message" style="display: none;"></div>
+{% endblock %}
+
+{% block script %}
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $(document).on('click','.mo_update',function () {
+      var $tr=$(this).closest('tr');
+      var sname= $tr.find('.sname').text();
+      $('body').addClass('loading');
+      $.post('/admin/lang/ajax_mo_update/',{sname:sname,ajax:true}).done(function (res) {
+        if(res==='ok'){
+          location.reload();
+        }
+      })
+      .always(function () {
+        $('body').removeClass('loading');
+      });
+    });
+
+    function showMessage(mess){
+      $('#show_message').html(mess);
+      $( "#show_message" ).fadeIn( 1000, function() {
+        $( "#show_message" ).fadeOut(2000);
+      });
+    }
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,218 @@
+{% extends "include/main.html" %}
+
+{% set title = '«В-автосервис» — АКБ' %}
+{% set description = 'Подбор АКБ' %}
+
+{% block content %}
+    <div class="info title battery clearfix">
+        <div class="wrapper clearfix">
+            <div class="col-xs-120">
+                <h1>АКБ для Вашего автомобиля</h1>
+            </div>
+        </div>
+    </div>
+    <div class="info form clearfix">
+        <div class="wrapper clearfix">
+            <div class="col-xs-120">
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option>Марка</option>
+                            <option>Марка</option>
+                            <option>Марка</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option>Длина, мм</option>
+                            <option>Длина, мм</option>
+                            <option>Длина, мм</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option>Ширина, мм</option>
+                            <option>Ширина, мм</option>
+                            <option>Ширина, мм</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option>Высота, мм</option>
+                            <option>Высота, мм</option>
+                            <option>Высота, мм</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option>Ёмкость А/ч (от)</option>
+                            <option>Ёмкость А/ч (от)</option>
+                            <option>Ёмкость А/ч (от)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option>Ёмкость А/ч (до)</option>
+                            <option>Ёмкость А/ч (до)</option>
+                            <option>Ёмкость А/ч (до)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option>Полярность</option>
+                            <option>Полярность</option>
+                            <option>Полярность</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option>Тип корпуса</option>
+                            <option>Тип корпуса</option>
+                            <option>Тип корпуса</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <input type="text" placeholder="Цена (от)">
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <input type="text" placeholder="Цена (до)">
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="group">
+                        <input type="checkbox">
+                        <label>Бесплатная доставка</label>
+                    </div>
+                    <div class="group">
+                        <input type="checkbox">
+                        <label>Бесплатная доставка</label>
+                    </div>
+                </div>
+                <div class="col-xs-120">
+                    <img src="/frontend/public/img/general/blue-gray-line.png">
+                    <div class="get-offer">
+                        <a href="#">Искать!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="car-services tires battery clearfix">
+        <div class="wrapper clearfix">
+            <div class="col-md-60 no-padding">
+                <div class="info clearfix">
+                    <img src="/frontend/public/img/general/battery.png">
+                    <div class="stars">
+                        <span class="count">5</span>
+                        <input class="stars star-4" id="star-4" type="radio" name="reviewStars"/>
+                        <label title="gorgeous" for="star-4"></label>
+
+                        <input class="stars star-3" id="star-3" type="radio" name="reviewStars"/>
+                        <label title="good" for="star-3"></label>
+
+                        <input class="stars star-2" id="star-2" type="radio" name="reviewStars"/>
+                        <label title="regular" for="star-2"></label>
+
+                        <input class="stars star-1" id="star-1" type="radio" name="reviewStars"/>
+                        <label title="poor" for="star-1"></label>
+
+                        <input class="stars star-0" id="star-0" type="radio" name="reviewStars"/>
+                        <label title="bad" for="star-0"></label>
+                    </div>
+                    <div class="views">
+                        <img src="/frontend/public/img/general/views.png">
+                        <span>Отзывы: 26</span>
+                    </div>
+                    <div class="name">AlphaLINE 44R</div>
+                    <div class="address">Описание описание описание описание описание описание описание описание описание описание описание описание описание</div>
+                    <a href="#" class="see-deal">Посмотреть предложения</a>
+                </div>
+            </div>
+            <div class="col-md-60 no-padding">
+                <div class="text-view">
+                    <div class="block">
+                        <a class="arrow-left">
+                            <img src="/frontend/public/img/general/arrow-left.png">
+                        </a>
+                        <div class="comment">
+                            <div class="name">Владими Супрун</div>
+                            <span class="value">(оценка: 4)</span>
+                            <div class="auto">Nokian Hakkapelita 5</div>
+                            <div class="text">Норм резина, дорогу держит отлично. В меру шумная.</div>
+                        </div>
+                        <a class="arrow-right">
+                            <img src="/frontend/public/img/general/arrow-right.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-60 no-padding">
+                <div class="info clearfix">
+                    <img src="/frontend/public/img/general/battery.png">
+                    <div class="stars">
+                        <span class="count">5</span>
+                        <input class="stars star-4" id="star-4" type="radio" name="reviewStars"/>
+                        <label title="gorgeous" for="star-4"></label>
+
+                        <input class="stars star-3" id="star-3" type="radio" name="reviewStars"/>
+                        <label title="good" for="star-3"></label>
+
+                        <input class="stars star-2" id="star-2" type="radio" name="reviewStars"/>
+                        <label title="regular" for="star-2"></label>
+
+                        <input class="stars star-1" id="star-1" type="radio" name="reviewStars"/>
+                        <label title="poor" for="star-1"></label>
+
+                        <input class="stars star-0" id="star-0" type="radio" name="reviewStars"/>
+                        <label title="bad" for="star-0"></label>
+                    </div>
+                    <div class="views">
+                        <img src="/frontend/public/img/general/views.png">
+                        <span>Отзывы: 26</span>
+                    </div>
+                    <div class="name">AlphaLINE 44R</div>
+                    <div class="address">Описание описание описание описание описание описание описание описание описание описание описание описание описание</div>
+                    <a href="#" class="see-deal">Посмотреть предложения</a>
+                </div>
+            </div>
+            <div class="col-md-60 no-padding">
+                <div class="text-view">
+                    <div class="block">
+                        <a class="arrow-left">
+                            <img src="/frontend/public/img/general/arrow-left.png">
+                        </a>
+                        <div class="comment">
+                            <div class="name">Владими Супрун</div>
+                            <span class="value">(оценка: 4)</span>
+                            <div class="auto">Nokian Hakkapelita 5</div>
+                            <div class="text">Норм резина, дорогу держит отлично. В меру шумная.</div>
+                        </div>
+                        <a class="arrow-right">
+                            <img src="/frontend/public/img/general/arrow-right.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

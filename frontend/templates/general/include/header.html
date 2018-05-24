@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>«В-автосервис» — все автосервисы города на одном сайте. Честная стоимость ремонта и запись в сервис без очереди.</title>
+    <link href="/frontend/public/css/general/bootstrap.min.css" rel="stylesheet">
+    <link href="/frontend/public/css/general/style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+    <meta name="description" content="">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter47014269 = new Ya.Metrika({
+                    id:47014269,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/47014269" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<div class="header">
+    <div class="header-top">
+        <div class="wrapper clearfix">
+            <div class="col-sm-23 no-padding">
+                <div class="city"><a href="#">Москва ▼</a></div>
+            </div>
+            <div class="col-sm-4 no-padding">
+                <div class="vertical-line">
+                    <img src="/frontend/public/img/general/vertical-line.png">
+                </div>
+            </div>
+            <div class="col-sm-40 no-padding">
+                <div class="phone">
+                    <a href="#">{{city.phone}}</a>
+                </div>
+            </div>
+            <!--<div class="col-sm-52 no-padding">
+                <div class="log-in">
+                    <a href="#">Вход</a>&nbsp;&nbsp;|&nbsp;
+                    <a href="#">Регистрация</a>
+                </div>
+            </div>-->
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="wrapper clearfix">
+            <div class="col-md-33 col-sm-50 no-padding">
+                <div class="logo">
+                    <a href="/"><img src="/frontend/public/img/general/logo.png"></a>
+                </div>
+            </div>
+            <div class="col-md-30 col-sm-40">
+                <div class="trust">
+                    <a href="/pochemu-remont-doveryayut-nam/">Почему ремонт доверяют нам?</a>
+                </div>
+            </div>
+            <div class="col-md-30 col-sm-15">
+                <div class="services">
+                    <a href="/services/">Услуги</a>
+                </div>
+            </div>
+            <div class="col-md-27 col-sm-15">
+                <div class="calculation">
+                    <a href="#want-price" class="get-price">Расчет стоимости ремонта</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

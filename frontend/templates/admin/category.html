@@ -1,0 +1,30 @@
+{% extends "admin/include/admin.html" %}
+
+{% set active_menu = 'category' %}
+
+{% block content %}
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="page-title">Категории</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <form action="" method="POST">
+
+                    {% if success %}
+                    <div class="alert alert-success">Категории успешно сохранены.</div>
+                    {% endif %}
+
+                    <div class="form-group">
+                        <textarea name="category" class="form-control" rows="25">{{category}}</textarea>
+                    </div>
+                    <button class="btn btn-success">Сохранить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

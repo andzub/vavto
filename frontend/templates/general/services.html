@@ -1,0 +1,151 @@
+{% extends "include/main-services.html" %}
+
+{% set title = '«В-автосервис» — услуги' %}
+{% set description = 'Подай заявку в ближайший автосервис на нужную Вам услугу' %}
+
+{% block content %}
+    <div class="our-services">
+        <div class="wrapper clearfix">
+            <div class="col-lg-30 col-md-40 col-sm-60 no-padding">
+                <ul>
+                    <li><a href="#">Автоюрист</a></li>
+                    <li><a href="#">Диагностика</a></li>
+                    <li><a href="#">Дополнительное оборудование</a></li>
+                    <li><a href="#">Замена аккумулятора</a></li>
+                    <li><a href="#">Защитные плёнки</a></li>
+                    <li><a href="#">Кузовные работы</a></li>
+                    <li><a href="#">Масло, жидкости, фильтры</a></li>
+                    <li><a href="#">Мойка, химчистка</a></li>
+                    <li><a href="#">Подвеска</a></li>
+                    <li><a href="#">Покупка резины</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-30 col-md-40 col-sm-60 no-padding">
+                <ul>
+                    <li><a href="#">Полировка, уход</a></li>
+                    <li><a href="#">Сложный агрегатный ремонт</a></li>
+                    <li><a href="#">Стёкла, фары</a></li>
+                    <li><a href="#">Техническое обслуживание</a></li>
+                    <li><a href="#">Тонировка</a></li>
+                    <li><a href="#">Тормозная система</a></li>
+                    <li><a href="#">Трансмиссия</a></li>
+                    <li><a href="#">Шиномонтаж</a></li>
+                    <li><a href="#">Электрика</a></li>
+                    <li><a href="#" class="other-services">Другие услуги</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-30 col-md-40 col-sm-60 no-padding">
+                <ul class="under-menu">
+                    <li><a href="#">Диагностика АКПП <span>►</span></a></li>
+                    <li><a href="#">Диагностика кондиционера <span>►</span></a></li>
+                    <li><a href="#">Диагностика подвески <span>►</span></a></li>
+                    <li><a href="#">Диагностика тормозной системы <span>►</span></a></li>
+                    <li><a href="#">Заправка кондиционера <span>►</span></a></li>
+                    <li><a href="#">Комплексная диагностика <span>►</span></a></li>
+                    <li><a href="#">Компьютерная диагностика <span>►</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="want-price clearfix">
+        <div class="wrapper clearfix">
+            <div class="col-md-120">
+                {% include 'blocks/index-form.html' %}
+            </div>
+        </div>
+    </div>
+    <div class="reviews services clearfix">
+        <div class="wrapper">
+            <div class="col-xs-120 no-padding">
+                <h2>Отзывы о работе “В-Автосервис”</h2>
+                <div class="block clearfix">
+                    <a href="#" class="left">
+                        <img src="/frontend/public/img/general/arrow-left.png">
+                    </a>
+                    <div class="col-sm-40">
+                        <div class="comment">
+                            <div class="name">Фёдор Хлебов</div>
+                            <div class="stars">
+                                <span class="count">5</span>
+                                <input class="stars star-4" id="star-4" type="radio" name="reviewStars"/>
+                                <label title="gorgeous" for="star-4"></label>
+
+                                <input class="stars star-3" id="star-3" type="radio" name="reviewStars"/>
+                                <label title="good" for="star-3"></label>
+
+                                <input class="stars star-2" id="star-2" type="radio" name="reviewStars"/>
+                                <label title="regular" for="star-2"></label>
+
+                                <input class="stars star-1" id="star-1" type="radio" name="reviewStars"/>
+                                <label title="poor" for="star-1"></label>
+
+                                <input class="stars star-0" id="star-0" type="radio" name="reviewStars"/>
+                                <label title="bad" for="star-0"></label>
+                            </div>
+                            <div class="date">12.10.2017 14:32</div>
+                            <div class="text">
+                                Прекрасная, слаженная работа сервиса и личного менеджера. Вовремя перезванивают, работу выполнили качественно и быстро. Если понадобится какой-либо ремонт, всегда буду обращаться.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-40">
+                        <div class="comment">
+                            <div class="name">Фёдор Хлебов</div>
+                            <div class="stars">
+                                <span class="count">5</span>
+                                <input class="stars star-4" id="star-4" type="radio" name="reviewStars"/>
+                                <label title="gorgeous" for="star-4"></label>
+
+                                <input class="stars star-3" id="star-3" type="radio" name="reviewStars"/>
+                                <label title="good" for="star-3"></label>
+
+                                <input class="stars star-2" id="star-2" type="radio" name="reviewStars"/>
+                                <label title="regular" for="star-2"></label>
+
+                                <input class="stars star-1" id="star-1" type="radio" name="reviewStars"/>
+                                <label title="poor" for="star-1"></label>
+
+                                <input class="stars star-0" id="star-0" type="radio" name="reviewStars"/>
+                                <label title="bad" for="star-0"></label>
+                            </div>
+                            <div class="date">12.10.2017 14:32</div>
+                            <div class="text">
+                                Прекрасная, слаженная работа сервиса и личного менеджера. Вовремя перезванивают, работу выполнили качественно и быстро. Если понадобится какой-либо ремонт, всегда буду обращаться.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-40">
+                        <div class="comment">
+                            <div class="name">Фёдор Хлебов</div>
+                            <div class="stars">
+                                <span class="count">5</span>
+                                <input class="stars star-4" id="star-4" type="radio" name="reviewStars"/>
+                                <label title="gorgeous" for="star-4"></label>
+
+                                <input class="stars star-3" id="star-3" type="radio" name="reviewStars"/>
+                                <label title="good" for="star-3"></label>
+
+                                <input class="stars star-2" id="star-2" type="radio" name="reviewStars"/>
+                                <label title="regular" for="star-2"></label>
+
+                                <input class="stars star-1" id="star-1" type="radio" name="reviewStars"/>
+                                <label title="poor" for="star-1"></label>
+
+                                <input class="stars star-0" id="star-0" type="radio" name="reviewStars"/>
+                                <label title="bad" for="star-0"></label>
+                            </div>
+                            <div class="date">12.10.2017 14:32</div>
+                            <div class="text">
+                                Прекрасная, слаженная работа сервиса и личного менеджера. Вовремя перезванивают, работу выполнили качественно и быстро. Если понадобится какой-либо ремонт, всегда буду обращаться.
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="right">
+                        <img src="/frontend/public/img/general/arrow-right.png">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

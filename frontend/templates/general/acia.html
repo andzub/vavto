@@ -1,0 +1,29 @@
+{% extends "include/main.html" %}
+
+{% block head %}
+	<link href="/frontend/public/css/general/acii.css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<div class="main_block">
+
+	<h1  >Акции и подарки для наших автовладельцев</h1>
+</div>
+    <div class="wrapper">
+    	<div id="conext" class="container-fluid">
+			<div class="row">
+				<div class="col-md-120"><h1 class="zagol" style="text-align: center;">{{ rows.title }}</h1></div>
+			</div>
+			<div class="row">
+				<div class="col-md-120">
+					<p><img style="height: 200px;" src="{{ rows.img }}" alt=""></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-120 description">
+					<p>{{ rows.description | raw  }}</p>
+				</div>
+			</div>
+		</div>	
+    </div>
+{% endblock %}

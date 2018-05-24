@@ -1,0 +1,50 @@
+{% extends "./general/include/main.html" %}
+
+{% block content %}
+<div class="container" style="margin-bottom: 50px;">
+    <div class="row">
+        <h1 style="text-align: center;" >{%trans%}Авторизация{%endtrans%}</h1>
+        <br>
+        <div class="alert alert-danger col-md-offset-20 col-md-80" role="alert" 
+        style="display: none;"></div>
+            <form role="form"  method="POST" target="form_submit" > <!--  -->
+        
+                        <div class="form-group col-md-offset-30 col-md-60">
+                            <input type="text" class="form-control" 
+                            placeholder="{%trans%}Введите email{%endtrans%}" name="email">
+                        </div>
+                        
+                        <div class="form-group col-md-offset-30 col-md-60">
+                            <input type="password" class="form-control" 
+                            placeholder="{%trans%}Введите пароль{%endtrans%}" name="pass">
+                        </div>
+            
+                        <div class="form-group col-md-offset-30 col-md-60" >
+                            <button type="submit" class="btn btn-primary">{%trans%}Войти{%endtrans%}</button>
+                            <a href="{{langlink}}/cabinet/passresset/" class="btn btn-default" style="float:right;">{%trans%}Забыли пароль{%endtrans%}</a>
+                        </div>
+
+            </form>
+        <iframe name="form_submit" class="hidden"></iframe>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+	<script type="text/javascript">
+	var page_lang='{{lang}}';
+	if(page_lang=='ru') page_lang='';
+	
+    $('iframe[name=form_submit]').on('load', function(){
+            var data = $(this).contents().text();
+            data = jQuery.parseJSON(data);
+            var error = $('.alert').hide();
+            if( data.error ){
+                error.show().removeClass('hidden').text(data.text);
+            }else{
+                if(page_lang) window.location.href = "/"+page_lang+"/cabinet/";
+                    else window.location.href = "/cabinet/";
+            }
+        });
+	</script>
+
+{% endblock %}

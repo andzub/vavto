@@ -1,0 +1,219 @@
+{% extends "admin/include/admin.html" %}
+
+{% set active_menu = 'users' %}
+
+
+{% block head %}
+            <link href="/frontend/public/css/general/select2.min.css" rel="stylesheet" />
+    {% endblock %} 
+
+{% block content %}
+    <!-- Page-Title -->
+
+<div class="bottom form-horizontal">
+
+    <div class="row">
+        <div class="silca col-sm-12">
+            <h4 class="page-title">Редактирование пользователя: {{row.email}}</h4>
+        </div>
+
+
+
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <form role="form"  method="POST" target="form_submit" class="ajax-form" ><!-- -->
+
+
+
+            <div class="col-lg-11" style="margin-top: 20px;" >
+
+
+                <div class="form-group">
+                    <label class="col-md-1 control-label">Дата/время регистрации</label>
+                    <div class="col-md-11">
+                        <input type="text" class="form-control" name="date"
+                               disabled="disabled" value="{{ row.date }}" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-1 control-label">Фамилия</label>
+                    <div class="col-md-11">
+                        <input type="text" class="form-control" name="famaliname"
+                               placeholder="{%trans%}Фамилия{%endtrans%}" value="{{ row.famaliname }}" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-1 control-label">Имя</label>
+                    <div class="col-md-11">
+                        <input type="text" class="form-control" name="name"
+                               placeholder="{%trans%}Имя{%endtrans%}" value="{{ row.name }}" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-1 control-label">Отчество</label>
+                    <div class="col-md-11">
+                        <input type="text" class="form-control" name="patronymic"
+                               placeholder="{%trans%}Отчество{%endtrans%}" value="{{ row.patronymic }}" >
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-1 control-label">Email</label>
+                    <div class="col-md-11">
+                        <input type="text" class="form-control" name="email"
+                               placeholder="{%trans%}Email{%endtrans%}" value="{{ row.email }}" >
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-1 control-label">Телефон</label>
+                    <div class="col-md-11">
+                        <input type="text" class="form-control" name="tel"
+                               placeholder="{%trans%}Телефон{%endtrans%}" value="{{ row.tel }}" >
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-1 control-label">{%trans%}Город{%endtrans%}</label>
+                    <div class="col-md-11">
+                        <div class="col-md-120" >
+                            <select   class="city-list form-control select2 " name="city_id" >
+                                <option value="{{ row.city_id}}">{{ row.city}}</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-1 control-label">Бонусы</label>
+                    <div class="col-md-11">
+                        <input type="text" class="form-control" name="purse"
+                               placeholder="{%trans%}Бонусы{%endtrans%}" value="{{ row.purse }}" >
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-1 control-label">Статус</label>
+                    <div class="col-md-11">
+
+                        <select   class="form-control select2 " name="status" >
+                            {% if row.status==1 %}
+                                <option selected value="1">Активный</option>
+                                <option value="0">Блокирован</option>
+                            {% else %}
+                                <option value="1">Активный</option>
+                                <option selected value="0">Блокирован</option>
+                            {% endif %}
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-1 control-label">Роль</label>
+                    <div class="col-md-11">
+
+                        <select   class="form-control " name="role" >
+                            {% for role_id,role_name in rolelist %}
+                            <option value="{{role_id}}" {% if role_id==row.role %}selected{%endif%}>{{role_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-11 col-md-offset-1">
+                    <div class="alert alert-danger error hidden"></div>
+                    <button class="btn btn-success">Сохранить</button>
+                    <input type="hidden" name="ajax" value="true">
+                    <input type="hidden" name="id" value="{{row.id}}">
+                </div>
+
+
+
+            </div>
+
+
+        </form>
+                <iframe style='width:100%; height:500px' name="form_submit" class="hidden"></iframe>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script src="/frontend/public/js/cabinet/datedropper.min.js"></script>
+<script type="text/javascript" >
+
+
+    var page_lang='{{lang}}';
+    if(page_lang=='ru') page_lang='';
+
+    $(document).ready(function() {
+
+
+        $('iframe[name=form_submit]').on('load', function(){
+            var data = $(this).contents().text();
+            data = jQuery.parseJSON(data);
+
+            var error = $('.ajax-form').find('.error').hide();
+
+            if( data.error ){
+                error.show().removeClass('hidden').text(data.text);
+            }else{
+                window.location.href = "/admin/users/all/";
+            }
+
+        });
+
+
+        var select = $('.city-list').select2({
+
+            placeholder:"{%trans%}Выберите город{%endtrans%}",
+            //theme : "classic",
+            //maximumSelectionLength : 10 ,
+            ajax: {
+                delay: 250,
+                type: 'POST',
+                url: '/ajax/geo/getAllCity/',
+                dataType: 'json',
+                data: function (params) {
+                    params.lang=page_lang;
+                    params.q=params.term;
+                    return params;
+                },
+                processResults: function (data) {
+                    console.log(data);
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.text,
+                                id: item.id
+                            };
+                        })
+                    };
+                }
+            }
+        });
+
+    });
+
+</script>
+
+
+
+{% endblock %}

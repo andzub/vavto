@@ -1,0 +1,510 @@
+{% extends "./general/include/main.html" %}
+
+
+{% block head %}
+<link href="/frontend/public/css/avtoservis/style.css" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+<div class="container-fluid hesers top-block">
+    <div class="container">
+        <div class="row widgets">
+            <div class="col-md-30">
+                <div class="widget">
+                    <div class="icon">
+                        <img src="/frontend/public/img/avtoservis/index/like.png">
+                    </div>
+                    <div class="text">
+                        <span>Вчера </span>
+                        <span>отремонтировано</span>
+                    </div>
+                    <div class="number">
+                        115
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-30">
+                <div class="widget">
+                    <div class="icon">
+                        <img src="/frontend/public/img/avtoservis/index/recording.png">
+                    </div>
+                    <div class="text">
+                        <span>Сегодня</span>
+                        <span>записано</span>
+                    </div>
+                    <div class="number">
+                        56
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-30">
+                <div class="widget">
+                    <div class="icon">
+                        <img src="/frontend/public/img/avtoservis/index/tool.png">
+                    </div>
+                    <div class="text">
+                        <span>Сейчас</span>
+                        <span>в сервисе</span>
+                    </div>
+                    <div class="number">
+                        6
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-30">
+                <div class="widget">
+                    <div class="icon">
+                        <img src="/frontend/public/img/avtoservis/index/form.png">
+                    </div>
+                    <div class="text">
+                        <span>Сейчас заполняют</span>
+                        <span>форму записи</span>
+                    </div>
+                    <div class="number">
+                        3
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid recent-applications">
+    <h2>Последние заявки</h2>
+    <div class="wrapper clearfix">
+        <div class="row applications">
+            <div class="col-md-40">
+                <div class="application">
+                    <div>
+                        <span class="car">Renault Logan</span> <span class="data">03.01.2018 - 10:51</span>
+                    </div>
+                    <div class="operation">
+                        Покраска заднего бампера; покраска заднего крыла.
+                    </div>
+                    <div class="status-service">
+                        <img src="/frontend/public/img/avtoservis/index/clock-disable.png">
+                        <span>Сервис подбирается</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-40">
+                <div class="application">
+                    <div>
+                        <span class="car">Mitsubishi Lancer</span> <span class="data">3.01.2018 - 12:14</span>
+                    </div>
+                    <div class="operation">
+                        Замена левой передней внутренней гранаты; замена переднего ступичного подшипника.
+                    </div>
+                    <div class="status-service">
+                        <img src="/frontend/public/img/avtoservis/index/clock.png">
+                        <span>Сервис с лучшей ценой найден за 6 минут</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-40">
+                <div class="application">
+                    <div>
+                        <span class="car">Toyota Land Cruiser</span> <span class="data">03.01.2018 - 10:51</span>
+                    </div>
+                    <div class="operation">
+                        Замена сальников; замена роликов; запена ремня ГРМ (любовины).
+                    </div>
+                    <div class="status-service">
+                        <img src="/frontend/public/img/avtoservis/index/clock-disable.png">
+                        <span>Сервис с лучшей ценой найден за 3 минуты</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="want-price clearfix" id="want-price">
+    <div class="wrapper clearfix">
+        <div class="col-md-120">
+            {% include 'avtoservis/blocks/index-form.html' %}
+        </div>
+    </div>
+</div>
+<div class="container-fluid avtoservices-block">
+    <div class="wrapper">
+        <h2>Топ 10 автосервисов</h2>
+        <p>Рейтинг основан на отзывах клиентов, которые воспользовались услугами автосервиса.</p>
+        <p>Мы не сотрудничаем с автосервисами, которые имеют оценку ниже 3.5!</p>
+        <div class="top-avtoservices col-md-120">
+            <div class="avtoservis col-md-60">
+                <div class="avtoservis-top">
+                    <div class="name">Коленвал Моторз</div>
+                    <div class="info">
+                        <span class="address">(г. Москва, ул. Новохохловская, д. 36)</span>
+                        <div class="right-block">
+                            <div class="rating">
+                                <div class="star">
+                                    <div style="width: 50%"></div>
+                                </div>
+                                <div class="rating-number">4.1</div>
+                            </div>
+                            <div class="reviews"><span class="icon"></span><span class="reviews-count">Отзывы: 26</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="avtoservis-content">
+                    <div class="avtoservis-img">
+                        <img class="card-img" src="/frontend/public/img/avtoservis/index/avtoservis.jpg">
+                        <button class="button">ЗАПИСАТЬСЯ</button>
+                    </div>
+                    <div class="avtoservis-comments">
+                        <div>
+                            <span class="user">Вадим Супрун</span> <span class="rating">(оценка: 5)</span>
+                            <div class="comment-btn">
+                                <button class="btn-down"></button>
+                                <button class="btn-up"></button>
+                            </div>
+                        </div>
+                        <div class="car">
+                            ЗАЗ 968
+                        </div>
+                        <div class="comment">
+                            <p>Отличный сервис, парни вмиг поставили на колёса моего зепера (ещё мой дед на нём летал). Перебрали карбюратор, отполировали кузов, прошлись по ходовой. Супер!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="avtoservis col-md-60">
+                <div class="avtoservis-top">
+                    <div class="name">Коленвал Моторз</div>
+                    <div class="info">
+                        <span class="address">(г. Москва, ул. Новохохловская, д. 36)</span>
+                        <div class="right-block">
+                            <div class="rating">
+                                <div class="star">
+                                    <div style="width: 50%"></div>
+                                </div>
+                                <div class="rating-number">4.1</div>
+                            </div>
+                            <div class="reviews"><span class="icon"></span><span class="reviews-count">Отзывы: 26</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="avtoservis-content">
+                    <div class="avtoservis-img">
+                        <img class="card-img" src="/frontend/public/img/avtoservis/index/avtoservis.jpg">
+                        <button class="button">ЗАПИСАТЬСЯ</button>
+                    </div>
+                    <div class="avtoservis-comments">
+                        <div>
+                            <span class="user">Вадим Супрун</span> <span class="rating">(оценка: 5)</span>
+                            <div class="comment-btn">
+                                <button class="btn-down"></button>
+                                <button class="btn-up"></button>
+                            </div>
+                        </div>
+                        <div class="car">
+                            ЗАЗ 968
+                        </div>
+                        <div class="comment">
+                            <p>Отличный сервис, парни вмиг поставили на колёса моего зепера (ещё мой дед на нём летал). Перебрали карбюратор, отполировали кузов, прошлись по ходовой. Супер!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="avtoservis col-md-60">
+                <div class="avtoservis-top">
+                    <div class="name">Коленвал Моторз</div>
+                    <div class="info">
+                        <span class="address">(г. Москва, ул. Новохохловская, д. 36)</span>
+                        <div class="right-block">
+                            <div class="rating">
+                                <div class="star">
+                                    <div style="width: 50%"></div>
+                                </div>
+                                <div class="rating-number">4.1</div>
+                            </div>
+                            <div class="reviews"><span class="icon"></span><span class="reviews-count">Отзывы: 26</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="avtoservis-content">
+                    <div class="avtoservis-img">
+                        <img class="card-img" src="/frontend/public/img/avtoservis/index/avtoservis.jpg">
+                        <button class="button">ЗАПИСАТЬСЯ</button>
+                    </div>
+                    <div class="avtoservis-comments">
+                        <div>
+                            <span class="user">Вадим Супрун</span> <span class="rating">(оценка: 5)</span>
+                            <div class="comment-btn">
+                                <button class="btn-down"></button>
+                                <button class="btn-up"></button>
+                            </div>
+                        </div>
+                        <div class="car">
+                            ЗАЗ 968
+                        </div>
+                        <div class="comment">
+                            <p>Отличный сервис, парни вмиг поставили на колёса моего зепера (ещё мой дед на нём летал). Перебрали карбюратор, отполировали кузов, прошлись по ходовой. Супер!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="avtoservis col-md-60">
+                <div class="avtoservis-top">
+                    <div class="name">Коленвал Моторз</div>
+                    <div class="info">
+                        <span class="address">(г. Москва, ул. Новохохловская, д. 36)</span>
+                        <div class="right-block">
+                            <div class="rating">
+                                <div class="star">
+                                    <div style="width: 50%"></div>
+                                </div>
+                                <div class="rating-number">4.1</div>
+                            </div>
+                            <div class="reviews"><span class="icon"></span><span class="reviews-count">Отзывы: 26</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="avtoservis-content">
+                    <div class="avtoservis-img">
+                        <img class="card-img" src="/frontend/public/img/avtoservis/index/avtoservis.jpg">
+                        <button class="button">ЗАПИСАТЬСЯ</button>
+                    </div>
+                    <div class="avtoservis-comments">
+                        <div>
+                            <span class="user">Вадим Супрун</span> <span class="rating">(оценка: 5)</span>
+                            <div class="comment-btn">
+                                <button class="btn-down"></button>
+                                <button class="btn-up"></button>
+                            </div>
+                        </div>
+                        <div class="car">
+                            ЗАЗ 968
+                        </div>
+                        <div class="comment">
+                            <p>Отличный сервис, парни вмиг поставили на колёса моего зепера (ещё мой дед на нём летал). Перебрали карбюратор, отполировали кузов, прошлись по ходовой. Супер!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <button class="button btn-show-all">ПОКАЗАТЬ ВСЕ 10</button>
+    </div>
+</div>
+<div class="container-fluid all-avtoservices-block avtoservices-block">
+    <div class="wrapper">
+        <h2>Все автосервисы</h2>
+        <div class="all-avtoservices col-md-120">
+            <div class="avtoservis col-md-60">
+                <div class="avtoservis-top">
+                    <div class="name">Коленвал Моторз</div>
+                    <div class="info">
+                        <span class="address">(г. Москва, ул. Новохохловская, д. 36)</span>
+                        <div class="right-block">
+                            <div class="rating">
+                                <div class="star">
+                                    <div style="width: 50%"></div>
+                                </div>
+                                <div class="rating-number">4.1</div>
+                            </div>
+                            <div class="reviews"><span class="icon"></span><span class="reviews-count">Отзывы: 26</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="avtoservis-content">
+                    <div class="avtoservis-img">
+                        <img class="card-img" src="/frontend/public/img/avtoservis/index/avtoservis.jpg">
+                        <button class="button">ЗАПИСАТЬСЯ</button>
+                    </div>
+                    <div class="avtoservis-comments">
+                        <div>
+                            <span class="user">Вадим Супрун</span> <span class="rating">(оценка: 5)</span>
+                            <div class="comment-btn">
+                                <button class="btn-down"></button>
+                                <button class="btn-up"></button>
+                            </div>
+                        </div>
+                        <div class="car">
+                            ЗАЗ 968
+                        </div>
+                        <div class="comment">
+                            <p>Отличный сервис, парни вмиг поставили на колёса моего зепера (ещё мой дед на нём летал). Перебрали карбюратор, отполировали кузов, прошлись по ходовой. Супер!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="avtoservis col-md-60">
+                <div class="avtoservis-top">
+                    <div class="name">Коленвал Моторз</div>
+                    <div class="info">
+                        <span class="address">(г. Москва, ул. Новохохловская, д. 36)</span>
+                        <div class="right-block">
+                            <div class="rating">
+                                <div class="star">
+                                    <div style="width: 50%"></div>
+                                </div>
+                                <div class="rating-number">4.1</div>
+                            </div>
+                            <div class="reviews"><span class="icon"></span><span class="reviews-count">Отзывы: 26</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="avtoservis-content">
+                    <div class="avtoservis-img">
+                        <img class="card-img" src="/frontend/public/img/avtoservis/index/avtoservis.jpg">
+                        <button class="button">ЗАПИСАТЬСЯ</button>
+                    </div>
+                    <div class="avtoservis-comments">
+                        <div>
+                            <span class="user">Вадим Супрун</span> <span class="rating">(оценка: 5)</span>
+                            <div class="comment-btn">
+                                <button class="btn-down"></button>
+                                <button class="btn-up"></button>
+                            </div>
+                        </div>
+                        <div class="car">
+                            ЗАЗ 968
+                        </div>
+                        <div class="comment">
+                            <p>Отличный сервис, парни вмиг поставили на колёса моего зепера (ещё мой дед на нём летал). Перебрали карбюратор, отполировали кузов, прошлись по ходовой. Супер!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="avtoservis col-md-60">
+                <div class="avtoservis-top">
+                    <div class="name">Коленвал Моторз</div>
+                    <div class="info">
+                        <span class="address">(г. Москва, ул. Новохохловская, д. 36)</span>
+                        <div class="right-block">
+                            <div class="rating">
+                                <div class="star">
+                                    <div style="width: 50%"></div>
+                                </div>
+                                <div class="rating-number">4.1</div>
+                            </div>
+                            <div class="reviews"><span class="icon"></span><span class="reviews-count">Отзывы: 26</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="avtoservis-content">
+                    <div class="avtoservis-img">
+                        <img class="card-img" src="/frontend/public/img/avtoservis/index/avtoservis.jpg">
+                        <button class="button">ЗАПИСАТЬСЯ</button>
+                    </div>
+                    <div class="avtoservis-comments">
+                        <div>
+                            <span class="user">Вадим Супрун</span> <span class="rating">(оценка: 5)</span>
+                            <div class="comment-btn">
+                                <button class="btn-down"></button>
+                                <button class="btn-up"></button>
+                            </div>
+                        </div>
+                        <div class="car">
+                            ЗАЗ 968
+                        </div>
+                        <div class="comment">
+                            <p>Отличный сервис, парни вмиг поставили на колёса моего зепера (ещё мой дед на нём летал). Перебрали карбюратор, отполировали кузов, прошлись по ходовой. Супер!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="avtoservis col-md-60">
+                <div class="avtoservis-top">
+                    <div class="name">Коленвал Моторз</div>
+                    <div class="info">
+                        <span class="address">(г. Москва, ул. Новохохловская, д. 36)</span>
+                        <div class="right-block">
+                            <div class="rating">
+                                <div class="star">
+                                    <div style="width: 50%"></div>
+                                </div>
+                                <div class="rating-number">4.1</div>
+                            </div>
+                            <div class="reviews"><span class="icon"></span><span class="reviews-count">Отзывы: 26</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="avtoservis-content">
+                    <div class="avtoservis-img">
+                        <img class="card-img" src="/frontend/public/img/avtoservis/index/avtoservis.jpg">
+                        <button class="button">ЗАПИСАТЬСЯ</button>
+                    </div>
+                    <div class="avtoservis-comments">
+                        <div>
+                            <span class="user">Вадим Супрун</span> <span class="rating">(оценка: 5)</span>
+                            <div class="comment-btn">
+                                <button class="btn-down"></button>
+                                <button class="btn-up"></button>
+                            </div>
+                        </div>
+                        <div class="car">
+                            ЗАЗ 968
+                        </div>
+                        <div class="comment">
+                            <p>Отличный сервис, парни вмиг поставили на колёса моего зепера (ещё мой дед на нём летал). Перебрали карбюратор, отполировали кузов, прошлись по ходовой. Супер!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <button class="button btn-show-all">ПОКАЗАТЬ ВСЕ</button>
+    </div>
+</div>
+
+
+<!--<div class="container bottom">-->
+
+    <!--<div class="row">-->
+        <!--<div class="silca col-md-120">-->
+
+            <!--{% for avtoservis in avtoservices %}-->
+                <!--<div class="col-md-40 avtoservis-card">-->
+                    <!--<div class="card">-->
+                        <!--<img class="card-img" src="/frontend/public/img/general/item-2.png">-->
+                        <!--<div class="card-rating">-->
+                            <!--<div style="width: {{avtoservis.rating}}%"></div>-->
+                        <!--</div>-->
+                        <!--<div class="card-body">-->
+                            <!--<h4 class="card-name">{{avtoservis.name}}</h4>-->
+                            <!--<div class="card-description"><p>{{avtoservis.description}}</p></div>-->
+                            <!--<div class="card-address"><small class="text-muted">Адрес: </small>{{avtoservis.address}}</div>-->
+                            <!--<div class="card-address"><small class="text-muted">тел: </small>{{avtoservis.phone}}</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--{% endfor %}-->
+        <!--</div>-->
+    <!--</div>-->
+
+<!--</div>-->
+
+
+
+{% endblock %}
+
+
+
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log(1);
+        $(".card").click(function () {
+            console.log(2);
+
+            window.location.href = "/";
+        });
+        $('#select-add-field select').change(function(){
+            var $this=$(this);
+            $('#application .addfield'+$this.val()).removeAttr("style");
+            $this.find('option[value='+$this.val()+']').remove();
+            if($this.find('option').length<2)$('#select-add-field').remove();
+            return false;
+        });
+    });
+</script>
+
+
+{% endblock %}

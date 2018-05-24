@@ -1,0 +1,158 @@
+{% extends "include/main.html" %}
+
+{% set title = row.title %}
+{% set description = row.short_desc %}
+
+{% block content %}
+<style>
+    .sidebar-cat{list-style: none;background-color: #f5f5f5;padding: 0;}
+    .sidebar-cat > li{padding: 7px 18px;border: 1px solid #e4e4e4;border-top: none;}
+    .sidebar-cat > li:nth-child(1){border-top: 1px solid #e4e4e4;}
+    .sidebar-cat > li >a:after{content: '';border: 6px solid transparent;border-left: 6px solid #4b80c6;margin: 0 0 -1px 5px;display: inline-block;}
+    .sidebar-cat > li >a{color: #3a3a3a;}
+
+    .sliks_conteiner{
+        position: relative;
+    }
+    .big-arrow-left{
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 50;
+    } 
+    .big-arrow-right{
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 50;
+    }
+    .sliks{
+        margin: 0 60px;
+    }
+
+</style>
+
+    {% if row.img %}
+    <div class="info title clearfix" style="background: url('{{row.img}}') 0 0 no-repeat;">
+    {% else %}
+    <div class="info title clearfix" style="background:#333;">
+    {% endif %}
+        <div class="wrapper clearfix">
+            <div class="col-xs-120">
+                <h1>{{row.title}}</h1>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="col-xs-120 no-padding">
+            {% for key,text in row.text %}
+            {% if key == 1 and row.form %}
+            <div class="want-price clearfix">
+                <div class="wrapper clearfix">
+                    {% include 'blocks/' ~ row.form.name %}
+                </div>
+            </div>
+            {% endif %}
+            <div class="info text clearfix">
+                <div class="wrapper">
+                  {% if key == 0 %}
+                      {% if row.type == 1 and row.childs_works %}<!--если категория с работами-->
+                      <div class="col-lg-30 col-md-120 no-padding">
+                        <ul class="sidebar-cat">
+                            {% for key,work in row.childs_works %}
+                            <li><a href="{{row.address}}/{{work.address}}/">{{work.title}}</a></li>
+                            {% endfor %}
+                        </ul>
+                      </div>
+                      <div class="col-lg-87 col-md-120 no-padding col-lg-offset-3"><div class="">{{text | raw}}</div></div>
+                      {% else %}
+                      <div class="col-xs-120 no-padding"><div class="">{{text | raw}}</div></div>
+                      {% endif %}
+                  {% else %}
+                  <div class="col-xs-120 no-padding"><div class="">{{text | raw}}</div></div>
+                  {% endif %}
+                </div>
+            </div>
+
+            {% endfor %}
+
+            {% if row.type == 1 %}
+            <div class="reviews clearfix">
+                <div class="wrapper">
+                    <div class="col-xs-120 no-padding">
+                        <a name="otzivy"></a>
+                        <h2>{%trans%}Истории ремонта автомобиля{%endtrans%}</h2>
+                        {{reviews | raw}}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+        <div class="slider clearfix">
+            <div class="wrapper clearfix">
+                <div class="col-xs-120 no-padding sliks_conteiner">
+                    <div class="big-arrow-left">
+                        <img src="/frontend/public/img/general/big-arrow-left.png">
+                    </div>
+                    <div class="sliks "  style="overflow: hidden;" ><!-- col-md-80 clearfix col-md-offset-10 -->
+                    {% for key,row in row.similar %}
+                    
+                        <div class="col-md-27 col-sm-60 no-padding">
+                            <div class="block">
+                                <a href="{{row.address}}/" class="similar-link" style="background: url('{{row.img_min}}') 0 0 no-repeat;"><!--<img src="{{row.img}}">--></a>
+                                <h3><a href="{{row.address}}/">{{row.title}}</a></h3>
+                                <p><span>{{row.short_desc}}..<span><a class="show_more_link" href="{{row.address}}/">{%trans%}подробнее{%endtrans%}</a></p>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                    </div>
+                    <div class="big-arrow-right">
+                        <img src="/frontend/public/img/general/big-arrow-right.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+<script>
+$(document).ready(function () {//автозаполнение формы
+    var this_page={id:{{row.id}},type:{{row.type}},category_id:{{row.parent_id}}};
+    if(this_page.type==1){
+      $("#application select[name=category]").val(this_page.id).trigger('change');
+      $('.select-work-type').find('select').addClass('select2-hidden');
+      $('#work_type_' + this_page.id).removeClass('select2-hidden');
+    }
+    else if(this_page.type==2){
+      $('#application select[name=category]').val(this_page.category_id).trigger('change');
+      $('.select-work-type').find('select').addClass('select2-hidden');
+      $('#work_type_' + this_page.category_id).removeClass('select2-hidden').val(this_page.id).trigger('change');
+    }
+});
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var slick = $('.sliks').slick({
+          infinite: true,
+          dots: false,
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          аccessibility: false,
+ 
+        });
+        $('.slick-next').hide();
+        $('.slick-prev').hide();
+        $('.big-arrow-left').click(function(){
+            slick.slick('slickNext');
+        });
+        $('.big-arrow-right').click(function(){
+            slick.slick('slickPrev');
+        });
+
+    });
+    
+</script>
+
+{% endblock %}
+

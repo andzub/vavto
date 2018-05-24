@@ -1,0 +1,196 @@
+<style>
+    #select-add-field .select2-container--default .select2-selection--single {border: 1px solid #3290d0;}
+    #select-add-field .select2-container--default .select2-selection--single .select2-selection__rendered {color: #3290d0;}
+    #select-add-field .select2-selection__arrow:before{content: '+';
+        color: #3290d0;
+        display: block;
+        width: 30px;
+        height: 26px;
+        background: #fff;
+        padding: 0 0 0 8px;
+        line-height: 26px;
+        z-index: 111111;
+        position: absolute;
+        font-size: 24px;
+        margin: 6px 0 0 -14px;
+        border-left: 1px solid #d4d4d4;}
+</style>
+<div class="title">
+    <h2>{%trans%}Расчитать стоимость ремонта за 10 минут{%endtrans%}</h2>
+</div>
+<form action="" method="POST" id="application" enctype="multipart/form-data">
+    <div class="col-lg-30 col-md-40 col-sm-60">
+        <div class="field" id="application-brand-field">
+            <select name="brand" class="select2">
+                <option selected value="0">{%trans%}Марка{%endtrans%}</option>
+                {% for brand in brands %}
+                <option value="{{brand.id}}">{{brand.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-30 col-md-40 col-sm-60">
+        <div class="field select-models">
+            <select name="model_0" id="brand_0" disabled class="select2">
+                <option selected value="0">{%trans%}Модель{%endtrans%}</option>
+            </select>
+            {% for model_id,model in models %}
+            <select name="model_{{model_id}}" id="brand_{{model_id}}" style="display:none;" class="select2 select2-hidden">
+                {% for row in model %}
+                <option value="{{row.id}}">{{row.name}}</option>
+                {% endfor %}
+            </select>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="col-lg-30 col-md-40 col-sm-60">
+        <div class="field">
+            <input type="tel" name="phone" placeholder="+7 (900) 123-45-67" required pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$" title="Пример: +792853001020">
+        </div>
+    </div>
+
+    <div class="col-lg-30 col-md-40 col-sm-60 addfield4" style="visibility: hidden;position: absolute;">
+        <div class="field">
+            <select name="release_year" class="select2">
+                <option selected>{%trans%}Год выпуска{%endtrans%}</option>
+                {% for year in autoYears %}
+                <option value="{{year}}">{{year}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div class="col-lg-30 col-md-40 col-sm-60 addfield1" style="display: none;">
+        <div class="field">
+            <input name="vin" type="text" placeholder="{%trans%}VIN-код{%endtrans%}">
+        </div>
+    </div>
+
+    <div class="col-lg-30 col-md-40 col-sm-60 addfield5" style="display: none;">
+        <div class="field">
+            <select name="city">
+                <option value="Астрахань">Астрахань</option>
+                <option value="Барнаул">Барнаул</option>
+                <option value="Белгород">Белгород</option>
+                <option value="Владивосток">Владивосток</option>
+                <option value="Волгоград">Волгоград</option>
+                <option value="Воронеж">Воронеж</option>
+                <option value="Екатеринбург">Екатеринбург</option>
+                <option value="Ижевск">Ижевск</option>
+                <option value="Иркутск">Иркутск</option>
+                <option value="Казань">Казань</option>
+                <option value="Калининград">Калининград</option>
+                <option value="Кемерово">Кемерово</option>
+                <option value="Киров">Киров</option>
+                <option value="Краснодар">Краснодар</option>
+                <option value="Красноярск">Красноярск</option>
+                <option value="Курск">Курск</option>
+                <option value="Липецк">Липецк</option>
+                <option value="Махачкала">Махачкала</option>
+                <option value="Москва">Москва</option>
+                <option value="Набережные Челны">Набережные Челны</option>
+                <option value="Нижний Новгород">Нижний Новгород</option>
+                <option value="Нижний Тагил">Нижний Тагил</option>
+                <option value="Новокузнецк">Новокузнецк</option>
+                <option value="Новосибирск">Новосибирск</option>
+                <option value="Омск">Омск</option>
+                <option value="Оренбург">Оренбург</option>
+                <option value="Пенза">Пенза</option>
+                <option value="Пермь">Пермь</option>
+                <option value="Ростов-на Дону">Ростов-на Дону</option>
+                <option value="Рязань">Рязань</option>
+                <option value="Санкт-Петербург">Санкт-Петербург</option>
+                <option value="Сочи">Сочи</option>
+                <option value="Тверь">Тверь</option>
+                <option value="Тольятти">Тольятти</option>
+                <option value="Томск">Томск</option>
+                <option value="Тула">Тула</option>
+                <option value="Тюмень">Тюмень</option>
+                <option value="Улан-Удэ">Улан-Удэ</option>
+                <option value="Ульяновск">Ульяновск</option>
+                <option value="Уфа">Уфа</option>
+                <option value="Хабаровск">Хабаровск</option>
+                <option value="Чебоксары">Чебоксары</option>
+                <option value="Челябинск">Челябинск</option>
+                <option value="Ярославль">Ярославль</option>
+                <!--<option value="{{city.name}}">{{city.name}}</option>-->
+            </select>
+        </div>
+    </div>
+    <div class="col-xs-120 addfield7" style="display: none;">
+        <div class="field width-100">
+            <input name="problem" type="text" class="width-100" placeholder="{%trans%}Опишите проблему{%endtrans%}">
+        </div>
+    </div>
+    <div class="col-lg-30 col-md-40 col-sm-60 addfield8" style="display: none;">
+        <div class="field">
+            <input name="name" type="text" placeholder="{%trans%}Ваше имя{%endtrans%}">
+        </div>
+    </div>
+
+
+    <div class="col-lg-30 col-md-40 col-sm-60 addfield2" style="display: none;">
+        <div class="field">
+            <input name="email" type="email" placeholder="Email" pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})" title="{%trans%}Пример{%endtrans%}: example@mail.ru">
+        </div>
+    </div>
+
+
+    <div class="col-lg-30 col-md-40 col-sm-60 addfield3" style="display: none;">
+        <div class="field">
+            <input name="address" type="text" placeholder="{%trans%}В каком районе найти сервис{%endtrans%}">
+        </div>
+    </div>
+
+    <div class="col-lg-30 col-md-40 col-sm-60" id="select-add-field">
+        <div class="field">
+            <select class="select2">
+                <option selected>{%trans%}еще (не обязательные поля){%endtrans%}</option>
+                <option value="1">{%trans%}VIN-код{%endtrans%}</option>
+                <option value="2">Email</option>
+                <option value="3">{%trans%}В каком районе найти сервис{%endtrans%}</option>
+                <option value="4">{%trans%}Год выпуска{%endtrans%}</option>
+                <option value="5">{%trans%}Город{%endtrans%}</option>
+                <option value="7">{%trans%}Опишите проблему{%endtrans%}</option>
+                <option value="8">{%trans%}Ваше имя{%endtrans%}</option>
+                <option value="9">{%trans%}Прикрепить фото{%endtrans%}</option>
+                <option value="10">{%trans%}Удобное время{%endtrans%}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-30 col-md-40 col-sm-60 addfield9" style="display: none;">
+        <div class="add-photo">
+            <a href="#" data-toggle="tooltip" title="{%trans%}Вы можете прикрепить фотографию к заявке{%endtrans%}">
+                <img src="/frontend/public/img/general/tooltip.png">
+                <span>{%trans%}Прикрепить фото{%endtrans%}</span>
+                <img src="/frontend/public/img/general/add-photo-plus.png">
+            </a>
+            <input type="file" name="files[]" multiple class="hidden">
+            <div class="images">
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-120">
+        <div class="time addfield10" style="display: none;">
+            <span>{%trans%}Мне удобно посетить сервис{%endtrans%}</span>
+            <input name="date" id="date_c" type="date">
+            <span>в</span>
+            <input name="time" type="time">
+        </div>
+        <div class="get-offer">
+            <button onclick="yaCounter{{city.yaCounter}}.reachGoal ('otpravka'); return true;" style="margin-top: 10px;">{%trans%}Получить лучшие предложения от сервисов!{%endtrans%}</button>
+        </div>
+        <div class="error alert alert-danger" style="display:none;"></div>
+        <div class="agree">
+            <label>
+                <input type="checkbox" required name="rules">
+                <span>{%trans%}Я соглашаюсь с <a href="pol-zovatel-skoe-soglashenie/" target="_blank">условиями обработки персональных данных</a>{%endtrans%}</span>
+            </label>
+        </div>
+    </div>
+    <input type="hidden" name="ajax" value="true">
+    <input type="hidden" name="stock" value="Нет">
+    <div class="clearfix"></div>
+</form>
+<script type="text/javascript">document.getElementById('date_c').valueAsDate = new Date();</script>

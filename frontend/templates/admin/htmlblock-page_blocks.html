@@ -1,0 +1,28 @@
+{% block content %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Название блока</th>
+      {%for l in langs%}
+      <th>Значение - {{l.title}}</th>
+      {%endfor%}
+    </tr>
+  </thead>
+  <tbody data-page="{{page_name}}">
+  {%for b_name,b_empty in block_names%}
+  <tr data-block="{{b_name}}">
+    <td>{{b_name}}</td>
+    {%for l in langs%}
+    <td>
+      <div class="html_edit_block"><i class="fa fa-pencil edit m-r-5"></i><i class="fa fa-save save m-r-5"></i><i class="fa fa-close close"></i></div>
+      <div class="l_content">{{blocks[b_name][l.sname]}}</div>
+      <textarea data-lang="{{l.sname}}" style="display: none;"></textarea>
+    </td>
+    {%endfor%}
+  </tr>
+  {%endfor%}
+
+  </tbody>
+</table>
+
+{% endblock %}

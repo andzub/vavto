@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{block.title}}</title>
+    <link rel="stylesheet" type="text/css" href="/frontend/public/plugins/general/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/frontend/public/plugins/general/slick/slick-theme.css"/>
+    <link href="/frontend/public/css/general/bootstrap.min.css" rel="stylesheet">
+    <link href="/frontend/public/css/general/style2.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+    <meta name="description" content="{{block.description}}">
+    {% if lang and lang!='ru' %}
+    <base href="/{{lang}}/">
+    {%else%}
+    <base href="/">
+    {%endif%}
+</head>
+<body>
+
+{{city.code_metrika | raw}}
+    <div class="header">
+        <div class="header-top">
+            <div class="wrapper clearfix">
+                <div class="col-xs-120">
+                    <div class="logo">
+                        <a href=""><img src="/frontend/public/img/general/logo-franchise.png"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{block.header_bottom | raw}}
+    </div>
+    <div class="read-more">
+        <div class="wrapper clearfix">
+            <div class="col-xs-120 no-padding">
+                <h2>{{block.earn}}</h2>
+                <form action="#" method="post" id="application_franchise">
+                    <div class="col-md-24 col-sm-60 padding">
+                        <input type="text" name="name" placeholder="{%trans%}Ваше имя{%endtrans%}">
+                    </div>
+                    <div class="col-md-24 col-sm-60 padding">
+                        <input type="text" name="city" placeholder="{%trans%}Город{%endtrans%}">
+                    </div>
+                    <div class="col-md-24 col-sm-60 padding">
+                        <input type="text" name="phone" placeholder="{%trans%}Тел. номер{%endtrans%}" required pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$" title="{%trans%}Пример{%endtrans%}: +792853001020">
+                    </div>
+                    <div class="col-md-24 col-sm-60 padding">
+                        <input type="text" name="email" placeholder="E-mail" required pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})" title="{%trans%}Пример{%endtrans%}: example@mail.ru">
+                    </div>
+                    <div class="col-md-24 col-xs-120 padding">
+                        <button>{%trans%}Узнать как{%endtrans%}</button>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="error alert alert-danger" style="display:none;"></div>
+                    <input type="hidden" name="ajax" value="true">
+                </form>
+            </div>
+        </div>
+    </div>
+    {{block.result | raw}}
+    <div class="view">
+        <div class="wrapper clearfix">
+            <div class="col-md-60">
+                <div class="text"></div>
+                {{block.coolstory | raw}}
+            </div>
+            <div class="col-md-60">
+                <div class="photo">
+                    <img src="/frontend/public/img/general/e74b-e82c-48ec-e890.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="market">
+        <div class="wrapper clearfix">
+            <div class="col-xs-120 no-padding">
+                {{block.market_trends | raw}}
+            </div>
+        </div>
+    </div>
+    {{block.question_answer | raw}}
+    <div class="carousel">
+        <div class="wrapper clearfix">
+            <div class="slider responsive">
+                {% for row in articles %}
+                <div>
+                    <a href="/{{row.address}}/" class="article-link">
+                        <div class="img" style="background-image:url('{{row.img_min}}');"></div>
+                        <p>{{row.title}}</p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wrapper clearfix">
+            <div class="col-md-20 no-padding">
+                <div class="logo">
+                    <a href="/"><img src="/frontend/public/img/general/logo-franchise-footer.png"></a>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="line"></div>
+            </div>
+            <div class="col-md-31">
+                <div class="become-partner">
+                    {{block.become_partner | raw}}
+                </div>
+            </div>
+            <div class="col-md-30">
+                <div class="contacts">
+                    <a href="#" class="phone">8 (495) 120-13-68</a>
+                    <a href="#" class="email">franch@centre-mail.ru</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="/frontend/public/plugins/general/slick/slick.min.js"></script>
+
+<script type="text/javascript">
+    $('.responsive').slick({
+        dots: true,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+</script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('body').on('submit','#application_franchise',function () {
+
+                var form = $(this);
+                var error = $(this).find('.error').hide();
+                var button = form.find('button');
+                var button_text = button.text();
+
+                button.text('{%trans%}Отправка данных...{%endtrans%}');
+                button.attr('disabled',true);
+
+                $.ajax({
+                    url: '/sale-franchise/',
+                    type: "POST",
+                    data: $(this).serialize(),
+                    success: function(data){
+
+                        button.attr('disabled',false);
+                        button.text(button_text);
+
+                        if( data != 'success' ){
+                            error.text(data).show();
+                        }else{
+                            form.fadeOut(function () {
+                                form.html('<div class="alert alert-success text-center">{%trans%}Ваша заявка отправлена!<br>В самое ближайшее время мы свяжемся с Вами!{%endtrans%}</div>');
+                                form.fadeIn();
+                            });
+                            //$("#successForm").modal('show');
+                        }
+                    }
+                });
+                return false;
+            });
+
+            $('body').on('click','.faq-links a',function () {
+                var id = $(this).attr('data-id');
+                $('.faq-links a').removeClass('active');
+                $(this).addClass('active');
+                $('.faq-text').hide();
+                $('.faq-text-'+id).removeClass('hide').show();
+                return false;
+            });
+        });
+    </script>
+{{city.code_footer | raw}}
+</body>
+</html>

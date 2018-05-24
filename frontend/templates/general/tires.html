@@ -1,0 +1,239 @@
+{% extends "include/main.html" %}
+
+{% set title = '«В-автосервис» — шины для Вашего автомобиля' %}
+{% set description = 'Покупка шин для вашего автомобиля' %}
+
+{% block content %}
+    <div class="info title tires clearfix">
+        <div class="wrapper clearfix">
+            <div class="col-xs-120">
+                <h1>Шины для Вашего автомобиля</h1>
+            </div>
+        </div>
+    </div>
+    <div class="info form clearfix">
+        <div class="wrapper clearfix">
+            <div class="col-xs-120">
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option>Марка</option>
+                            <option>Марка</option>
+                            <option>Марка</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option>Ширина</option>
+                            <option>Ширина</option>
+                            <option>Ширина</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option>Высота</option>
+                            <option>Высота</option>
+                            <option>Высота</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option>Диаметр</option>
+                            <option>Диаметр</option>
+                            <option>Диаметр</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <select>
+                            <option>Сезонность</option>
+                            <option>Сезонность</option>
+                            <option>Сезонность</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <input type="text" placeholder="Цена (от)">
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="field">
+                        <input type="text" placeholder="Цена (до)">
+                    </div>
+                </div>
+                <div class="col-lg-30 col-md-40 col-sm-60">
+                    <div class="group">
+                        <input type="checkbox">
+                        <label>Бесплатная доставка</label>
+                    </div>
+                    <div class="group">
+                        <input type="checkbox">
+                        <label>Бесплатная доставка</label>
+                    </div>
+                </div>
+                <div class="col-xs-120">
+                    <img src="/frontend/public/img/general/blue-gray-line.png">
+                    <div class="get-offer">
+                        <a href="{{u}}#">Искать!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="car-services tires clearfix">
+        <div class="wrapper clearfix">
+            <div class="col-md-60 no-padding">
+                <div class="info clearfix">
+                    <img src="/frontend/public/img/general/tire.png">
+                    <div class="stars">
+                        <span class="count">5</span>
+                        <input class="stars star-4" id="star-4" type="radio" name="reviewStars"/>
+                        <label title="gorgeous" for="star-4"></label>
+
+                        <input class="stars star-3" id="star-3" type="radio" name="reviewStars"/>
+                        <label title="good" for="star-3"></label>
+
+                        <input class="stars star-2" id="star-2" type="radio" name="reviewStars"/>
+                        <label title="regular" for="star-2"></label>
+
+                        <input class="stars star-1" id="star-1" type="radio" name="reviewStars"/>
+                        <label title="poor" for="star-1"></label>
+
+                        <input class="stars star-0" id="star-0" type="radio" name="reviewStars"/>
+                        <label title="bad" for="star-0"></label>
+                    </div>
+                    <div class="views">
+                        <img src="/frontend/public/img/general/views.png">
+                        <span>Отзывы: 26</span>
+                    </div>
+                    <div class="name">Nokian Hakkapelita 5</div>
+                    <div class="address">Резина обладает отличными свойствами, сочетает в себе экологичность, безопасность и удовольствие от управление автомобилем.</div>
+                    <a href="{{u}}#" class="see-deal">Посмотреть предложения</a>
+                </div>
+            </div>
+            <div class="col-md-60 no-padding">
+                <div class="text-view">
+                    <div class="block">
+                        <a class="arrow-left">
+                            <img src="/frontend/public/img/general/arrow-left.png">
+                        </a>
+                        <div class="comment">
+                            <div class="name">Владими Супрун</div>
+                            <span class="value">(оценка: 4)</span>
+                            <div class="auto">Nokian Hakkapelita 5</div>
+                            <div class="text">Норм резина, дорогу держит отлично. В меру шумная.</div>
+                        </div>
+                        <a class="arrow-right">
+                            <img src="/frontend/public/img/general/arrow-right.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-120 no-padding center">
+                <div class="table-border">
+                    <table>
+                        <tr>
+                            <td class="name">ШинТорг</td>
+                            <td class="size">255 / 55 / 19</td>
+                            <td class="feature">
+                                <img src="/frontend/public/img/general/spikes.png">
+                                <img src="/frontend/public/img/general/truck.png">
+                                <img src="/frontend/public/img/general/arrows.png">
+                            </td>
+                            <td class="price">5602 руб</td>
+                        </tr>
+                    </table>
+                </div>
+                <a href="{{u}}#" class="buy">Купить</a>
+                <div class="table-border">
+                    <table>
+                        <tr>
+                            <td class="name">ШинТорг</td>
+                            <td class="size">255 / 55 / 19</td>
+                            <td class="feature">
+                                <img src="/frontend/public/img/general/spikes.png">
+                                <img src="/frontend/public/img/general/truck.png">
+                                <img src="/frontend/public/img/general/arrows.png">
+                            </td>
+                            <td class="price">5602 руб</td>
+                        </tr>
+                    </table>
+                </div>
+                <a href="{{u}}#" class="buy">Купить</a>
+                <div class="table-border">
+                    <table>
+                        <tr>
+                            <td class="name">ШинТорг</td>
+                            <td class="size">255 / 55 / 19</td>
+                            <td class="feature">
+                                <img src="/frontend/public/img/general/spikes.png">
+                                <img src="/frontend/public/img/general/truck.png">
+                                <img src="/frontend/public/img/general/arrows.png">
+                            </td>
+                            <td class="price">5602 руб</td>
+                        </tr>
+                    </table>
+                </div>
+                <a href="{{u}}#" class="buy">Купить</a>
+                <hr>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-60 no-padding">
+                <div class="info clearfix">
+                    <img src="/frontend/public/img/general/tire.png">
+                    <div class="stars">
+                        <span class="count">5</span>
+                        <input class="stars star-4" id="star-4" type="radio" name="reviewStars"/>
+                        <label title="gorgeous" for="star-4"></label>
+
+                        <input class="stars star-3" id="star-3" type="radio" name="reviewStars"/>
+                        <label title="good" for="star-3"></label>
+
+                        <input class="stars star-2" id="star-2" type="radio" name="reviewStars"/>
+                        <label title="regular" for="star-2"></label>
+
+                        <input class="stars star-1" id="star-1" type="radio" name="reviewStars"/>
+                        <label title="poor" for="star-1"></label>
+
+                        <input class="stars star-0" id="star-0" type="radio" name="reviewStars"/>
+                        <label title="bad" for="star-0"></label>
+                    </div>
+                    <div class="views">
+                        <img src="/frontend/public/img/general/views.png">
+                        <span>Отзывы: 26</span>
+                    </div>
+                    <div class="name">Nokian Hakkapelita 5</div>
+                    <div class="address">Резина обладает отличными свойствами, сочетает в себе экологичность, безопасность и удовольствие от управление автомобилем.</div>
+                    <a href="{{u}}#" class="see-deal">Посмотреть предложения</a>
+                </div>
+            </div>
+            <div class="col-md-60 no-padding">
+                <div class="text-view">
+                    <div class="block">
+                        <a class="arrow-left">
+                            <img src="/frontend/public/img/general/arrow-left.png">
+                        </a>
+                        <div class="comment">
+                            <div class="name">Владими Супрун</div>
+                            <span class="value">(оценка: 4)</span>
+                            <div class="auto">Nokian Hakkapelita 5</div>
+                            <div class="text">Норм резина, дорогу держит отлично. В меру шумная.</div>
+                        </div>
+                        <a class="arrow-right">
+                            <img src="/frontend/public/img/general/arrow-right.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+{% endblock %}

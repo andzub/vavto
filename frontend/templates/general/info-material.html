@@ -1,0 +1,64 @@
+{% extends "include/main.html" %}
+
+{% set title = row.title %}
+{% set description = row.short_desc %}
+
+{% block content %}
+
+
+    {% if row.img %}
+        <div class="info title clearfix" style="background: url('{{row.img}}') 0 0 no-repeat;">
+    {% else %}
+        <div class="info title clearfix" style="background:#333;">
+    {% endif %}
+
+        <div class="wrapper clearfix">
+            <div class="col-xs-120">
+                <h1>{{row.title}}</h1>
+            </div>
+        </div>
+    </div>
+
+    {% for key,text in row.text %}
+
+        {% if key == 1 %}
+            <div class="want-price clearfix">
+                <div class="wrapper clearfix">
+                    <div class="col-md-120">
+                        {% include 'blocks/index-form.html' %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="info text clearfix">
+            <div class="wrapper">
+                <div class="col-xs-120 no-padding">
+                    <div class="text">{{text | raw}}</div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="slider clearfix">
+        <div class="wrapper clearfix">
+            <div class="col-xs-120 no-padding">
+                <div class="big-arrow-left">
+                    <img src="/frontend/public/img/general/big-arrow-left.png">
+                </div>
+                {% for key,row in row.similar %}
+                    <div class="col-md-27 col-sm-60 no-padding">
+                        <div class="block">
+                            <a href="/{{row.address}}/" class="similar-link" style="background: url('{{row.img_min}}') 0 0 no-repeat;"><!--<img src="{{row.img}}">--></a>
+                            <h3><a href="/{{row.address}}/">{{row.title}}</a></h3>
+                            <p>{{row.short_desc}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="big-arrow-right">
+                    <img src="/frontend/public/img/general/big-arrow-right.png">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

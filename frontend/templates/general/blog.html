@@ -1,0 +1,56 @@
+{% extends "include/main.html" %}
+
+{% set title = 'Блог' %}
+{% set description = '' %}
+
+{% block content %}
+<style>
+#newslist {margin: 35px 0;}
+#newslist .img_wrap{height: 150px;padding: 0;}
+#newslist .new:after{clear: both;content: '';display: block;}
+#newslist .new{margin-bottom: 20px;}
+#newslist .new .title{font-weight: 600;font-size: 15px}
+#newslist .new .date{color: #b2b2b2;margin-bottom: 15px;}
+#newslist .new .text {line-height: 1.2;}
+
+
+</style>
+
+  <div class="info title clearfix" style="background: url(/frontend/public/img/general/news-fon.png) 0 0 no-repeat;">
+    <div class="wrapper clearfix">
+      <div style="width: 540px;margin: 70px auto;">
+        <a class="vbtn" href="/news/" style="margin-right: 20px;">Новости</a>
+        <a class="vbtn active" href="#" style="margin-right: 20px;">Блог</a>
+        <a class="vbtn" href="#">Советы по ремонту авто</a>
+      </div>
+    </div>
+  </div>
+<div class="wrapper clearfix">
+  <div class="col-md-120 no-padding" id="newslist">
+
+  {% for key,post in posts %}
+    <div class="col-sm-60 col-xs-120 new">
+      {% if post.img_min %}
+      <div class="img_wrap col-sm-40" style="background: url('{{post.img_min}}') 0 0 no-repeat;background-size: 100% 100%;">
+      {% else %}
+      <div class="img_wrap col-sm-40" style="background:#333;">
+      {% endif %}
+      </div>
+      <div class="col-sm-80">
+        <div class="title">{{post.title}}</div>
+        <div class="date">{{post.date_create}}</div>
+        <div class="wrapper">
+          <div class="col-xs-120 no-padding">
+            <div class="text"><span>{{post.short_desc}}..</span><a  class="show_more_link"  href="{{post.link}}">подробнее</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+  <div style="text-align: center;">
+    {{pagination | raw}}
+  </div>
+</div>
+
+  {% endblock %}

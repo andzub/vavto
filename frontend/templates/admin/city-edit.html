@@ -1,0 +1,365 @@
+{% extends "admin/include/admin.html" %}
+
+{% set active_menu = 'cities' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="panel">
+                <div class="panel-body">
+
+                    <!-- Page-Title -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4 class="page-title">Редактировать город</h4>
+                        </div>
+                    </div>
+
+                    <!-- Form edit city -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form id="edit_city" action="/admin-panel/city/" method="POST" enctype="multipart/form-data" class="add-product form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Название:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="name" value="{{data.city.name}}">
+                                        <input type="hidden" name="id" value="{{data.city.id}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Телефон:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="phone" value="{{data.city.phone}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">ID метрики (yaCounter):</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="yaCounter" value="{{data.city.yaCounter}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Email города:</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="city_email" value="{{data.city.city_email}}">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Код счетчика:</label>
+                                    <div class="col-md-10">
+                                        <textarea class="form-control" rows="15" name="code_metrika">{{data.city.code_metrika}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Код в подвале сайта:</label>
+                                    <div class="col-md-10">
+                                        <textarea class="form-control" rows="15" name="code_footer">{{data.city.code_footer}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2"></label>
+                                    <div class="col-md-10">
+                                        <button class="btn edit_city btn-success btn-lg">Сохранить</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4 class="page-title">Редактировать районы</h4>
+                        </div>
+                    </div>
+
+                    <!-- Add districts button -->
+                    <div class="row">
+                        <label class="col-md-6 control-label"><button class="btn btn-primary waves-effect waves-light add_districts">Добавить район</button><br><br></label>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card-box table-responsive">
+                                <table class="table table-responsive table-striped m-0">
+                                    <thead>
+                                    <tr>
+                                        <th>Название</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for row in data.districts %}
+                                        <tr data-id="{{row.id}}" data-name="{{row.name}}">
+                                            <td>{{row.name}}</td>
+                                            <td>
+                                                <a href="javascript:void(0)" class="on-default edit-row edit"><i class="fa fa-pencil m-r-5"></i></a>
+                                                <a href="javascript:void(0)" class="on-default remove-row delete"><i class="fa fa-trash-o  m-r-5"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal delete districts -->
+    <div id="dialog" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <section class="panel panel-info panel-color">
+            <header class="panel-heading">
+                <h2 class="panel-title">Подтвердите действие</h2>
+            </header>
+            <div class="panel-body">
+                <div class="modal-wrapper">
+                    <div class="modal-text">
+                        <p>Вы действительно желаете удалить?</p>
+                    </div>
+                </div>
+                <input type="hidden" name="id">
+                <div class="row m-t-20">
+                    <div class="col-md-12 text-right">
+                        <button id="dialogConfirm" class="btn btn-primary waves-effect waves-light">Да</button>
+                        <button id="dialogCancel" class="btn btn-default waves-effect">Отмена</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+      </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div id="dialogAdd" class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-md">
+        <section class="panel panel-info panel-color">
+            <header class="panel-heading">
+                <h2 class="panel-title">Добавить район</h2>
+            </header>
+            <div class="panel-body">
+                <div class="modal-wrapper">
+                    <div class="modal-text">
+                        <form action="/admin-panel/city/" method="POST" enctype="multipart/form-data" class="add-product form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Название:</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" name="name">
+                                    <input type="hidden" name="city_id" value="{{city}}">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row m-t-20">
+                    <div class="col-md-12 text-right">
+                        <button id="dialogAddConfirm" class="btn btn-primary waves-effect waves-light">Да</button>
+                        <button id="dialogAddCancel" class="btn btn-default waves-effect">Отмена</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="dialogEdit" class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-md">
+        <section class="panel panel-info panel-color">
+            <header class="panel-heading">
+                <h2 class="panel-title">Добавить район</h2>
+            </header>
+            <div class="panel-body">
+                <div class="modal-wrapper">
+                    <div class="modal-text">
+                        <form action="/admin-panel/city/" method="POST" enctype="multipart/form-data" class="add-product form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Название:</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" name="name">
+                                    <input type="hidden" name="city_id" value="{{city}}">
+                                    <input type="hidden" name="id">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row m-t-20">
+                    <div class="col-md-12 text-right">
+                        <button id="dialogEditConfirm" class="btn btn-primary waves-effect waves-light">Да</button>
+                        <button id="dialogEditCancel" class="btn btn-default waves-effect">Отмена</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+      </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.delete').click(function () {
+                var id = $(this).parents('tr').data('id');
+                $('#dialog input[name="id"]').val(id);
+                $('#dialog').modal('show');
+            });
+
+            $('.edit').click(function () {
+                var id = $(this).parents('tr').data('id');
+                var name = $(this).parents('tr').data('name');
+                $('#dialogEdit input[name="name"]').val(name);
+                $('#dialogEdit input[name="id"]').val(id);
+                $('#dialogEdit').modal('show');
+            });
+
+            $('.add_districts').click(function () {
+                $('#dialogAdd input[name="name"]').val('');
+                $('#dialogAdd').modal('show');
+            });
+
+            $('#dialogCancel').click(function () {
+                $('#dialog').modal('hide');
+            });
+
+            $('#dialogAddCancel').click(function () {
+                $('#dialogAdd').modal('hide');
+            });
+            
+            $('#dialogEditCancel').click(function () {
+                $('#dialogEdit').modal('hide');
+            });
+
+            $('#dialogAddConfirm').click(function(event) {
+                var city_id = $('#dialogAdd input[name="city_id"]').val();
+                var name = $('#dialogAdd input[name="name"]').val();
+
+                $.ajax({
+                 url: '/admin/ajax/',
+                 type: 'POST',
+                 dataType: 'json',
+                 async: false,
+                 data: {
+                     city_id: city_id,
+                     name: name,
+                     method: 'post',
+                     uri: '/cities/districts/'
+                 },
+                 success: function(response){
+                    if (response.code == 200) {
+                        window.location.href = window.location.href;
+                    } else {
+                        alert(response.message);
+                    }
+                    
+                 }
+                })
+            });
+
+            $('#dialogEditConfirm').click(function(event) {
+                var id = $('#dialogEdit input[name="id"]').val();
+                var city_id = $('#dialogEdit input[name="city_id"]').val();
+                var name = $('#dialogEdit input[name="name"]').val();
+
+                $.ajax({
+                 url: '/admin/ajax/',
+                 type: 'POST',
+                 dataType: 'json',
+                 async: false,
+                 data: {
+                     id: id,
+                     city_id: city_id,
+                     name: name,
+                     method: 'put',
+                     uri: '/cities/districts/'
+                 },
+                 success: function(response){
+                    if (response.code == 200) {
+                       window.location.href = window.location.href;
+                    } else {
+                        alert(response.message);
+                    }
+                 }
+                })
+            });
+
+            $('#dialogConfirm').click(function(event) {
+                var id = $('#dialog input[name="id"]').val();
+
+                $.ajax({
+                 url: '/admin/ajax/',
+                 type: 'POST',
+                 dataType: 'json',
+                 async: false,
+                 data: {
+                     id: id,
+                     method: 'delete',
+                     uri: '/cities/districts/'
+                 },
+                 success: function(response){
+                    if (response.code == 200) {
+                       window.location.href = window.location.href;
+                    } else {
+                        alert(response.message);
+                    }
+                 }
+                })
+            });
+
+            $('.edit_city').click(function(event) {
+                event.preventDefault();
+
+                var id = $('#edit_city input[name="id"]').val();
+                var name = $('#edit_city input[name="name"]').val();
+                var phone = $('#edit_city input[name="phone"]').val();
+                var yaCounter = $('#edit_city input[name="yaCounter"]').val();
+
+                var city_email = $('#edit_city input[name="city_email"]').val();
+                var code_metrika = $('#edit_city textarea[name="code_metrika"]').val();
+                var code_footer = $('#edit_city textarea[name="code_footer"]').val();
+
+                $.ajax({
+                 url: '/admin/ajax/',
+                 type: 'POST',
+                 dataType: 'json',
+                 async: false,
+                 data: {
+                     id: id,
+                     name: name,
+                     phone: phone,
+                     city_email: city_email,
+                     code_metrika: code_metrika,
+                     code_footer: code_footer,
+                     yaCounter: yaCounter,
+                     method: 'put',
+                     uri: '/cities/'
+                 },
+                 success: function(response){
+                    if (response.code == 200) {
+                        alert('Данные успешно сохранены!');
+                       window.location.href = window.location.href;
+                    } else {
+                        alert(response.message);
+                    }
+                 }
+                })
+            });
+        });
+
+    </script>
+{% endblock %}

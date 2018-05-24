@@ -1,0 +1,245 @@
+/*body{
+	font-family: "OpenSansLight", sans-serif;
+}
+*/
+
+.hesers{
+	text-align: center;
+	font-size:18px;
+	background-color: #f0f0f0;
+	 padding: 10px;
+}
+.hesers>a, .hesers>b{
+	color:#4a80c6;
+}
+.silca{
+	text-align: center;
+	 padding: 30px;
+}
+.silca b{
+	font-size:26px;
+}
+.bottom{
+	margin-bottom: 50px;
+}
+.form-group{
+	padding-bottom: 3px;
+
+}
+.form-control{
+	height: 41px;
+}
+
+
+
+.select2-container--default .select2-selection--single{
+	border-color: #ccc;
+}
+
+body form{
+	font-size: 14px;
+}
+
+.thumbnail{
+	padding: 0;
+	border-radius: 0;
+}
+.thumbnail_head{
+	background-color: #f0f0f0;
+	text-align: center;
+	padding: 1px;
+	height: 80px;
+	position: relative;
+}
+.addauto{
+	margin-top: 32px;
+	font-weight:bold;
+}
+.audi_logo{
+	position: absolute;
+	left:10px ;
+	top: 10px;
+	max-width: 120px;
+	/*max-height: 35px;*/
+	max-height: 26px;
+	
+}
+
+.markaauto{
+	margin: 50px 10px 0 10px;
+	border-top: solid 1px #ccc;
+}
+.btn_auto_form{
+	width: 100%;
+	border-radius: 0;
+	padding: 10px;
+	font-size: 16px;
+	
+}
+.btn_auto_form , .btn{
+	font-weight: bold;
+	background-color: #4a8dc6;
+}
+
+.my_btn {
+	padding: 10px 50px ;
+}
+.add_auto{
+	height: 500px;
+}
+
+.bonus{
+	padding: 5px;
+	border-radius: 5px;
+}
+.bonusu{
+	text-align: center;
+}
+.bonusu p{
+	margin: 0;
+}
+
+.bonud_p{
+	padding: 35px 20px 10px;
+}
+.vitr{
+	color: #4a8dc6;
+	font-weight: bold;
+	border-top: solid 1px #ccc;
+	padding-top: 10px;
+}
+.accia_table{
+    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+    border: 2px solid white; /* Прячем рамку вокруг таблицы */
+}
+.accia_table TD, .accia_table th {
+	font-weight: normal;
+    padding: 6px 15px; /* Поля вокруг содержимого таблицы */
+    border: 1px solid #c8d9ee; /* Параметры рамки */
+    text-align: left; /* Выравнивание по левому краю */
+   }
+ .last_th{
+ 	color: #4a8dc6;
+ 	font-weight: bold !important;
+ 	width: 100px;
+ }
+
+ .table_bonus{
+
+ 	width: 100%;
+ }
+ .stroc_data{
+ 	width: 150px;
+ }
+ #bonus{
+ 	padding:10px; 
+ 	overflow-y: scroll;
+ 	height: 400px;
+ }
+ .table_bonus_perv{
+ 	color: #4a8dc6;
+ 	font-weight: bold !important;
+ 	text-align: center;
+ }
+
+#bonus::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+}
+#bonus::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
+.table_bonus th{
+	text-align: center;
+}
+.pusto td{
+	padding: 40px;
+}
+
+.year_issue input, .osago_do input, .kasko_do input{
+	padding-left: 100px;
+}
+
+.year_issue, .osago_do, .kasko_do{
+	position: relative;
+}
+
+.kasko_do::before {
+	position: absolute;
+	top:11px;
+	left: 10px;
+	color: #999;
+	content: "  КАСКО до:";
+}
+
+.year_issue::before {
+	position: absolute;
+	top:11px;
+	left: 10px;
+	color: #999;
+	content: "Год выпуска:";
+}
+
+.osago_do::before {
+	position: absolute;
+	top:11px;
+	left: 10px;
+	color: #999;
+	content: " ОСАГО до:";
+}
+
+
+.dates[readonly]{
+	background-color: transparent;
+}
+.date_r input{
+	padding-left: 95px;
+}
+
+.date_r{
+	position: relative;
+}
+.date_r::before {
+	font-size: 14px;
+	position: absolute;
+	top:11px;
+	left: 28px;
+	color: #999;
+	content: "Дата рожд.:";
+}
+input[type=date]::-webkit-inner-spin-button {
+	 display: none;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+	color:#4a8dc6;
+	margin-top: 5px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-color: #4a8dc6 transparent transparent transparent;
+    border-style: solid;
+    border-width: 5px 4px 0 4px;
+    height: 0;
+    left: 50%;
+    margin-left: -4px;
+    margin-top: -2px;
+    position: absolute;
+    top: 50%;
+    width: 0;
+}
+.prev .form-control{
+	color:#999;
+}
+
+.prev input[type=submit]{
+	color:#fff;
+}
+
+
+
+
+/*slave*/
+table.accia_table{width:100%;max-width:100%}
+.ordercart p.markaauto{    font-weight: bold;    margin: 12px 10px 0 10px;    border-top: 0px none;    text-align: right;    font-size: 16px;}
+.ordercart  .thumbnail_head{    height: 45px;    border-bottom: 1px solid #ddd;}
